@@ -23,5 +23,11 @@ namespace server
             var troChuyen = new frmTroChuyen();
             troChuyen.Show();
         }
+
+        // close
+        private void toolThoat_SV_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
     }
 }

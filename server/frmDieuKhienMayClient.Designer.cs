@@ -104,6 +104,7 @@
             this.toolThoat_SV.Name = "toolThoat_SV";
             this.toolThoat_SV.Size = new System.Drawing.Size(292, 30);
             this.toolThoat_SV.Text = "Thoát";
+            this.toolThoat_SV.Click += new System.EventHandler(this.toolThoat_SV_Click);
             // 
             // toolStripMenuItem1
             // 
