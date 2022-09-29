@@ -33,6 +33,12 @@
             this.pnMain_SV = new System.Windows.Forms.Panel();
             this.flpCacMay_SV = new System.Windows.Forms.FlowLayoutPanel();
             this.pnMay1_SV = new System.Windows.Forms.Panel();
+            this.ctmenutrip_May_PC_SV = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.điềuKhiểnToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.tròChuyệnToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.khoáChuộtVàBànPhímToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.khởiĐộngLạiToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.tắtMáyToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.lbDiaChiIP_SV = new System.Windows.Forms.Label();
             this.lbMayPC_SV = new System.Windows.Forms.Label();
             this.pbImagePCOn_SV = new System.Windows.Forms.PictureBox();
@@ -40,14 +46,6 @@
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
-            this.pnBottom = new System.Windows.Forms.Panel();
-            this.btnThoat_SV = new Guna.UI2.WinForms.Guna2Button();
-            this.btnGuiTinNhan_SV = new Guna.UI2.WinForms.Guna2Button();
-            this.btnCauHinh_SV = new Guna.UI2.WinForms.Guna2Button();
-            this.btnKhoiDongLai_SV = new Guna.UI2.WinForms.Guna2Button();
-            this.pnTop = new System.Windows.Forms.Panel();
-            this.lbTongSoMay_SV = new System.Windows.Forms.Label();
-            this.lbTongSoOnline_SV = new System.Windows.Forms.Label();
             this.panel2 = new System.Windows.Forms.Panel();
             this.label3 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
@@ -88,20 +86,21 @@
             this.label21 = new System.Windows.Forms.Label();
             this.label22 = new System.Windows.Forms.Label();
             this.pictureBox11 = new System.Windows.Forms.PictureBox();
-            this.ctmenutrip_May_PC_SV = new System.Windows.Forms.ContextMenuStrip(this.components);
-            this.điềuKhiểnToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.tròChuyệnToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.khoáChuộtVàBànPhímToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.khởiĐộngLạiToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.tắtMáyToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.pnBottom = new System.Windows.Forms.Panel();
+            this.btnThoat_SV = new Guna.UI2.WinForms.Guna2Button();
+            this.btnGuiTinNhan_SV = new Guna.UI2.WinForms.Guna2Button();
+            this.btnCauHinh_SV = new Guna.UI2.WinForms.Guna2Button();
+            this.btnKhoiDongLai_SV = new Guna.UI2.WinForms.Guna2Button();
+            this.pnTop = new System.Windows.Forms.Panel();
+            this.lbTongSoMay_SV = new System.Windows.Forms.Label();
+            this.lbTongSoOnline_SV = new System.Windows.Forms.Label();
             this.pnMain_SV.SuspendLayout();
             this.flpCacMay_SV.SuspendLayout();
             this.pnMay1_SV.SuspendLayout();
+            this.ctmenutrip_May_PC_SV.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pbImagePCOn_SV)).BeginInit();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
-            this.pnBottom.SuspendLayout();
-            this.pnTop.SuspendLayout();
             this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             this.panel3.SuspendLayout();
@@ -122,7 +121,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox10)).BeginInit();
             this.panel11.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox11)).BeginInit();
-            this.ctmenutrip_May_PC_SV.SuspendLayout();
+            this.pnBottom.SuspendLayout();
+            this.pnTop.SuspendLayout();
             this.SuspendLayout();
             // 
             // pnMain_SV
@@ -171,6 +171,54 @@
             this.pnMay1_SV.Name = "pnMay1_SV";
             this.pnMay1_SV.Size = new System.Drawing.Size(170, 234);
             this.pnMay1_SV.TabIndex = 0;
+            // 
+            // ctmenutrip_May_PC_SV
+            // 
+            this.ctmenutrip_May_PC_SV.Font = new System.Drawing.Font("Segoe UI", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.ctmenutrip_May_PC_SV.ImageScalingSize = new System.Drawing.Size(20, 20);
+            this.ctmenutrip_May_PC_SV.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.điềuKhiểnToolStripMenuItem,
+            this.tròChuyệnToolStripMenuItem,
+            this.khoáChuộtVàBànPhímToolStripMenuItem,
+            this.khởiĐộngLạiToolStripMenuItem,
+            this.tắtMáyToolStripMenuItem});
+            this.ctmenutrip_May_PC_SV.Name = "ctmenutrip_May_PC_SV";
+            this.ctmenutrip_May_PC_SV.Size = new System.Drawing.Size(283, 182);
+            // 
+            // điềuKhiểnToolStripMenuItem
+            // 
+            this.điềuKhiểnToolStripMenuItem.Image = ((System.Drawing.Image)(resources.GetObject("điềuKhiểnToolStripMenuItem.Image")));
+            this.điềuKhiểnToolStripMenuItem.Name = "điềuKhiểnToolStripMenuItem";
+            this.điềuKhiểnToolStripMenuItem.Size = new System.Drawing.Size(282, 30);
+            this.điềuKhiểnToolStripMenuItem.Text = "Điều khiển";
+            // 
+            // tròChuyệnToolStripMenuItem
+            // 
+            this.tròChuyệnToolStripMenuItem.Image = ((System.Drawing.Image)(resources.GetObject("tròChuyệnToolStripMenuItem.Image")));
+            this.tròChuyệnToolStripMenuItem.Name = "tròChuyệnToolStripMenuItem";
+            this.tròChuyệnToolStripMenuItem.Size = new System.Drawing.Size(282, 30);
+            this.tròChuyệnToolStripMenuItem.Text = "Trò chuyện";
+            // 
+            // khoáChuộtVàBànPhímToolStripMenuItem
+            // 
+            this.khoáChuộtVàBànPhímToolStripMenuItem.Image = ((System.Drawing.Image)(resources.GetObject("khoáChuộtVàBànPhímToolStripMenuItem.Image")));
+            this.khoáChuộtVàBànPhímToolStripMenuItem.Name = "khoáChuộtVàBànPhímToolStripMenuItem";
+            this.khoáChuộtVàBànPhímToolStripMenuItem.Size = new System.Drawing.Size(282, 30);
+            this.khoáChuộtVàBànPhímToolStripMenuItem.Text = "Khoá chuột và bàn phím";
+            // 
+            // khởiĐộngLạiToolStripMenuItem
+            // 
+            this.khởiĐộngLạiToolStripMenuItem.Image = ((System.Drawing.Image)(resources.GetObject("khởiĐộngLạiToolStripMenuItem.Image")));
+            this.khởiĐộngLạiToolStripMenuItem.Name = "khởiĐộngLạiToolStripMenuItem";
+            this.khởiĐộngLạiToolStripMenuItem.Size = new System.Drawing.Size(282, 30);
+            this.khởiĐộngLạiToolStripMenuItem.Text = "Khởi động lại";
+            // 
+            // tắtMáyToolStripMenuItem
+            // 
+            this.tắtMáyToolStripMenuItem.Image = ((System.Drawing.Image)(resources.GetObject("tắtMáyToolStripMenuItem.Image")));
+            this.tắtMáyToolStripMenuItem.Name = "tắtMáyToolStripMenuItem";
+            this.tắtMáyToolStripMenuItem.Size = new System.Drawing.Size(282, 30);
+            this.tắtMáyToolStripMenuItem.Text = "Tắt máy";
             // 
             // lbDiaChiIP_SV
             // 
@@ -244,117 +292,6 @@
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.pictureBox1.TabIndex = 0;
             this.pictureBox1.TabStop = false;
-            // 
-            // pnBottom
-            // 
-            this.pnBottom.Controls.Add(this.btnThoat_SV);
-            this.pnBottom.Controls.Add(this.btnGuiTinNhan_SV);
-            this.pnBottom.Controls.Add(this.btnCauHinh_SV);
-            this.pnBottom.Controls.Add(this.btnKhoiDongLai_SV);
-            this.pnBottom.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.pnBottom.Location = new System.Drawing.Point(0, 656);
-            this.pnBottom.Name = "pnBottom";
-            this.pnBottom.Size = new System.Drawing.Size(1257, 87);
-            this.pnBottom.TabIndex = 3;
-            // 
-            // btnThoat_SV
-            // 
-            this.btnThoat_SV.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.btnThoat_SV.BorderRadius = 8;
-            this.btnThoat_SV.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
-            this.btnThoat_SV.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
-            this.btnThoat_SV.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
-            this.btnThoat_SV.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
-            this.btnThoat_SV.FillColor = System.Drawing.Color.Red;
-            this.btnThoat_SV.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnThoat_SV.ForeColor = System.Drawing.Color.White;
-            this.btnThoat_SV.Location = new System.Drawing.Point(920, 18);
-            this.btnThoat_SV.Name = "btnThoat_SV";
-            this.btnThoat_SV.Size = new System.Drawing.Size(133, 45);
-            this.btnThoat_SV.TabIndex = 3;
-            this.btnThoat_SV.Text = "Thoát";
-            // 
-            // btnGuiTinNhan_SV
-            // 
-            this.btnGuiTinNhan_SV.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.btnGuiTinNhan_SV.BorderRadius = 8;
-            this.btnGuiTinNhan_SV.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
-            this.btnGuiTinNhan_SV.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
-            this.btnGuiTinNhan_SV.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
-            this.btnGuiTinNhan_SV.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
-            this.btnGuiTinNhan_SV.FillColor = System.Drawing.Color.Lime;
-            this.btnGuiTinNhan_SV.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnGuiTinNhan_SV.ForeColor = System.Drawing.Color.White;
-            this.btnGuiTinNhan_SV.Location = new System.Drawing.Point(603, 18);
-            this.btnGuiTinNhan_SV.Name = "btnGuiTinNhan_SV";
-            this.btnGuiTinNhan_SV.Size = new System.Drawing.Size(232, 45);
-            this.btnGuiTinNhan_SV.TabIndex = 2;
-            this.btnGuiTinNhan_SV.Text = "Gửi tin nhắn đến các client";
-            // 
-            // btnCauHinh_SV
-            // 
-            this.btnCauHinh_SV.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.btnCauHinh_SV.BorderRadius = 8;
-            this.btnCauHinh_SV.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
-            this.btnCauHinh_SV.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
-            this.btnCauHinh_SV.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
-            this.btnCauHinh_SV.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
-            this.btnCauHinh_SV.FillColor = System.Drawing.Color.Yellow;
-            this.btnCauHinh_SV.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnCauHinh_SV.ForeColor = System.Drawing.Color.Black;
-            this.btnCauHinh_SV.Location = new System.Drawing.Point(395, 18);
-            this.btnCauHinh_SV.Name = "btnCauHinh_SV";
-            this.btnCauHinh_SV.Size = new System.Drawing.Size(133, 45);
-            this.btnCauHinh_SV.TabIndex = 1;
-            this.btnCauHinh_SV.Text = "Cấu hình";
-            // 
-            // btnKhoiDongLai_SV
-            // 
-            this.btnKhoiDongLai_SV.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.btnKhoiDongLai_SV.BorderRadius = 8;
-            this.btnKhoiDongLai_SV.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
-            this.btnKhoiDongLai_SV.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
-            this.btnKhoiDongLai_SV.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
-            this.btnKhoiDongLai_SV.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
-            this.btnKhoiDongLai_SV.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnKhoiDongLai_SV.ForeColor = System.Drawing.Color.White;
-            this.btnKhoiDongLai_SV.Location = new System.Drawing.Point(165, 18);
-            this.btnKhoiDongLai_SV.Name = "btnKhoiDongLai_SV";
-            this.btnKhoiDongLai_SV.Size = new System.Drawing.Size(133, 45);
-            this.btnKhoiDongLai_SV.TabIndex = 0;
-            this.btnKhoiDongLai_SV.Text = "Khởi động lại";
-            // 
-            // pnTop
-            // 
-            this.pnTop.Controls.Add(this.lbTongSoMay_SV);
-            this.pnTop.Controls.Add(this.lbTongSoOnline_SV);
-            this.pnTop.Dock = System.Windows.Forms.DockStyle.Top;
-            this.pnTop.Location = new System.Drawing.Point(0, 0);
-            this.pnTop.Name = "pnTop";
-            this.pnTop.Size = new System.Drawing.Size(1257, 58);
-            this.pnTop.TabIndex = 2;
-            // 
-            // lbTongSoMay_SV
-            // 
-            this.lbTongSoMay_SV.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.lbTongSoMay_SV.AutoSize = true;
-            this.lbTongSoMay_SV.Font = new System.Drawing.Font("Microsoft Sans Serif", 16.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbTongSoMay_SV.Location = new System.Drawing.Point(196, 12);
-            this.lbTongSoMay_SV.Name = "lbTongSoMay_SV";
-            this.lbTongSoMay_SV.Size = new System.Drawing.Size(255, 32);
-            this.lbTongSoMay_SV.TabIndex = 0;
-            this.lbTongSoMay_SV.Text = "Tổng số máy: 100";
-            // 
-            // lbTongSoOnline_SV
-            // 
-            this.lbTongSoOnline_SV.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.lbTongSoOnline_SV.AutoSize = true;
-            this.lbTongSoOnline_SV.Font = new System.Drawing.Font("Microsoft Sans Serif", 16.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbTongSoOnline_SV.Location = new System.Drawing.Point(680, 12);
-            this.lbTongSoOnline_SV.Name = "lbTongSoOnline_SV";
-            this.lbTongSoOnline_SV.Size = new System.Drawing.Size(330, 32);
-            this.lbTongSoOnline_SV.TabIndex = 1;
-            this.lbTongSoOnline_SV.Text = "Tổng số máy online: 99";
             // 
             // panel2
             // 
@@ -776,52 +713,116 @@
             this.pictureBox11.TabIndex = 0;
             this.pictureBox11.TabStop = false;
             // 
-            // ctmenutrip_May_PC_SV
+            // pnBottom
             // 
-            this.ctmenutrip_May_PC_SV.ImageScalingSize = new System.Drawing.Size(20, 20);
-            this.ctmenutrip_May_PC_SV.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.điềuKhiểnToolStripMenuItem,
-            this.tròChuyệnToolStripMenuItem,
-            this.khoáChuộtVàBànPhímToolStripMenuItem,
-            this.khởiĐộngLạiToolStripMenuItem,
-            this.tắtMáyToolStripMenuItem});
-            this.ctmenutrip_May_PC_SV.Name = "ctmenutrip_May_PC_SV";
-            this.ctmenutrip_May_PC_SV.Size = new System.Drawing.Size(244, 162);
+            this.pnBottom.Controls.Add(this.btnThoat_SV);
+            this.pnBottom.Controls.Add(this.btnGuiTinNhan_SV);
+            this.pnBottom.Controls.Add(this.btnCauHinh_SV);
+            this.pnBottom.Controls.Add(this.btnKhoiDongLai_SV);
+            this.pnBottom.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.pnBottom.Location = new System.Drawing.Point(0, 656);
+            this.pnBottom.Name = "pnBottom";
+            this.pnBottom.Size = new System.Drawing.Size(1257, 87);
+            this.pnBottom.TabIndex = 3;
             // 
-            // điềuKhiểnToolStripMenuItem
+            // btnThoat_SV
             // 
-            this.điềuKhiểnToolStripMenuItem.Image = ((System.Drawing.Image)(resources.GetObject("điềuKhiểnToolStripMenuItem.Image")));
-            this.điềuKhiểnToolStripMenuItem.Name = "điềuKhiểnToolStripMenuItem";
-            this.điềuKhiểnToolStripMenuItem.Size = new System.Drawing.Size(243, 26);
-            this.điềuKhiểnToolStripMenuItem.Text = "Điều khiển";
+            this.btnThoat_SV.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.btnThoat_SV.BorderRadius = 8;
+            this.btnThoat_SV.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
+            this.btnThoat_SV.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
+            this.btnThoat_SV.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
+            this.btnThoat_SV.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
+            this.btnThoat_SV.FillColor = System.Drawing.Color.Red;
+            this.btnThoat_SV.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnThoat_SV.ForeColor = System.Drawing.Color.White;
+            this.btnThoat_SV.Location = new System.Drawing.Point(920, 18);
+            this.btnThoat_SV.Name = "btnThoat_SV";
+            this.btnThoat_SV.Size = new System.Drawing.Size(133, 45);
+            this.btnThoat_SV.TabIndex = 3;
+            this.btnThoat_SV.Text = "Thoát";
             // 
-            // tròChuyệnToolStripMenuItem
+            // btnGuiTinNhan_SV
             // 
-            this.tròChuyệnToolStripMenuItem.Image = ((System.Drawing.Image)(resources.GetObject("tròChuyệnToolStripMenuItem.Image")));
-            this.tròChuyệnToolStripMenuItem.Name = "tròChuyệnToolStripMenuItem";
-            this.tròChuyệnToolStripMenuItem.Size = new System.Drawing.Size(243, 26);
-            this.tròChuyệnToolStripMenuItem.Text = "Trò chuyện";
+            this.btnGuiTinNhan_SV.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.btnGuiTinNhan_SV.BorderRadius = 8;
+            this.btnGuiTinNhan_SV.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
+            this.btnGuiTinNhan_SV.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
+            this.btnGuiTinNhan_SV.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
+            this.btnGuiTinNhan_SV.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
+            this.btnGuiTinNhan_SV.FillColor = System.Drawing.Color.Lime;
+            this.btnGuiTinNhan_SV.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnGuiTinNhan_SV.ForeColor = System.Drawing.Color.White;
+            this.btnGuiTinNhan_SV.Location = new System.Drawing.Point(603, 18);
+            this.btnGuiTinNhan_SV.Name = "btnGuiTinNhan_SV";
+            this.btnGuiTinNhan_SV.Size = new System.Drawing.Size(232, 45);
+            this.btnGuiTinNhan_SV.TabIndex = 2;
+            this.btnGuiTinNhan_SV.Text = "Gửi tin nhắn đến các client";
             // 
-            // khoáChuộtVàBànPhímToolStripMenuItem
+            // btnCauHinh_SV
             // 
-            this.khoáChuộtVàBànPhímToolStripMenuItem.Image = ((System.Drawing.Image)(resources.GetObject("khoáChuộtVàBànPhímToolStripMenuItem.Image")));
-            this.khoáChuộtVàBànPhímToolStripMenuItem.Name = "khoáChuộtVàBànPhímToolStripMenuItem";
-            this.khoáChuộtVàBànPhímToolStripMenuItem.Size = new System.Drawing.Size(243, 26);
-            this.khoáChuộtVàBànPhímToolStripMenuItem.Text = "Khoá chuột và bàn phím";
+            this.btnCauHinh_SV.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.btnCauHinh_SV.BorderRadius = 8;
+            this.btnCauHinh_SV.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
+            this.btnCauHinh_SV.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
+            this.btnCauHinh_SV.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
+            this.btnCauHinh_SV.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
+            this.btnCauHinh_SV.FillColor = System.Drawing.Color.Yellow;
+            this.btnCauHinh_SV.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnCauHinh_SV.ForeColor = System.Drawing.Color.Black;
+            this.btnCauHinh_SV.Location = new System.Drawing.Point(395, 18);
+            this.btnCauHinh_SV.Name = "btnCauHinh_SV";
+            this.btnCauHinh_SV.Size = new System.Drawing.Size(133, 45);
+            this.btnCauHinh_SV.TabIndex = 1;
+            this.btnCauHinh_SV.Text = "Cấu hình";
             // 
-            // khởiĐộngLạiToolStripMenuItem
+            // btnKhoiDongLai_SV
             // 
-            this.khởiĐộngLạiToolStripMenuItem.Image = ((System.Drawing.Image)(resources.GetObject("khởiĐộngLạiToolStripMenuItem.Image")));
-            this.khởiĐộngLạiToolStripMenuItem.Name = "khởiĐộngLạiToolStripMenuItem";
-            this.khởiĐộngLạiToolStripMenuItem.Size = new System.Drawing.Size(243, 26);
-            this.khởiĐộngLạiToolStripMenuItem.Text = "Khởi động lại";
+            this.btnKhoiDongLai_SV.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.btnKhoiDongLai_SV.BorderRadius = 8;
+            this.btnKhoiDongLai_SV.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
+            this.btnKhoiDongLai_SV.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
+            this.btnKhoiDongLai_SV.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
+            this.btnKhoiDongLai_SV.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
+            this.btnKhoiDongLai_SV.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnKhoiDongLai_SV.ForeColor = System.Drawing.Color.White;
+            this.btnKhoiDongLai_SV.Location = new System.Drawing.Point(165, 18);
+            this.btnKhoiDongLai_SV.Name = "btnKhoiDongLai_SV";
+            this.btnKhoiDongLai_SV.Size = new System.Drawing.Size(133, 45);
+            this.btnKhoiDongLai_SV.TabIndex = 0;
+            this.btnKhoiDongLai_SV.Text = "Khởi động lại";
             // 
-            // tắtMáyToolStripMenuItem
+            // pnTop
             // 
-            this.tắtMáyToolStripMenuItem.Image = ((System.Drawing.Image)(resources.GetObject("tắtMáyToolStripMenuItem.Image")));
-            this.tắtMáyToolStripMenuItem.Name = "tắtMáyToolStripMenuItem";
-            this.tắtMáyToolStripMenuItem.Size = new System.Drawing.Size(243, 26);
-            this.tắtMáyToolStripMenuItem.Text = "Tắt máy";
+            this.pnTop.Controls.Add(this.lbTongSoMay_SV);
+            this.pnTop.Controls.Add(this.lbTongSoOnline_SV);
+            this.pnTop.Dock = System.Windows.Forms.DockStyle.Top;
+            this.pnTop.Location = new System.Drawing.Point(0, 0);
+            this.pnTop.Name = "pnTop";
+            this.pnTop.Size = new System.Drawing.Size(1257, 58);
+            this.pnTop.TabIndex = 2;
+            // 
+            // lbTongSoMay_SV
+            // 
+            this.lbTongSoMay_SV.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.lbTongSoMay_SV.AutoSize = true;
+            this.lbTongSoMay_SV.Font = new System.Drawing.Font("Microsoft Sans Serif", 16.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbTongSoMay_SV.Location = new System.Drawing.Point(196, 12);
+            this.lbTongSoMay_SV.Name = "lbTongSoMay_SV";
+            this.lbTongSoMay_SV.Size = new System.Drawing.Size(255, 32);
+            this.lbTongSoMay_SV.TabIndex = 0;
+            this.lbTongSoMay_SV.Text = "Tổng số máy: 100";
+            // 
+            // lbTongSoOnline_SV
+            // 
+            this.lbTongSoOnline_SV.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.lbTongSoOnline_SV.AutoSize = true;
+            this.lbTongSoOnline_SV.Font = new System.Drawing.Font("Microsoft Sans Serif", 16.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbTongSoOnline_SV.Location = new System.Drawing.Point(680, 12);
+            this.lbTongSoOnline_SV.Name = "lbTongSoOnline_SV";
+            this.lbTongSoOnline_SV.Size = new System.Drawing.Size(330, 32);
+            this.lbTongSoOnline_SV.TabIndex = 1;
+            this.lbTongSoOnline_SV.Text = "Tổng số máy online: 99";
             // 
             // frmMain
             // 
@@ -836,13 +837,11 @@
             this.flpCacMay_SV.ResumeLayout(false);
             this.pnMay1_SV.ResumeLayout(false);
             this.pnMay1_SV.PerformLayout();
+            this.ctmenutrip_May_PC_SV.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.pbImagePCOn_SV)).EndInit();
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
-            this.pnBottom.ResumeLayout(false);
-            this.pnTop.ResumeLayout(false);
-            this.pnTop.PerformLayout();
             this.panel2.ResumeLayout(false);
             this.panel2.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
@@ -873,7 +872,9 @@
             this.panel11.ResumeLayout(false);
             this.panel11.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox11)).EndInit();
-            this.ctmenutrip_May_PC_SV.ResumeLayout(false);
+            this.pnBottom.ResumeLayout(false);
+            this.pnTop.ResumeLayout(false);
+            this.pnTop.PerformLayout();
             this.ResumeLayout(false);
 
         }
