@@ -34,18 +34,18 @@
             this.flpCacMay_SV = new System.Windows.Forms.FlowLayoutPanel();
             this.pnMay1_SV = new System.Windows.Forms.Panel();
             this.ctmenutrip_May_PC_SV = new System.Windows.Forms.ContextMenuStrip(this.components);
-            this.điềuKhiểnToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.tròChuyệnToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolDieuKhien_SV = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolTroChuyen_SV = new System.Windows.Forms.ToolStripMenuItem();
             this.khoáChuộtVàBànPhímToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.khởiĐộngLạiToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.tắtMáyToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.lbDiaChiIP_SV = new System.Windows.Forms.Label();
-            this.lbMayPC_SV = new System.Windows.Forms.Label();
+            this.lbDiaChiIPMay1_SV = new System.Windows.Forms.Label();
+            this.lbMayPC1_SV = new System.Windows.Forms.Label();
             this.pbImagePCOn_SV = new System.Windows.Forms.PictureBox();
-            this.panel1 = new System.Windows.Forms.Panel();
-            this.label1 = new System.Windows.Forms.Label();
-            this.label2 = new System.Windows.Forms.Label();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.pnMay2_SV = new System.Windows.Forms.Panel();
+            this.lb_DiaChiIPMay2__SV = new System.Windows.Forms.Label();
+            this.lbMayPC2_SV = new System.Windows.Forms.Label();
+            this.pbPC_off_SV = new System.Windows.Forms.PictureBox();
             this.panel2 = new System.Windows.Forms.Panel();
             this.label3 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
@@ -88,7 +88,7 @@
             this.pictureBox11 = new System.Windows.Forms.PictureBox();
             this.pnBottom = new System.Windows.Forms.Panel();
             this.btnThoat_SV = new Guna.UI2.WinForms.Guna2Button();
-            this.btnGuiTinNhan_SV = new Guna.UI2.WinForms.Guna2Button();
+            this.btnGuiTinNhanAll_SV = new Guna.UI2.WinForms.Guna2Button();
             this.btnCauHinh_SV = new Guna.UI2.WinForms.Guna2Button();
             this.btnKhoiDongLai_SV = new Guna.UI2.WinForms.Guna2Button();
             this.pnTop = new System.Windows.Forms.Panel();
@@ -99,8 +99,8 @@
             this.pnMay1_SV.SuspendLayout();
             this.ctmenutrip_May_PC_SV.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pbImagePCOn_SV)).BeginInit();
-            this.panel1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
+            this.pnMay2_SV.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pbPC_off_SV)).BeginInit();
             this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             this.panel3.SuspendLayout();
@@ -139,9 +139,10 @@
             // 
             // flpCacMay_SV
             // 
+            this.flpCacMay_SV.AutoScroll = true;
             this.flpCacMay_SV.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.flpCacMay_SV.Controls.Add(this.pnMay1_SV);
-            this.flpCacMay_SV.Controls.Add(this.panel1);
+            this.flpCacMay_SV.Controls.Add(this.pnMay2_SV);
             this.flpCacMay_SV.Controls.Add(this.panel2);
             this.flpCacMay_SV.Controls.Add(this.panel3);
             this.flpCacMay_SV.Controls.Add(this.panel4);
@@ -153,21 +154,21 @@
             this.flpCacMay_SV.Controls.Add(this.panel10);
             this.flpCacMay_SV.Controls.Add(this.panel11);
             this.flpCacMay_SV.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.flpCacMay_SV.Location = new System.Drawing.Point(0, 58);
+            this.flpCacMay_SV.Location = new System.Drawing.Point(0, 89);
             this.flpCacMay_SV.Margin = new System.Windows.Forms.Padding(10);
             this.flpCacMay_SV.Name = "flpCacMay_SV";
-            this.flpCacMay_SV.Size = new System.Drawing.Size(1257, 598);
+            this.flpCacMay_SV.Size = new System.Drawing.Size(1257, 567);
             this.flpCacMay_SV.TabIndex = 4;
             // 
             // pnMay1_SV
             // 
             this.pnMay1_SV.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.pnMay1_SV.ContextMenuStrip = this.ctmenutrip_May_PC_SV;
-            this.pnMay1_SV.Controls.Add(this.lbDiaChiIP_SV);
-            this.pnMay1_SV.Controls.Add(this.lbMayPC_SV);
+            this.pnMay1_SV.Controls.Add(this.lbDiaChiIPMay1_SV);
+            this.pnMay1_SV.Controls.Add(this.lbMayPC1_SV);
             this.pnMay1_SV.Controls.Add(this.pbImagePCOn_SV);
-            this.pnMay1_SV.Location = new System.Drawing.Point(30, 50);
-            this.pnMay1_SV.Margin = new System.Windows.Forms.Padding(30, 50, 3, 3);
+            this.pnMay1_SV.Location = new System.Drawing.Point(30, 30);
+            this.pnMay1_SV.Margin = new System.Windows.Forms.Padding(30, 30, 3, 3);
             this.pnMay1_SV.Name = "pnMay1_SV";
             this.pnMay1_SV.Size = new System.Drawing.Size(170, 234);
             this.pnMay1_SV.TabIndex = 0;
@@ -177,27 +178,29 @@
             this.ctmenutrip_May_PC_SV.Font = new System.Drawing.Font("Segoe UI", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.ctmenutrip_May_PC_SV.ImageScalingSize = new System.Drawing.Size(20, 20);
             this.ctmenutrip_May_PC_SV.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.điềuKhiểnToolStripMenuItem,
-            this.tròChuyệnToolStripMenuItem,
+            this.toolDieuKhien_SV,
+            this.toolTroChuyen_SV,
             this.khoáChuộtVàBànPhímToolStripMenuItem,
             this.khởiĐộngLạiToolStripMenuItem,
             this.tắtMáyToolStripMenuItem});
             this.ctmenutrip_May_PC_SV.Name = "ctmenutrip_May_PC_SV";
-            this.ctmenutrip_May_PC_SV.Size = new System.Drawing.Size(283, 182);
+            this.ctmenutrip_May_PC_SV.Size = new System.Drawing.Size(283, 154);
             // 
-            // điềuKhiểnToolStripMenuItem
+            // toolDieuKhien_SV
             // 
-            this.điềuKhiểnToolStripMenuItem.Image = ((System.Drawing.Image)(resources.GetObject("điềuKhiểnToolStripMenuItem.Image")));
-            this.điềuKhiểnToolStripMenuItem.Name = "điềuKhiểnToolStripMenuItem";
-            this.điềuKhiểnToolStripMenuItem.Size = new System.Drawing.Size(282, 30);
-            this.điềuKhiểnToolStripMenuItem.Text = "Điều khiển";
+            this.toolDieuKhien_SV.Image = ((System.Drawing.Image)(resources.GetObject("toolDieuKhien_SV.Image")));
+            this.toolDieuKhien_SV.Name = "toolDieuKhien_SV";
+            this.toolDieuKhien_SV.Size = new System.Drawing.Size(282, 30);
+            this.toolDieuKhien_SV.Text = "Điều khiển";
+            this.toolDieuKhien_SV.Click += new System.EventHandler(this.toolDieuKhien_SV_Click);
             // 
-            // tròChuyệnToolStripMenuItem
+            // toolTroChuyen_SV
             // 
-            this.tròChuyệnToolStripMenuItem.Image = ((System.Drawing.Image)(resources.GetObject("tròChuyệnToolStripMenuItem.Image")));
-            this.tròChuyệnToolStripMenuItem.Name = "tròChuyệnToolStripMenuItem";
-            this.tròChuyệnToolStripMenuItem.Size = new System.Drawing.Size(282, 30);
-            this.tròChuyệnToolStripMenuItem.Text = "Trò chuyện";
+            this.toolTroChuyen_SV.Image = ((System.Drawing.Image)(resources.GetObject("toolTroChuyen_SV.Image")));
+            this.toolTroChuyen_SV.Name = "toolTroChuyen_SV";
+            this.toolTroChuyen_SV.Size = new System.Drawing.Size(282, 30);
+            this.toolTroChuyen_SV.Text = "Trò chuyện";
+            this.toolTroChuyen_SV.Click += new System.EventHandler(this.toolTroChuyen_SV_Click);
             // 
             // khoáChuộtVàBànPhímToolStripMenuItem
             // 
@@ -220,25 +223,25 @@
             this.tắtMáyToolStripMenuItem.Size = new System.Drawing.Size(282, 30);
             this.tắtMáyToolStripMenuItem.Text = "Tắt máy";
             // 
-            // lbDiaChiIP_SV
+            // lbDiaChiIPMay1_SV
             // 
-            this.lbDiaChiIP_SV.AutoSize = true;
-            this.lbDiaChiIP_SV.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbDiaChiIP_SV.Location = new System.Drawing.Point(33, 167);
-            this.lbDiaChiIP_SV.Name = "lbDiaChiIP_SV";
-            this.lbDiaChiIP_SV.Size = new System.Drawing.Size(93, 25);
-            this.lbDiaChiIP_SV.TabIndex = 2;
-            this.lbDiaChiIP_SV.Text = "192.0.0.1";
+            this.lbDiaChiIPMay1_SV.AutoSize = true;
+            this.lbDiaChiIPMay1_SV.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbDiaChiIPMay1_SV.Location = new System.Drawing.Point(33, 167);
+            this.lbDiaChiIPMay1_SV.Name = "lbDiaChiIPMay1_SV";
+            this.lbDiaChiIPMay1_SV.Size = new System.Drawing.Size(93, 25);
+            this.lbDiaChiIPMay1_SV.TabIndex = 2;
+            this.lbDiaChiIPMay1_SV.Text = "192.0.0.1";
             // 
-            // lbMayPC_SV
+            // lbMayPC1_SV
             // 
-            this.lbMayPC_SV.AutoSize = true;
-            this.lbMayPC_SV.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbMayPC_SV.Location = new System.Drawing.Point(48, 118);
-            this.lbMayPC_SV.Name = "lbMayPC_SV";
-            this.lbMayPC_SV.Size = new System.Drawing.Size(66, 25);
-            this.lbMayPC_SV.TabIndex = 1;
-            this.lbMayPC_SV.Text = "Máy 1";
+            this.lbMayPC1_SV.AutoSize = true;
+            this.lbMayPC1_SV.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbMayPC1_SV.Location = new System.Drawing.Point(48, 118);
+            this.lbMayPC1_SV.Name = "lbMayPC1_SV";
+            this.lbMayPC1_SV.Size = new System.Drawing.Size(66, 25);
+            this.lbMayPC1_SV.TabIndex = 1;
+            this.lbMayPC1_SV.Text = "Máy 1";
             // 
             // pbImagePCOn_SV
             // 
@@ -250,48 +253,48 @@
             this.pbImagePCOn_SV.TabIndex = 0;
             this.pbImagePCOn_SV.TabStop = false;
             // 
-            // panel1
+            // pnMay2_SV
             // 
-            this.panel1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.panel1.ContextMenuStrip = this.ctmenutrip_May_PC_SV;
-            this.panel1.Controls.Add(this.label1);
-            this.panel1.Controls.Add(this.label2);
-            this.panel1.Controls.Add(this.pictureBox1);
-            this.panel1.Location = new System.Drawing.Point(233, 50);
-            this.panel1.Margin = new System.Windows.Forms.Padding(30, 50, 3, 3);
-            this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(170, 234);
-            this.panel1.TabIndex = 3;
+            this.pnMay2_SV.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.pnMay2_SV.ContextMenuStrip = this.ctmenutrip_May_PC_SV;
+            this.pnMay2_SV.Controls.Add(this.lb_DiaChiIPMay2__SV);
+            this.pnMay2_SV.Controls.Add(this.lbMayPC2_SV);
+            this.pnMay2_SV.Controls.Add(this.pbPC_off_SV);
+            this.pnMay2_SV.Location = new System.Drawing.Point(233, 30);
+            this.pnMay2_SV.Margin = new System.Windows.Forms.Padding(30, 30, 3, 3);
+            this.pnMay2_SV.Name = "pnMay2_SV";
+            this.pnMay2_SV.Size = new System.Drawing.Size(170, 234);
+            this.pnMay2_SV.TabIndex = 3;
             // 
-            // label1
+            // lb_DiaChiIPMay2__SV
             // 
-            this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(33, 167);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(93, 25);
-            this.label1.TabIndex = 2;
-            this.label1.Text = "192.0.0.1";
+            this.lb_DiaChiIPMay2__SV.AutoSize = true;
+            this.lb_DiaChiIPMay2__SV.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lb_DiaChiIPMay2__SV.Location = new System.Drawing.Point(33, 167);
+            this.lb_DiaChiIPMay2__SV.Name = "lb_DiaChiIPMay2__SV";
+            this.lb_DiaChiIPMay2__SV.Size = new System.Drawing.Size(93, 25);
+            this.lb_DiaChiIPMay2__SV.TabIndex = 2;
+            this.lb_DiaChiIPMay2__SV.Text = "192.0.0.1";
             // 
-            // label2
+            // lbMayPC2_SV
             // 
-            this.label2.AutoSize = true;
-            this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(48, 118);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(66, 25);
-            this.label2.TabIndex = 1;
-            this.label2.Text = "Máy 2";
+            this.lbMayPC2_SV.AutoSize = true;
+            this.lbMayPC2_SV.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbMayPC2_SV.Location = new System.Drawing.Point(48, 118);
+            this.lbMayPC2_SV.Name = "lbMayPC2_SV";
+            this.lbMayPC2_SV.Size = new System.Drawing.Size(66, 25);
+            this.lbMayPC2_SV.TabIndex = 1;
+            this.lbMayPC2_SV.Text = "Máy 2";
             // 
-            // pictureBox1
+            // pbPC_off_SV
             // 
-            this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
-            this.pictureBox1.Location = new System.Drawing.Point(51, 30);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(63, 66);
-            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.pictureBox1.TabIndex = 0;
-            this.pictureBox1.TabStop = false;
+            this.pbPC_off_SV.Image = ((System.Drawing.Image)(resources.GetObject("pbPC_off_SV.Image")));
+            this.pbPC_off_SV.Location = new System.Drawing.Point(51, 30);
+            this.pbPC_off_SV.Name = "pbPC_off_SV";
+            this.pbPC_off_SV.Size = new System.Drawing.Size(63, 66);
+            this.pbPC_off_SV.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pbPC_off_SV.TabIndex = 0;
+            this.pbPC_off_SV.TabStop = false;
             // 
             // panel2
             // 
@@ -299,8 +302,8 @@
             this.panel2.Controls.Add(this.label3);
             this.panel2.Controls.Add(this.label4);
             this.panel2.Controls.Add(this.pictureBox2);
-            this.panel2.Location = new System.Drawing.Point(436, 50);
-            this.panel2.Margin = new System.Windows.Forms.Padding(30, 50, 3, 3);
+            this.panel2.Location = new System.Drawing.Point(436, 30);
+            this.panel2.Margin = new System.Windows.Forms.Padding(30, 30, 3, 3);
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(170, 234);
             this.panel2.TabIndex = 4;
@@ -341,8 +344,8 @@
             this.panel3.Controls.Add(this.label5);
             this.panel3.Controls.Add(this.label6);
             this.panel3.Controls.Add(this.pictureBox3);
-            this.panel3.Location = new System.Drawing.Point(639, 50);
-            this.panel3.Margin = new System.Windows.Forms.Padding(30, 50, 3, 3);
+            this.panel3.Location = new System.Drawing.Point(639, 30);
+            this.panel3.Margin = new System.Windows.Forms.Padding(30, 30, 3, 3);
             this.panel3.Name = "panel3";
             this.panel3.Size = new System.Drawing.Size(170, 234);
             this.panel3.TabIndex = 5;
@@ -383,8 +386,8 @@
             this.panel4.Controls.Add(this.label7);
             this.panel4.Controls.Add(this.label8);
             this.panel4.Controls.Add(this.pictureBox4);
-            this.panel4.Location = new System.Drawing.Point(842, 50);
-            this.panel4.Margin = new System.Windows.Forms.Padding(30, 50, 3, 3);
+            this.panel4.Location = new System.Drawing.Point(842, 30);
+            this.panel4.Margin = new System.Windows.Forms.Padding(30, 30, 3, 3);
             this.panel4.Name = "panel4";
             this.panel4.Size = new System.Drawing.Size(170, 234);
             this.panel4.TabIndex = 6;
@@ -425,8 +428,8 @@
             this.panel5.Controls.Add(this.label9);
             this.panel5.Controls.Add(this.label10);
             this.panel5.Controls.Add(this.pictureBox5);
-            this.panel5.Location = new System.Drawing.Point(1045, 50);
-            this.panel5.Margin = new System.Windows.Forms.Padding(30, 50, 3, 3);
+            this.panel5.Location = new System.Drawing.Point(1045, 30);
+            this.panel5.Margin = new System.Windows.Forms.Padding(30, 30, 3, 3);
             this.panel5.Name = "panel5";
             this.panel5.Size = new System.Drawing.Size(170, 234);
             this.panel5.TabIndex = 7;
@@ -467,8 +470,8 @@
             this.panel6.Controls.Add(this.label11);
             this.panel6.Controls.Add(this.label12);
             this.panel6.Controls.Add(this.pictureBox6);
-            this.panel6.Location = new System.Drawing.Point(30, 337);
-            this.panel6.Margin = new System.Windows.Forms.Padding(30, 50, 3, 3);
+            this.panel6.Location = new System.Drawing.Point(30, 297);
+            this.panel6.Margin = new System.Windows.Forms.Padding(30, 30, 3, 3);
             this.panel6.Name = "panel6";
             this.panel6.Size = new System.Drawing.Size(170, 234);
             this.panel6.TabIndex = 8;
@@ -509,8 +512,8 @@
             this.panel7.Controls.Add(this.label13);
             this.panel7.Controls.Add(this.label14);
             this.panel7.Controls.Add(this.pictureBox7);
-            this.panel7.Location = new System.Drawing.Point(233, 337);
-            this.panel7.Margin = new System.Windows.Forms.Padding(30, 50, 3, 3);
+            this.panel7.Location = new System.Drawing.Point(233, 297);
+            this.panel7.Margin = new System.Windows.Forms.Padding(30, 30, 3, 3);
             this.panel7.Name = "panel7";
             this.panel7.Size = new System.Drawing.Size(170, 234);
             this.panel7.TabIndex = 9;
@@ -551,8 +554,8 @@
             this.panel8.Controls.Add(this.label15);
             this.panel8.Controls.Add(this.label16);
             this.panel8.Controls.Add(this.pictureBox8);
-            this.panel8.Location = new System.Drawing.Point(436, 337);
-            this.panel8.Margin = new System.Windows.Forms.Padding(30, 50, 3, 3);
+            this.panel8.Location = new System.Drawing.Point(436, 297);
+            this.panel8.Margin = new System.Windows.Forms.Padding(30, 30, 3, 3);
             this.panel8.Name = "panel8";
             this.panel8.Size = new System.Drawing.Size(170, 234);
             this.panel8.TabIndex = 10;
@@ -593,8 +596,8 @@
             this.panel9.Controls.Add(this.label17);
             this.panel9.Controls.Add(this.label18);
             this.panel9.Controls.Add(this.pictureBox9);
-            this.panel9.Location = new System.Drawing.Point(639, 337);
-            this.panel9.Margin = new System.Windows.Forms.Padding(30, 50, 3, 3);
+            this.panel9.Location = new System.Drawing.Point(639, 297);
+            this.panel9.Margin = new System.Windows.Forms.Padding(30, 30, 3, 3);
             this.panel9.Name = "panel9";
             this.panel9.Size = new System.Drawing.Size(170, 234);
             this.panel9.TabIndex = 11;
@@ -635,8 +638,8 @@
             this.panel10.Controls.Add(this.label19);
             this.panel10.Controls.Add(this.label20);
             this.panel10.Controls.Add(this.pictureBox10);
-            this.panel10.Location = new System.Drawing.Point(842, 337);
-            this.panel10.Margin = new System.Windows.Forms.Padding(30, 50, 3, 3);
+            this.panel10.Location = new System.Drawing.Point(842, 297);
+            this.panel10.Margin = new System.Windows.Forms.Padding(30, 30, 3, 3);
             this.panel10.Name = "panel10";
             this.panel10.Size = new System.Drawing.Size(170, 234);
             this.panel10.TabIndex = 12;
@@ -677,8 +680,8 @@
             this.panel11.Controls.Add(this.label21);
             this.panel11.Controls.Add(this.label22);
             this.panel11.Controls.Add(this.pictureBox11);
-            this.panel11.Location = new System.Drawing.Point(1045, 337);
-            this.panel11.Margin = new System.Windows.Forms.Padding(30, 50, 3, 3);
+            this.panel11.Location = new System.Drawing.Point(1045, 297);
+            this.panel11.Margin = new System.Windows.Forms.Padding(30, 30, 3, 3);
             this.panel11.Name = "panel11";
             this.panel11.Size = new System.Drawing.Size(170, 234);
             this.panel11.TabIndex = 13;
@@ -716,7 +719,7 @@
             // pnBottom
             // 
             this.pnBottom.Controls.Add(this.btnThoat_SV);
-            this.pnBottom.Controls.Add(this.btnGuiTinNhan_SV);
+            this.pnBottom.Controls.Add(this.btnGuiTinNhanAll_SV);
             this.pnBottom.Controls.Add(this.btnCauHinh_SV);
             this.pnBottom.Controls.Add(this.btnKhoiDongLai_SV);
             this.pnBottom.Dock = System.Windows.Forms.DockStyle.Bottom;
@@ -728,67 +731,71 @@
             // btnThoat_SV
             // 
             this.btnThoat_SV.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.btnThoat_SV.BorderRadius = 8;
+            this.btnThoat_SV.BorderRadius = 5;
             this.btnThoat_SV.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
             this.btnThoat_SV.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
             this.btnThoat_SV.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
             this.btnThoat_SV.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
-            this.btnThoat_SV.FillColor = System.Drawing.Color.Red;
-            this.btnThoat_SV.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnThoat_SV.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(38)))), ((int)(((byte)(38)))));
+            this.btnThoat_SV.Font = new System.Drawing.Font("Segoe UI Semibold", 10.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnThoat_SV.ForeColor = System.Drawing.Color.White;
-            this.btnThoat_SV.Location = new System.Drawing.Point(920, 18);
+            this.btnThoat_SV.Location = new System.Drawing.Point(946, 13);
             this.btnThoat_SV.Name = "btnThoat_SV";
-            this.btnThoat_SV.Size = new System.Drawing.Size(133, 45);
+            this.btnThoat_SV.Size = new System.Drawing.Size(133, 60);
             this.btnThoat_SV.TabIndex = 3;
             this.btnThoat_SV.Text = "Thoát";
+            this.btnThoat_SV.Click += new System.EventHandler(this.btnThoat_SV_Click);
             // 
-            // btnGuiTinNhan_SV
+            // btnGuiTinNhanAll_SV
             // 
-            this.btnGuiTinNhan_SV.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.btnGuiTinNhan_SV.BorderRadius = 8;
-            this.btnGuiTinNhan_SV.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
-            this.btnGuiTinNhan_SV.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
-            this.btnGuiTinNhan_SV.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
-            this.btnGuiTinNhan_SV.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
-            this.btnGuiTinNhan_SV.FillColor = System.Drawing.Color.Lime;
-            this.btnGuiTinNhan_SV.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnGuiTinNhan_SV.ForeColor = System.Drawing.Color.White;
-            this.btnGuiTinNhan_SV.Location = new System.Drawing.Point(603, 18);
-            this.btnGuiTinNhan_SV.Name = "btnGuiTinNhan_SV";
-            this.btnGuiTinNhan_SV.Size = new System.Drawing.Size(232, 45);
-            this.btnGuiTinNhan_SV.TabIndex = 2;
-            this.btnGuiTinNhan_SV.Text = "Gửi tin nhắn đến các client";
+            this.btnGuiTinNhanAll_SV.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.btnGuiTinNhanAll_SV.BorderRadius = 5;
+            this.btnGuiTinNhanAll_SV.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
+            this.btnGuiTinNhanAll_SV.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
+            this.btnGuiTinNhanAll_SV.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
+            this.btnGuiTinNhanAll_SV.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
+            this.btnGuiTinNhanAll_SV.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(36)))), ((int)(((byte)(187)))), ((int)(((byte)(59)))));
+            this.btnGuiTinNhanAll_SV.Font = new System.Drawing.Font("Segoe UI Semibold", 10.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnGuiTinNhanAll_SV.ForeColor = System.Drawing.Color.White;
+            this.btnGuiTinNhanAll_SV.Location = new System.Drawing.Point(603, 13);
+            this.btnGuiTinNhanAll_SV.Name = "btnGuiTinNhanAll_SV";
+            this.btnGuiTinNhanAll_SV.Size = new System.Drawing.Size(293, 60);
+            this.btnGuiTinNhanAll_SV.TabIndex = 2;
+            this.btnGuiTinNhanAll_SV.Text = "Gửi tin nhắn đến các client";
+            this.btnGuiTinNhanAll_SV.Click += new System.EventHandler(this.btnGuiTinNhanAll_SV_Click);
             // 
             // btnCauHinh_SV
             // 
             this.btnCauHinh_SV.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.btnCauHinh_SV.BorderRadius = 8;
+            this.btnCauHinh_SV.BorderRadius = 5;
             this.btnCauHinh_SV.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
             this.btnCauHinh_SV.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
             this.btnCauHinh_SV.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
             this.btnCauHinh_SV.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
-            this.btnCauHinh_SV.FillColor = System.Drawing.Color.Yellow;
-            this.btnCauHinh_SV.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnCauHinh_SV.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(239)))), ((int)(((byte)(204)))), ((int)(((byte)(22)))));
+            this.btnCauHinh_SV.Font = new System.Drawing.Font("Segoe UI Semibold", 10.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnCauHinh_SV.ForeColor = System.Drawing.Color.Black;
-            this.btnCauHinh_SV.Location = new System.Drawing.Point(395, 18);
+            this.btnCauHinh_SV.Location = new System.Drawing.Point(412, 13);
             this.btnCauHinh_SV.Name = "btnCauHinh_SV";
-            this.btnCauHinh_SV.Size = new System.Drawing.Size(133, 45);
+            this.btnCauHinh_SV.Size = new System.Drawing.Size(140, 60);
             this.btnCauHinh_SV.TabIndex = 1;
             this.btnCauHinh_SV.Text = "Cấu hình";
+            this.btnCauHinh_SV.Click += new System.EventHandler(this.btnCauHinh_SV_Click);
             // 
             // btnKhoiDongLai_SV
             // 
             this.btnKhoiDongLai_SV.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.btnKhoiDongLai_SV.BorderRadius = 8;
+            this.btnKhoiDongLai_SV.BorderRadius = 5;
             this.btnKhoiDongLai_SV.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
             this.btnKhoiDongLai_SV.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
             this.btnKhoiDongLai_SV.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
             this.btnKhoiDongLai_SV.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
-            this.btnKhoiDongLai_SV.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnKhoiDongLai_SV.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(13)))), ((int)(((byte)(153)))), ((int)(((byte)(255)))));
+            this.btnKhoiDongLai_SV.Font = new System.Drawing.Font("Segoe UI Semibold", 10.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnKhoiDongLai_SV.ForeColor = System.Drawing.Color.White;
-            this.btnKhoiDongLai_SV.Location = new System.Drawing.Point(165, 18);
+            this.btnKhoiDongLai_SV.Location = new System.Drawing.Point(165, 13);
             this.btnKhoiDongLai_SV.Name = "btnKhoiDongLai_SV";
-            this.btnKhoiDongLai_SV.Size = new System.Drawing.Size(133, 45);
+            this.btnKhoiDongLai_SV.Size = new System.Drawing.Size(184, 60);
             this.btnKhoiDongLai_SV.TabIndex = 0;
             this.btnKhoiDongLai_SV.Text = "Khởi động lại";
             // 
@@ -799,7 +806,7 @@
             this.pnTop.Dock = System.Windows.Forms.DockStyle.Top;
             this.pnTop.Location = new System.Drawing.Point(0, 0);
             this.pnTop.Name = "pnTop";
-            this.pnTop.Size = new System.Drawing.Size(1257, 58);
+            this.pnTop.Size = new System.Drawing.Size(1257, 89);
             this.pnTop.TabIndex = 2;
             // 
             // lbTongSoMay_SV
@@ -807,7 +814,7 @@
             this.lbTongSoMay_SV.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.lbTongSoMay_SV.AutoSize = true;
             this.lbTongSoMay_SV.Font = new System.Drawing.Font("Microsoft Sans Serif", 16.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbTongSoMay_SV.Location = new System.Drawing.Point(196, 12);
+            this.lbTongSoMay_SV.Location = new System.Drawing.Point(196, 27);
             this.lbTongSoMay_SV.Name = "lbTongSoMay_SV";
             this.lbTongSoMay_SV.Size = new System.Drawing.Size(255, 32);
             this.lbTongSoMay_SV.TabIndex = 0;
@@ -818,7 +825,7 @@
             this.lbTongSoOnline_SV.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.lbTongSoOnline_SV.AutoSize = true;
             this.lbTongSoOnline_SV.Font = new System.Drawing.Font("Microsoft Sans Serif", 16.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbTongSoOnline_SV.Location = new System.Drawing.Point(680, 12);
+            this.lbTongSoOnline_SV.Location = new System.Drawing.Point(680, 27);
             this.lbTongSoOnline_SV.Name = "lbTongSoOnline_SV";
             this.lbTongSoOnline_SV.Size = new System.Drawing.Size(330, 32);
             this.lbTongSoOnline_SV.TabIndex = 1;
@@ -839,9 +846,9 @@
             this.pnMay1_SV.PerformLayout();
             this.ctmenutrip_May_PC_SV.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.pbImagePCOn_SV)).EndInit();
-            this.panel1.ResumeLayout(false);
-            this.panel1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
+            this.pnMay2_SV.ResumeLayout(false);
+            this.pnMay2_SV.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pbPC_off_SV)).EndInit();
             this.panel2.ResumeLayout(false);
             this.panel2.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
@@ -888,17 +895,17 @@
         private System.Windows.Forms.Panel pnBottom;
         private Guna.UI2.WinForms.Guna2Button btnKhoiDongLai_SV;
         private Guna.UI2.WinForms.Guna2Button btnCauHinh_SV;
-        private Guna.UI2.WinForms.Guna2Button btnGuiTinNhan_SV;
+        private Guna.UI2.WinForms.Guna2Button btnGuiTinNhanAll_SV;
         private Guna.UI2.WinForms.Guna2Button btnThoat_SV;
         private System.Windows.Forms.FlowLayoutPanel flpCacMay_SV;
         private System.Windows.Forms.Panel pnMay1_SV;
         private System.Windows.Forms.PictureBox pbImagePCOn_SV;
-        private System.Windows.Forms.Label lbMayPC_SV;
-        private System.Windows.Forms.Label lbDiaChiIP_SV;
-        private System.Windows.Forms.Panel panel1;
-        private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.PictureBox pictureBox1;
+        private System.Windows.Forms.Label lbMayPC1_SV;
+        private System.Windows.Forms.Label lbDiaChiIPMay1_SV;
+        private System.Windows.Forms.Panel pnMay2_SV;
+        private System.Windows.Forms.Label lb_DiaChiIPMay2__SV;
+        private System.Windows.Forms.Label lbMayPC2_SV;
+        private System.Windows.Forms.PictureBox pbPC_off_SV;
         private System.Windows.Forms.Panel panel2;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label4;
@@ -940,8 +947,8 @@
         private System.Windows.Forms.Label label22;
         private System.Windows.Forms.PictureBox pictureBox11;
         private System.Windows.Forms.ContextMenuStrip ctmenutrip_May_PC_SV;
-        private System.Windows.Forms.ToolStripMenuItem điềuKhiểnToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem tròChuyệnToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem toolDieuKhien_SV;
+        private System.Windows.Forms.ToolStripMenuItem toolTroChuyen_SV;
         private System.Windows.Forms.ToolStripMenuItem khoáChuộtVàBànPhímToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem khởiĐộngLạiToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem tắtMáyToolStripMenuItem;

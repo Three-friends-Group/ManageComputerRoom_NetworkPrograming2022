@@ -16,5 +16,11 @@ namespace server
         {
             InitializeComponent();
         }
+
+
+        private void bnButton_Thoat_SV_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
     }
 }
