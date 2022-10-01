@@ -10,11 +10,16 @@ using System.Windows.Forms;
 
 namespace client
 {
-    public partial class Form1 : Form
+    public partial class frmCauHinhClient : Form
     {
-        public Form1()
+        public frmCauHinhClient()
         {
             InitializeComponent();
+        }
+
+        private void btn_Thoat_Click(object sender, EventArgs e)
+        {
+            this.Close();
         }
     }
 }
