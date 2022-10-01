@@ -8,3 +8,10 @@ G:\coder6622\MangeComputerRoom_NetworkPrograming2022\server\obj\Debug\server.csp
 G:\coder6622\MangeComputerRoom_NetworkPrograming2022\server\obj\Debug\server.csproj.CoreCompileInputs.cache
 G:\coder6622\MangeComputerRoom_NetworkPrograming2022\server\obj\Debug\server.exe
 G:\coder6622\MangeComputerRoom_NetworkPrograming2022\server\obj\Debug\server.pdb
+G:\coder6622\MangeComputerRoom_NetworkPrograming2022\server\bin\Debug\Guna.UI2.dll
+G:\coder6622\MangeComputerRoom_NetworkPrograming2022\server\obj\Debug\server.frmCauHinh_SV.resources
+G:\coder6622\MangeComputerRoom_NetworkPrograming2022\server\obj\Debug\server.frmDieuKhienMayClient.resources
+G:\coder6622\MangeComputerRoom_NetworkPrograming2022\server\obj\Debug\server.frmGuiTinNhanTatCaClinet.resources
+G:\coder6622\MangeComputerRoom_NetworkPrograming2022\server\obj\Debug\server.frmMain.resources
+G:\coder6622\MangeComputerRoom_NetworkPrograming2022\server\obj\Debug\server.frmTroChuyen.resources
+G:\coder6622\MangeComputerRoom_NetworkPrograming2022\server\obj\Debug\server.csproj.CopyComplete
