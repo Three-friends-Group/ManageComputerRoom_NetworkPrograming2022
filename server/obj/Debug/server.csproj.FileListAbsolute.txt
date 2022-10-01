@@ -8,3 +8,14 @@ G:\coder6622\MangeComputerRoom_NetworkPrograming2022\server\obj\Debug\server.csp
 G:\coder6622\MangeComputerRoom_NetworkPrograming2022\server\obj\Debug\server.csproj.CoreCompileInputs.cache
 G:\coder6622\MangeComputerRoom_NetworkPrograming2022\server\obj\Debug\server.exe
 G:\coder6622\MangeComputerRoom_NetworkPrograming2022\server\obj\Debug\server.pdb
+D:\Study\Lập trình mạng\ManageComputerRoom_NetworkPrograming2022\server\bin\Debug\server.exe.config
+D:\Study\Lập trình mạng\ManageComputerRoom_NetworkPrograming2022\server\bin\Debug\server.exe
+D:\Study\Lập trình mạng\ManageComputerRoom_NetworkPrograming2022\server\bin\Debug\server.pdb
+D:\Study\Lập trình mạng\ManageComputerRoom_NetworkPrograming2022\server\bin\Debug\Guna.UI2.dll
+D:\Study\Lập trình mạng\ManageComputerRoom_NetworkPrograming2022\server\obj\Debug\server.csprojAssemblyReference.cache
+D:\Study\Lập trình mạng\ManageComputerRoom_NetworkPrograming2022\server\obj\Debug\server.Properties.Resources.resources
+D:\Study\Lập trình mạng\ManageComputerRoom_NetworkPrograming2022\server\obj\Debug\server.csproj.GenerateResource.cache
+D:\Study\Lập trình mạng\ManageComputerRoom_NetworkPrograming2022\server\obj\Debug\server.csproj.CoreCompileInputs.cache
+D:\Study\Lập trình mạng\ManageComputerRoom_NetworkPrograming2022\server\obj\Debug\server.csproj.CopyComplete
+D:\Study\Lập trình mạng\ManageComputerRoom_NetworkPrograming2022\server\obj\Debug\server.exe
+D:\Study\Lập trình mạng\ManageComputerRoom_NetworkPrograming2022\server\obj\Debug\server.pdb
