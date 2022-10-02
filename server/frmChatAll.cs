@@ -10,9 +10,9 @@ using System.Windows.Forms;
 
 namespace server
 {
-    public partial class frmDieuKhienMayClient : Form
+    public partial class frmChat : Form
     {
-        public frmDieuKhienMayClient()
+        public frmChat()
         {
             InitializeComponent();
         }
@@ -20,14 +20,35 @@ namespace server
         // trò chuyện 
         private void toolTroChuyen_SV_Click(object sender, EventArgs e)
         {
-            //var troChuyen = new frmTroChuyen();
-            //troChuyen.Show();
         }
 
         // close
         private void toolThoat_SV_Click(object sender, EventArgs e)
         {
             this.Close();
+        }
+
+        private void guna2Button1_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void guna2Button1_Click_1(object sender, EventArgs e)
+        {
+
+            textBox1.Clear();
+            textBox1.Focus();
+            Console.WriteLine("hello bugs");
+        }
+
+        private void splitContainer2_SplitterMoved(object sender, SplitterEventArgs e)
+        {
+
+        }
+
+        private void guna2GroupBox1_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

@@ -21,3 +21,10 @@ D:\Study\Lập trình mạng\ManageComputerRoom_NetworkPrograming2022\client\obj
 D:\Study\Lập trình mạng\ManageComputerRoom_NetworkPrograming2022\client\obj\Debug\client.exe
 D:\Study\Lập trình mạng\ManageComputerRoom_NetworkPrograming2022\client\obj\Debug\client.pdb
 D:\Study\Lập trình mạng\ManageComputerRoom_NetworkPrograming2022\client\obj\Debug\client.frmCauHinhClient.resources
+G:\coder6622\MangeComputerRoom_NetworkPrograming2022\client\bin\Debug\Guna.UI2.dll
+G:\coder6622\MangeComputerRoom_NetworkPrograming2022\client\obj\Debug\client.csproj.CopyComplete
+G:\coder6622\MangeComputerRoom_NetworkPrograming2022\client\obj\Debug\server.frmCauHinh_SV.resources
+G:\coder6622\MangeComputerRoom_NetworkPrograming2022\client\obj\Debug\server.frmClient.resources
+G:\coder6622\MangeComputerRoom_NetworkPrograming2022\client\bin\Debug\common.exe
+G:\coder6622\MangeComputerRoom_NetworkPrograming2022\client\bin\Debug\common.pdb
+G:\coder6622\MangeComputerRoom_NetworkPrograming2022\client\bin\Debug\common.exe.config

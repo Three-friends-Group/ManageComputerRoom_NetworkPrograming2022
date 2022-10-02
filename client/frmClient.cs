@@ -8,7 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace client
+namespace server
 {
     public partial class frmClient : Form
     {
@@ -17,22 +17,13 @@ namespace client
             InitializeComponent();
         }
 
-        private void frmClient_Load(object sender, EventArgs e)
-        {
-
-        }
-
-        private void tms_thoat_Click(object sender, EventArgs e)
+        // close
+        private void toolThoat_SV_Click(object sender, EventArgs e)
         {
             this.Close();
         }
 
-        private void tms_cauHinh_Click(object sender, EventArgs e)
-        {
-            var frmCauHinh = new frmCauHinhClient();
-            frmCauHinh.Show();
-        }
 
-        
+
     }
 }

@@ -49,11 +49,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="frmCauHinhClient.cs">
+    <Compile Include="ClientProgram.cs" />
+    <Compile Include="frmCauHinh.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="frmCauHinhClient.Designer.cs">
-      <DependentUpon>frmCauHinhClient.cs</DependentUpon>
+    <Compile Include="frmCauHinh.Designer.cs">
+      <DependentUpon>frmCauHinh.cs</DependentUpon>
     </Compile>
     <Compile Include="frmClient.cs">
       <SubType>Form</SubType>
@@ -63,8 +64,8 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <EmbeddedResource Include="frmCauHinhClient.resx">
-      <DependentUpon>frmCauHinhClient.cs</DependentUpon>
+    <EmbeddedResource Include="frmCauHinh.resx">
+      <DependentUpon>frmCauHinh.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frmClient.resx">
       <DependentUpon>frmClient.cs</DependentUpon>
@@ -91,6 +92,12 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\common\Common.csproj">
+      <Project>{aee5ad56-c555-4352-a2c6-cae2b98ee150}</Project>
+      <Name>Common</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

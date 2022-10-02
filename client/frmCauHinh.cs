@@ -10,11 +10,17 @@ using System.Windows.Forms;
 
 namespace server
 {
-    public partial class frmTroChuyen : Form
+    public partial class frmCauHinh_SV : Form
     {
-        public frmTroChuyen()
+        public frmCauHinh_SV()
         {
             InitializeComponent();
+        }
+
+
+        private void bnButton_Thoat_SV_Click(object sender, EventArgs e)
+        {
+            this.Close();
         }
     }
 }
