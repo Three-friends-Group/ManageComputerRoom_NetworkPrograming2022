@@ -37,9 +37,9 @@
             this.tool_Tatmay_SV = new System.Windows.Forms.ToolStripMenuItem();
             this.toolThoat_SV = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.pictureBoxRemote = new System.Windows.Forms.PictureBox();
             this.menuStrip1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxRemote)).BeginInit();
             this.SuspendLayout();
             // 
             // menuStrip1
@@ -74,14 +74,14 @@
             // 
             this.toolKhoaChuot_SV.Image = ((System.Drawing.Image)(resources.GetObject("toolKhoaChuot_SV.Image")));
             this.toolKhoaChuot_SV.Name = "toolKhoaChuot_SV";
-            this.toolKhoaChuot_SV.Size = new System.Drawing.Size(243, 26);
+            this.toolKhoaChuot_SV.Size = new System.Drawing.Size(239, 24);
             this.toolKhoaChuot_SV.Text = "Khoá chuột và bàn phím";
             // 
             // toolTroChuyen_SV
             // 
             this.toolTroChuyen_SV.Image = ((System.Drawing.Image)(resources.GetObject("toolTroChuyen_SV.Image")));
             this.toolTroChuyen_SV.Name = "toolTroChuyen_SV";
-            this.toolTroChuyen_SV.Size = new System.Drawing.Size(243, 26);
+            this.toolTroChuyen_SV.Size = new System.Drawing.Size(239, 24);
             this.toolTroChuyen_SV.Text = "Trò chuyện";
             this.toolTroChuyen_SV.Click += new System.EventHandler(this.toolTroChuyen_SV_Click);
             // 
@@ -89,21 +89,21 @@
             // 
             this.toolKhoiDong_SV.Image = ((System.Drawing.Image)(resources.GetObject("toolKhoiDong_SV.Image")));
             this.toolKhoiDong_SV.Name = "toolKhoiDong_SV";
-            this.toolKhoiDong_SV.Size = new System.Drawing.Size(243, 26);
+            this.toolKhoiDong_SV.Size = new System.Drawing.Size(239, 24);
             this.toolKhoiDong_SV.Text = "Khởi động lại";
             // 
             // tool_Tatmay_SV
             // 
             this.tool_Tatmay_SV.Image = ((System.Drawing.Image)(resources.GetObject("tool_Tatmay_SV.Image")));
             this.tool_Tatmay_SV.Name = "tool_Tatmay_SV";
-            this.tool_Tatmay_SV.Size = new System.Drawing.Size(243, 26);
+            this.tool_Tatmay_SV.Size = new System.Drawing.Size(239, 24);
             this.tool_Tatmay_SV.Text = "Tắt máy";
             // 
             // toolThoat_SV
             // 
             this.toolThoat_SV.Image = ((System.Drawing.Image)(resources.GetObject("toolThoat_SV.Image")));
             this.toolThoat_SV.Name = "toolThoat_SV";
-            this.toolThoat_SV.Size = new System.Drawing.Size(243, 26);
+            this.toolThoat_SV.Size = new System.Drawing.Size(239, 24);
             this.toolThoat_SV.Text = "Thoát";
             this.toolThoat_SV.Click += new System.EventHandler(this.toolThoat_SV_Click);
             // 
@@ -113,32 +113,35 @@
             this.toolStripMenuItem1.Size = new System.Drawing.Size(22, 24);
             this.toolStripMenuItem1.Text = " ";
             // 
-            // pictureBox1
+            // pictureBoxRemote
             // 
-            this.pictureBox1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.pictureBox1.Location = new System.Drawing.Point(0, 28);
-            this.pictureBox1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(944, 577);
-            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.pictureBox1.TabIndex = 1;
-            this.pictureBox1.TabStop = false;
+            this.pictureBoxRemote.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.pictureBoxRemote.Location = new System.Drawing.Point(0, 28);
+            this.pictureBoxRemote.Margin = new System.Windows.Forms.Padding(2);
+            this.pictureBoxRemote.Name = "pictureBoxRemote";
+            this.pictureBoxRemote.Size = new System.Drawing.Size(944, 577);
+            this.pictureBoxRemote.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pictureBoxRemote.TabIndex = 1;
+            this.pictureBoxRemote.TabStop = false;
+            this.pictureBoxRemote.MouseClick += new System.Windows.Forms.MouseEventHandler(this.pictureBoxRemote_MouseClick);
+            this.pictureBoxRemote.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.pictureBoxRemote_MouseDoubleClick);
+            this.pictureBoxRemote.MouseMove += new System.Windows.Forms.MouseEventHandler(this.pictureBoxRemote_MouseMove);
             // 
             // frmDieuKhienMayClient
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(944, 605);
-            this.Controls.Add(this.pictureBox1);
+            this.Controls.Add(this.pictureBoxRemote);
             this.Controls.Add(this.menuStrip1);
             this.MainMenuStrip = this.menuStrip1;
-            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "frmDieuKhienMayClient";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Điều khiển client";
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxRemote)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -153,7 +156,7 @@
         private System.Windows.Forms.ToolStripMenuItem toolKhoiDong_SV;
         private System.Windows.Forms.ToolStripMenuItem tool_Tatmay_SV;
         private System.Windows.Forms.ToolStripMenuItem toolThoat_SV;
-        private System.Windows.Forms.PictureBox pictureBox1;
+        private System.Windows.Forms.PictureBox pictureBoxRemote;
         private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem1;
     }
 }

@@ -14,7 +14,7 @@ namespace common
         Undefined,
         SendNamePc,
         SendMessageToOne,
-        SendMessageToAll
+        RemoteDesktop,
     }
 
 

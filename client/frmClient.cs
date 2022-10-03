@@ -26,8 +26,22 @@ namespace server
 
             clientProgram = new ClientProgram();
             clientProgram.OnReceiveMessage += ClientProgram_OnReceiveMessage;
+            clientProgram.OnRemoteDesktop += ClientProgram_OnRemoteDesktop;
 
             clientProgram.Connect(ip, SERVER_PORT);
+        }
+
+        private void ClientProgram_OnRemoteDesktop(string obj)
+        {
+            if (this.InvokeRequired)
+            {
+                this.BeginInvoke((MethodInvoker)delegate ()
+                {
+                });
+            }
+            else
+            {
+            }
         }
 
         private void ClientProgram_OnReceiveMessage(string obj)
@@ -36,7 +50,7 @@ namespace server
             {
                 this.BeginInvoke((MethodInvoker)delegate ()
                 {
-                   common.Uitls.AddIncomming(obj, pnContainer);
+                    common.Uitls.AddIncomming(obj, pnContainer);
                 });
             }
             else
@@ -70,7 +84,7 @@ namespace server
         private void btnSend_Click(object sender, EventArgs e)
         {
 
-           common.Uitls.AddOutGoing(txtMessage.Text, pnContainer);
+            common.Uitls.AddOutGoing(txtMessage.Text, pnContainer);
             txtMessage.Text = String.Empty;
         }
 

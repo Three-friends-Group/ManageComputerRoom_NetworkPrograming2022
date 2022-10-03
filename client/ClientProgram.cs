@@ -29,6 +29,14 @@ namespace client
             remove { _onReceievedMessage -= value; }
         }
 
+        private event Action<string> _onRemoteDesktop;
+        public event Action<string> OnRemoteDesktop
+        {
+            add { _onRemoteDesktop += value; }
+            remove { _onRemoteDesktop -= value; }
+        }
+
+
         public void Connect(string hostname, int port)
         {
             IP = new IPEndPoint(IPAddress.Parse(hostname), port);
@@ -76,17 +84,22 @@ namespace client
                     byte[] data = new byte[BUFFER_SIZE];
                     client.Receive(data);
                     DataMethods dataMethods = DataMethods.Deserialize(data);
-                    Console.WriteLine(dataMethods.Type +(string) dataMethods.Data);
+                    Console.WriteLine(dataMethods.Type + (string)dataMethods.Data);
 
                     switch (dataMethods.Type)
                     {
                         case DataMethodsType.SendMessageToOne:
                             {
-                                Console.WriteLine("Log: " + dataMethods.Data.ToString()); 
+                                Console.WriteLine("Log: " + dataMethods.Data.ToString());
                                 if (_onReceievedMessage != null)
                                 {
                                     _onReceievedMessage(dataMethods.Data.ToString());
                                 }
+                                break;
+                            }
+
+                        case DataMethodsType.RemoteDesktop:
+                            {
                                 break;
                             }
                     }

@@ -12,9 +12,11 @@ namespace server
 {
     public partial class frmDieuKhienMayClient : Form
     {
-        public frmDieuKhienMayClient()
+        ClientInfo clientInfo;
+        public frmDieuKhienMayClient(ClientInfo clientInfo)
         {
             InitializeComponent();
+            this.clientInfo = clientInfo;
         }
 
         // trò chuyện 
@@ -28,6 +30,21 @@ namespace server
         private void toolThoat_SV_Click(object sender, EventArgs e)
         {
             this.Close();
+        }
+
+        private void pictureBoxRemote_MouseClick(object sender, MouseEventArgs e)
+        {
+
+        }
+
+        private void pictureBoxRemote_MouseDoubleClick(object sender, MouseEventArgs e)
+        {
+
+        }
+
+        private void pictureBoxRemote_MouseMove(object sender, MouseEventArgs e)
+        {
+
         }
     }
 }

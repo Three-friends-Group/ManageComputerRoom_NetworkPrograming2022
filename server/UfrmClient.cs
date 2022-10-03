@@ -73,12 +73,22 @@ namespace server
             }
             Bitmap bitmap = new Bitmap(Common.PathUtils.GetPathTo("Assets", imageName));
             pbStatus.Image = bitmap;
+        }
 
 
-
+        private bool CheckClientConnected()
+        {
+            if (_clientInfo._status == ClientInfoStatus.Undefined || _clientInfo._status == ClientInfoStatus.Disconnected)
+            {
+                MessageBox.Show("Chức năng hiện tại không khả dụng: " + _clientInfo._status);
+                return false;
+            }
+            return true;
         }
         #endregion
 
+
+        #region handleEvent
 
         /// <summary>
         /// chat với client
@@ -100,15 +110,6 @@ namespace server
             }
         }
 
-        private bool CheckClientConnected()
-        {
-            if (_clientInfo._status == ClientInfoStatus.Undefined || _clientInfo._status == ClientInfoStatus.Disconnected)
-            {
-                MessageBox.Show("Chức năng hiện tại không khả dụng: " + _clientInfo._status);
-                return false;
-            }
-            return true;
-        }
         /// <summary>
         /// điều khiển
         /// </summary>
@@ -116,9 +117,16 @@ namespace server
         /// <param name="e"></param>
         private void directClient_on_click(object sender, EventArgs e)
         {
-
-            var form_DieuKhien = new frmDieuKhienMayClient();
-            form_DieuKhien.Show();
+            MessageBox.Show(_clientInfo._name + _clientInfo._clientIP + _clientInfo._port + _clientInfo._status);
+            if (CheckClientConnected())
+            {
+                var form_DieuKhien = new frmDieuKhienMayClient(_clientInfo);
+                form_DieuKhien.Show();
+            }
+            else
+            {
+                return;
+            }
         }
 
         private void UfrmClient_Click(object sender, EventArgs e)
@@ -133,8 +141,6 @@ namespace server
             MessageBox.Show(_clientInfo._name + _clientInfo._clientIP + _clientInfo._port);
         }
 
-
-        #region methods
         #endregion
     }
 }
