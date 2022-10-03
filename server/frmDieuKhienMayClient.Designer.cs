@@ -51,7 +51,8 @@
             this.toolStripMenuItem1});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Size = new System.Drawing.Size(1259, 33);
+            this.menuStrip1.Padding = new System.Windows.Forms.Padding(4, 2, 0, 2);
+            this.menuStrip1.Size = new System.Drawing.Size(944, 28);
             this.menuStrip1.TabIndex = 0;
             this.menuStrip1.Text = "menuStrip1";
             // 
@@ -66,21 +67,21 @@
             this.toolThoat_SV});
             this.menuToolStripMenuItem.Font = new System.Drawing.Font("Segoe UI", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.menuToolStripMenuItem.Name = "menuToolStripMenuItem";
-            this.menuToolStripMenuItem.Size = new System.Drawing.Size(71, 29);
+            this.menuToolStripMenuItem.Size = new System.Drawing.Size(58, 24);
             this.menuToolStripMenuItem.Text = "Menu";
             // 
             // toolKhoaChuot_SV
             // 
             this.toolKhoaChuot_SV.Image = ((System.Drawing.Image)(resources.GetObject("toolKhoaChuot_SV.Image")));
             this.toolKhoaChuot_SV.Name = "toolKhoaChuot_SV";
-            this.toolKhoaChuot_SV.Size = new System.Drawing.Size(292, 30);
+            this.toolKhoaChuot_SV.Size = new System.Drawing.Size(243, 26);
             this.toolKhoaChuot_SV.Text = "Khoá chuột và bàn phím";
             // 
             // toolTroChuyen_SV
             // 
             this.toolTroChuyen_SV.Image = ((System.Drawing.Image)(resources.GetObject("toolTroChuyen_SV.Image")));
             this.toolTroChuyen_SV.Name = "toolTroChuyen_SV";
-            this.toolTroChuyen_SV.Size = new System.Drawing.Size(292, 30);
+            this.toolTroChuyen_SV.Size = new System.Drawing.Size(243, 26);
             this.toolTroChuyen_SV.Text = "Trò chuyện";
             this.toolTroChuyen_SV.Click += new System.EventHandler(this.toolTroChuyen_SV_Click);
             // 
@@ -88,51 +89,53 @@
             // 
             this.toolKhoiDong_SV.Image = ((System.Drawing.Image)(resources.GetObject("toolKhoiDong_SV.Image")));
             this.toolKhoiDong_SV.Name = "toolKhoiDong_SV";
-            this.toolKhoiDong_SV.Size = new System.Drawing.Size(292, 30);
+            this.toolKhoiDong_SV.Size = new System.Drawing.Size(243, 26);
             this.toolKhoiDong_SV.Text = "Khởi động lại";
             // 
             // tool_Tatmay_SV
             // 
             this.tool_Tatmay_SV.Image = ((System.Drawing.Image)(resources.GetObject("tool_Tatmay_SV.Image")));
             this.tool_Tatmay_SV.Name = "tool_Tatmay_SV";
-            this.tool_Tatmay_SV.Size = new System.Drawing.Size(292, 30);
+            this.tool_Tatmay_SV.Size = new System.Drawing.Size(243, 26);
             this.tool_Tatmay_SV.Text = "Tắt máy";
             // 
             // toolThoat_SV
             // 
             this.toolThoat_SV.Image = ((System.Drawing.Image)(resources.GetObject("toolThoat_SV.Image")));
             this.toolThoat_SV.Name = "toolThoat_SV";
-            this.toolThoat_SV.Size = new System.Drawing.Size(292, 30);
+            this.toolThoat_SV.Size = new System.Drawing.Size(243, 26);
             this.toolThoat_SV.Text = "Thoát";
             this.toolThoat_SV.Click += new System.EventHandler(this.toolThoat_SV_Click);
             // 
             // toolStripMenuItem1
             // 
             this.toolStripMenuItem1.Name = "toolStripMenuItem1";
-            this.toolStripMenuItem1.Size = new System.Drawing.Size(27, 29);
+            this.toolStripMenuItem1.Size = new System.Drawing.Size(22, 24);
             this.toolStripMenuItem1.Text = " ";
             // 
             // pictureBox1
             // 
             this.pictureBox1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.pictureBox1.Location = new System.Drawing.Point(0, 33);
+            this.pictureBox1.Location = new System.Drawing.Point(0, 28);
+            this.pictureBox1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(1259, 712);
+            this.pictureBox1.Size = new System.Drawing.Size(944, 577);
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pictureBox1.TabIndex = 1;
             this.pictureBox1.TabStop = false;
             // 
             // frmDieuKhienMayClient
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1259, 745);
+            this.ClientSize = new System.Drawing.Size(944, 605);
             this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.menuStrip1);
             this.MainMenuStrip = this.menuStrip1;
+            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.Name = "frmDieuKhienMayClient";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "Điều khiển máy Clinet";
+            this.Text = "Điều khiển client";
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();

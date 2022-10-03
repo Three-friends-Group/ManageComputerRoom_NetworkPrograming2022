@@ -12,25 +12,81 @@ namespace server
 {
     public partial class frmMain : Form
     {
+
+        ServerProgram serverProgram;
+
         public frmMain()
         {
             InitializeComponent();
+            CheckForIllegalCrossThreadCalls = false;
+            serverProgram = new ServerProgram();
+            serverProgram.OnClientListChanged += ServerProgram_OnClientListChanged;
+            //serverProgram.OnServerStarted += HandleOnServerStarted;
+
+            serverProgram.Connect();
+
         }
 
-        // mở form điều khiển
-        private void toolDieuKhien_SV_Click(object sender, EventArgs e)
+        private void ServerProgram_OnClientListChanged(List<ClientInfo> clients)
         {
-            var form_DieuKhien = new frmDieuKhienMayClient();
-            form_DieuKhien.Show();
+            if (this.InvokeRequired)
+            {
+                this.BeginInvoke((MethodInvoker)delegate ()
+                {
+                    RenderClientList(clients);
+                });
+            }
+            else
+            {
+                RenderClientList(clients);
+            }
         }
 
-        // mở form trò chuyện
-        private void toolTroChuyen_SV_Click(object sender, EventArgs e)
+
+
+        #region methods
+
+
+        void RenderClientList(List<ClientInfo> clients)
         {
-            var form_TroChuyen = new frmTroChuyen();
-            form_TroChuyen.Show();
+            if (flpMain.Controls.Count == 0)
+            {
+                foreach (ClientInfo clientInfo in clients)
+                {
+                    UfrmClient frm = new UfrmClient(clientInfo);
+                    flpMain.Controls.Add(frm);
+                }
+
+                return;
+            }
+
+            int clientControlLength = flpMain.Controls.Count;
+            int i = 0;
+            for (i = 0; i < clients.Count; i++)
+            {
+                ClientInfo clientInfoInList = clients[i];
+
+                if (i < clientControlLength)
+                {
+                    UfrmClient frm = flpMain.Controls[i] as UfrmClient;
+                    frm.SetContent(clientInfoInList);
+                }
+                else
+                {
+                    UfrmClient frm = new UfrmClient(clientInfoInList);
+                    flpMain.Controls.Add(frm);
+                }
+            }
+
+            if (i < flpMain.Controls.Count)
+                for (int j = flpMain.Controls.Count - 1; j >= i; j--)
+                    flpMain.Controls.RemoveAt(j);
         }
 
+
+        #endregion
+
+        #region events
         // mở form cấu hình
         private void btnCauHinh_SV_Click(object sender, EventArgs e)
         {
@@ -41,8 +97,8 @@ namespace server
         // mở form gửi tin nhắn gửi tất cả qua nút click button
         private void btnGuiTinNhanAll_SV_Click(object sender, EventArgs e)
         {
-            var form_GuiTinNhanAll = new frmGuiTinNhanTatCaClinet();
-            form_GuiTinNhanAll.Show();
+            //var form_GuiTinNhanAll = new frmGuiTinNhanTatCaClinet();
+            //form_GuiTinNhanAll.Show();
         }
 
         // thoát chương trình
@@ -50,5 +106,17 @@ namespace server
         {
             Application.Exit();
         }
+
+        private void pictureBox4_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btnKhoiDongLai_SV_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        #endregion
     }
 }

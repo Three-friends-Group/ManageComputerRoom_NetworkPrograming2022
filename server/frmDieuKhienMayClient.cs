@@ -20,8 +20,8 @@ namespace server
         // trò chuyện 
         private void toolTroChuyen_SV_Click(object sender, EventArgs e)
         {
-            var troChuyen = new frmTroChuyen();
-            troChuyen.Show();
+            //var troChuyen = new frmTroChuyen();
+            //troChuyen.Show();
         }
 
         // close

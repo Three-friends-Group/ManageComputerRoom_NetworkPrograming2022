@@ -49,11 +49,25 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ClientInfo.cs" />
+    <Compile Include="ClientInfoManager.cs" />
     <Compile Include="frmCauHinh.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="frmCauHinh.Designer.cs">
       <DependentUpon>frmCauHinh.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmChatOne.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmChatOne.Designer.cs">
+      <DependentUpon>frmChatOne.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmChatAll.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmChatAll.Designer.cs">
+      <DependentUpon>frmChatAll.cs</DependentUpon>
     </Compile>
     <Compile Include="frmDieuKhienMayClient.cs">
       <SubType>Form</SubType>
@@ -61,40 +75,36 @@
     <Compile Include="frmDieuKhienMayClient.Designer.cs">
       <DependentUpon>frmDieuKhienMayClient.cs</DependentUpon>
     </Compile>
-    <Compile Include="frmGuiTinNhanTatCaClinet.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="frmGuiTinNhanTatCaClinet.Designer.cs">
-      <DependentUpon>frmGuiTinNhanTatCaClinet.cs</DependentUpon>
-    </Compile>
     <Compile Include="frmMain.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="frmMain.Designer.cs">
       <DependentUpon>frmMain.cs</DependentUpon>
     </Compile>
-    <Compile Include="frmTroChuyen.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="frmTroChuyen.Designer.cs">
-      <DependentUpon>frmTroChuyen.cs</DependentUpon>
-    </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="ServerProgram.cs" />
+    <Compile Include="UfrmClient.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UfrmClient.Designer.cs">
+      <DependentUpon>UfrmClient.cs</DependentUpon>
+    </Compile>
     <EmbeddedResource Include="frmCauHinh.resx">
       <DependentUpon>frmCauHinh.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmChatOne.resx">
+      <DependentUpon>frmChatOne.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmChatAll.resx">
+      <DependentUpon>frmChatAll.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frmDieuKhienMayClient.resx">
       <DependentUpon>frmDieuKhienMayClient.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="frmGuiTinNhanTatCaClinet.resx">
-      <DependentUpon>frmGuiTinNhanTatCaClinet.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="frmMain.resx">
       <DependentUpon>frmMain.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="frmTroChuyen.resx">
-      <DependentUpon>frmTroChuyen.cs</DependentUpon>
+      <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
@@ -105,6 +115,9 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="UfrmClient.resx">
+      <DependentUpon>UfrmClient.cs</DependentUpon>
+    </EmbeddedResource>
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
@@ -118,6 +131,17 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\common\Common.csproj">
+      <Project>{aee5ad56-c555-4352-a2c6-cae2b98ee150}</Project>
+      <Name>Common</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="assets\active_computer.png" />
+    <Content Include="assets\inactive_computer.png" />
+    <Content Include="assets\undefined_computer.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
