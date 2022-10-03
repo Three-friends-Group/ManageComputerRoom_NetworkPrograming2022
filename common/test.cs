@@ -4,21 +4,17 @@ using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.Linq;
-using System.Net;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace server
+namespace common
 {
-    public partial class frmChatAll : Form
+    public partial class test : Form
     {
-
-        public frmChatAll()
+        public test()
         {
             InitializeComponent();
-
-            CheckForIllegalCrossThreadCalls = false;
         }
     }
 }

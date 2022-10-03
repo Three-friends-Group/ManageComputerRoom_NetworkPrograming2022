@@ -140,6 +140,8 @@
             this.Margin = new System.Windows.Forms.Padding(8);
             this.Name = "UfrmClient";
             this.Size = new System.Drawing.Size(138, 207);
+            this.Click += new System.EventHandler(this.UfrmClient_Click);
+            this.DoubleClick += new System.EventHandler(this.UfrmClient_DoubleClick);
             ((System.ComponentModel.ISupportInitialize)(this.pbStatus)).EndInit();
             this.ctmenutrip_May_PC_SV.ResumeLayout(false);
             this.ResumeLayout(false);

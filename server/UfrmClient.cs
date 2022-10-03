@@ -1,4 +1,5 @@
-﻿using System;
+﻿using common;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -14,30 +15,31 @@ namespace server
     public partial class UfrmClient : UserControl
     {
 
-        public ClientInfo ClientInfo { get; private set; }
+        public ClientInfo _clientInfo { get; private set; }
         public UfrmClient(ClientInfo clientInfo)
         {
             InitializeComponent();
-            ClientInfo = new ClientInfo(clientInfo);
-            SetContent(clientInfo);
+            _clientInfo = new ClientInfo(clientInfo);
+            SetContent(_clientInfo);
         }
 
 
         #region methods
-        private void SetContent(ClientInfo clientInfo)
+        public void SetContent(ClientInfo clientInfo)
         {
-            if (!string.IsNullOrWhiteSpace(clientInfo.Name))
+            _clientInfo._status = clientInfo._status;
+            if (!string.IsNullOrWhiteSpace(clientInfo._name))
             {
-                lblName.Text = clientInfo.Name;
+                lblName.Text = clientInfo._name;
             }
             else
             {
                 lblName.Text = "N/A";
             }
 
-            if (!string.IsNullOrWhiteSpace(clientInfo.ClientIP))
+            if (!string.IsNullOrWhiteSpace(clientInfo._clientIP))
             {
-                lblIP.Text = clientInfo.ClientIP;
+                lblIP.Text = clientInfo._clientIP + ":" + clientInfo._port;
             }
             else
             {
@@ -46,7 +48,7 @@ namespace server
 
 
             string imageName = "";
-            switch (clientInfo.Status)
+            switch (clientInfo._status)
             {
                 case ClientInfoStatus.Undefined:
                     {
@@ -85,10 +87,28 @@ namespace server
         /// <param name="e"></param>
         private void chatClient_on_click(object sender, EventArgs e)
         {
-            //var form_TroChuyen = new frmTroChuyen();
-            //form_TroChuyen.Show();
+
+            MessageBox.Show(_clientInfo._name + _clientInfo._clientIP + _clientInfo._port + _clientInfo._status);
+            if (CheckClientConnected())
+            {
+                var form_TroChuyen = new frmChatOne(_clientInfo);
+                form_TroChuyen.Show();
+            }
+            else
+            {
+                return;
+            }
         }
 
+        private bool CheckClientConnected()
+        {
+            if (_clientInfo._status == ClientInfoStatus.Undefined || _clientInfo._status == ClientInfoStatus.Disconnected)
+            {
+                MessageBox.Show("Chức năng hiện tại không khả dụng: " + _clientInfo._status);
+                return false;
+            }
+            return true;
+        }
         /// <summary>
         /// điều khiển
         /// </summary>
@@ -100,5 +120,21 @@ namespace server
             var form_DieuKhien = new frmDieuKhienMayClient();
             form_DieuKhien.Show();
         }
+
+        private void UfrmClient_Click(object sender, EventArgs e)
+        {
+            MessageBox.Show(sender.ToString());
+            MessageBox.Show(_clientInfo._name + _clientInfo._clientIP + _clientInfo._port);
+        }
+
+        private void UfrmClient_DoubleClick(object sender, EventArgs e)
+        {
+            MessageBox.Show(sender.ToString());
+            MessageBox.Show(_clientInfo._name + _clientInfo._clientIP + _clientInfo._port);
+        }
+
+
+        #region methods
+        #endregion
     }
 }

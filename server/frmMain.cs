@@ -12,51 +12,81 @@ namespace server
 {
     public partial class frmMain : Form
     {
-        List<ClientInfo> clientList = new List<ClientInfo>();
+
+        ServerProgram serverProgram;
 
         public frmMain()
         {
             InitializeComponent();
-            ClientInfo client1 = new ClientInfo("Long", "127.0.0.4", ClientInfoStatus.Connected);
-            ClientInfo client2 = new ClientInfo("Duật", "127.0.0.6", ClientInfoStatus.Disconnected);
+            CheckForIllegalCrossThreadCalls = false;
+            serverProgram = new ServerProgram();
+            serverProgram.OnClientListChanged += ServerProgram_OnClientListChanged;
+            //serverProgram.OnServerStarted += HandleOnServerStarted;
 
-            ClientInfo client3 = new ClientInfo("Hưng", "127.0.0.7", ClientInfoStatus.Undefined);
-            ClientInfo client4 = new ClientInfo("Long", "127.0.0.4", ClientInfoStatus.Connected);
-            ClientInfo client5 = new ClientInfo("Duật", "127.0.0.6", ClientInfoStatus.Disconnected);
+            serverProgram.Connect();
 
-            ClientInfo client6 = new ClientInfo("Hưng", "127.0.0.7", ClientInfoStatus.Undefined);
-            ClientInfo client7 = new ClientInfo("Long", "127.0.0.4", ClientInfoStatus.Connected);
-            ClientInfo client8 = new ClientInfo("Duật", "127.0.0.6", ClientInfoStatus.Disconnected);
+        }
 
-            ClientInfo client9 = new ClientInfo("Hưng", "127.0.0.7", ClientInfoStatus.Undefined);
-            ClientInfo client10 = new ClientInfo("Long", "127.0.0.4", ClientInfoStatus.Connected);
-            ClientInfo client11 = new ClientInfo("Duật", "127.0.0.6", ClientInfoStatus.Disconnected);
-
-            ClientInfo client12 = new ClientInfo("Hưng", "127.0.0.7", ClientInfoStatus.Undefined);
-            clientList.Add(client1);
-            clientList.Add(client2);
-            clientList.Add(client3);
-            clientList.Add(client4);
-            clientList.Add(client5);
-            clientList.Add(client6);
-            clientList.Add(client7);
-            clientList.Add(client8);
-            clientList.Add(client9);
-            clientList.Add(client10);
-            clientList.Add(client11);
-            clientList.Add(client12);
-            if (flpMain.Controls.Count == 0)
+        private void ServerProgram_OnClientListChanged(List<ClientInfo> clients)
+        {
+            if (this.InvokeRequired)
             {
-                foreach (ClientInfo clientInfo in clientList)
+                this.BeginInvoke((MethodInvoker)delegate ()
                 {
-                    UfrmClient frm = new UfrmClient(clientInfo);
-                    flpMain.Controls.Add(frm);
-                }
-                return;
+                    RenderClientList(clients);
+                });
+            }
+            else
+            {
+                RenderClientList(clients);
             }
         }
 
 
+
+        #region methods
+
+
+        void RenderClientList(List<ClientInfo> clients)
+        {
+            if (flpMain.Controls.Count == 0)
+            {
+                foreach (ClientInfo clientInfo in clients)
+                {
+                    UfrmClient frm = new UfrmClient(clientInfo);
+                    flpMain.Controls.Add(frm);
+                }
+
+                return;
+            }
+
+            int clientControlLength = flpMain.Controls.Count;
+            int i = 0;
+            for (i = 0; i < clients.Count; i++)
+            {
+                ClientInfo clientInfoInList = clients[i];
+
+                if (i < clientControlLength)
+                {
+                    UfrmClient frm = flpMain.Controls[i] as UfrmClient;
+                    frm.SetContent(clientInfoInList);
+                }
+                else
+                {
+                    UfrmClient frm = new UfrmClient(clientInfoInList);
+                    flpMain.Controls.Add(frm);
+                }
+            }
+
+            if (i < flpMain.Controls.Count)
+                for (int j = flpMain.Controls.Count - 1; j >= i; j--)
+                    flpMain.Controls.RemoveAt(j);
+        }
+
+
+        #endregion
+
+        #region events
         // mở form cấu hình
         private void btnCauHinh_SV_Click(object sender, EventArgs e)
         {
@@ -86,5 +116,7 @@ namespace server
         {
 
         }
+
+        #endregion
     }
 }

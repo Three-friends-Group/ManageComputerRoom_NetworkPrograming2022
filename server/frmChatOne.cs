@@ -1,4 +1,5 @@
-﻿using System;
+﻿using common;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -12,43 +13,39 @@ namespace server
 {
     public partial class frmChatOne : Form
     {
-        public frmChatOne()
+        ClientInfo clientInfo;
+        public frmChatOne(ClientInfo clientInfo)
         {
             InitializeComponent();
+            this.clientInfo = clientInfo;
         }
 
-        // trò chuyện 
-        private void toolTroChuyen_SV_Click(object sender, EventArgs e)
+    
+        private void btnSend_Click(object sender, EventArgs e)
         {
-        }
-
-        // close
-        private void toolThoat_SV_Click(object sender, EventArgs e)
-        {
-            this.Close();
-        }
-
-        private void guna2Button1_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void guna2Button1_Click_1(object sender, EventArgs e)
-        {
-
-            textBox1.Clear();
-            textBox1.Focus();
+            SendMessage(clientInfo);
+            txtMsg.Clear();
+            txtMsg.Focus();
             Console.WriteLine("hello bugs");
         }
 
-        private void splitContainer2_SplitterMoved(object sender, SplitterEventArgs e)
+
+        public void SendMessage(ClientInfo clientInfo)
         {
-
-        }
-
-        private void guna2GroupBox1_Click(object sender, EventArgs e)
-        {
-
+            if (clientInfo._status == ClientInfoStatus.Undefined || clientInfo._status == ClientInfoStatus.Disconnected)
+            {
+                MessageBox.Show("Chức năng hiện tại không khả dụng");
+            }
+            if (txtMsg.Text != String.Empty)
+            {
+                Console.WriteLine(txtMsg.Text);
+                DataMethods dataMethod = new DataMethods(DataMethodsType.SendMessageToOne, txtMsg.Text);
+                clientInfo._socket.Send(dataMethod.Serialize());
+            }
+            else
+            {
+                MessageBox.Show("Chuỗi rỗng");
+            }
         }
     }
 }

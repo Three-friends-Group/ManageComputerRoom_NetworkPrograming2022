@@ -33,8 +33,13 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Guna.UI2, Version=2.0.3.5, Culture=neutral, PublicKeyToken=4015e4865bda28a4, processorArchitecture=MSIL">
+      <HintPath>..\packages\Guna.UI2.WinForms.2.0.3.5\lib\net40\Guna.UI2.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -46,14 +51,42 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ChatItems\Incomming.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="ChatItems\Incomming.Designer.cs">
+      <DependentUpon>Incomming.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ChatItems\Outgoing.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="ChatItems\Outgoing.Designer.cs">
+      <DependentUpon>Outgoing.cs</DependentUpon>
+    </Compile>
     <Compile Include="DataMethods.cs" />
     <Compile Include="PathUntils.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="test.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="test.Designer.cs">
+      <DependentUpon>test.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Uitls.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
     <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup />
+  <ItemGroup>
+    <EmbeddedResource Include="ChatItems\Incomming.resx">
+      <DependentUpon>Incomming.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ChatItems\Outgoing.resx">
+      <DependentUpon>Outgoing.cs</DependentUpon>
+    </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

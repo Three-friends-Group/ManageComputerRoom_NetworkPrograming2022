@@ -39,7 +39,7 @@
             this.toolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.panel1 = new System.Windows.Forms.Panel();
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.txtMsg = new System.Windows.Forms.TextBox();
             this.btnSend = new Guna.UI2.WinForms.Guna2Button();
             this.panel5 = new System.Windows.Forms.Panel();
             this.panel4 = new System.Windows.Forms.Panel();
@@ -104,7 +104,6 @@
             this.toolTroChuyen_SV.Name = "toolTroChuyen_SV";
             this.toolTroChuyen_SV.Size = new System.Drawing.Size(239, 24);
             this.toolTroChuyen_SV.Text = "Trò chuyện";
-            this.toolTroChuyen_SV.Click += new System.EventHandler(this.toolTroChuyen_SV_Click);
             // 
             // toolKhoiDong_SV
             // 
@@ -126,7 +125,6 @@
             this.toolThoat_SV.Name = "toolThoat_SV";
             this.toolThoat_SV.Size = new System.Drawing.Size(239, 24);
             this.toolThoat_SV.Text = "Thoát";
-            this.toolThoat_SV.Click += new System.EventHandler(this.toolThoat_SV_Click);
             // 
             // toolStripMenuItem1
             // 
@@ -157,26 +155,26 @@
             // 
             // splitContainer1.Panel1
             // 
-            this.splitContainer1.Panel1.Controls.Add(this.textBox1);
+            this.splitContainer1.Panel1.Controls.Add(this.txtMsg);
             // 
             // splitContainer1.Panel2
             // 
             this.splitContainer1.Panel2.Controls.Add(this.btnSend);
             this.splitContainer1.Size = new System.Drawing.Size(852, 51);
-            this.splitContainer1.SplitterDistance = 671;
+            this.splitContainer1.SplitterDistance = 635;
             this.splitContainer1.SplitterWidth = 40;
             this.splitContainer1.TabIndex = 4;
             // 
-            // textBox1
+            // txtMsg
             // 
-            this.textBox1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.textBox1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.textBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox1.Location = new System.Drawing.Point(0, 0);
-            this.textBox1.Multiline = true;
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(671, 51);
-            this.textBox1.TabIndex = 0;
+            this.txtMsg.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.txtMsg.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.txtMsg.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtMsg.Location = new System.Drawing.Point(0, 0);
+            this.txtMsg.Multiline = true;
+            this.txtMsg.Name = "txtMsg";
+            this.txtMsg.Size = new System.Drawing.Size(635, 51);
+            this.txtMsg.TabIndex = 0;
             // 
             // btnSend
             // 
@@ -190,10 +188,10 @@
             this.btnSend.ForeColor = System.Drawing.Color.White;
             this.btnSend.Location = new System.Drawing.Point(0, 0);
             this.btnSend.Name = "btnSend";
-            this.btnSend.Size = new System.Drawing.Size(141, 51);
+            this.btnSend.Size = new System.Drawing.Size(177, 51);
             this.btnSend.TabIndex = 2;
             this.btnSend.Text = "Gửi";
-            this.btnSend.Click += new System.EventHandler(this.guna2Button1_Click_1);
+            this.btnSend.Click += new System.EventHandler(this.btnSend_Click);
             // 
             // panel5
             // 
@@ -351,7 +349,7 @@
         private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem1;
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.SplitContainer splitContainer1;
-        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.TextBox txtMsg;
         private Guna.UI2.WinForms.Guna2Button btnSend;
         private System.Windows.Forms.Panel panel5;
         private System.Windows.Forms.Panel panel4;

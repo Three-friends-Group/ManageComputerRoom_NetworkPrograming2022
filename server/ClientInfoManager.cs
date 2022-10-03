@@ -13,6 +13,7 @@ namespace server
         private readonly List<ClientInfo> _clients;
         private bool _generateByNumberOfClients;
 
+
         public List<ClientInfo> Clients
         {
             get
@@ -24,6 +25,14 @@ namespace server
         {
             _generateByNumberOfClients = false;
             _clients = new List<ClientInfo>();
+        }
+
+        public void xuat()
+        {
+            foreach (ClientInfo client in _clients)
+            {
+                Console.WriteLine("Log: tung client la" + client);
+            }
         }
         public ClientInfoManager(string firstIP, string lastIP, string subnetMask)
         {
@@ -56,7 +65,7 @@ namespace server
                         string ip = s1 + "." + i.ToString();
 
                         ClientInfo clientInfo = new ClientInfo();
-                        clientInfo.ClientIP = ip;
+                        clientInfo._clientIP = ip;
                         _clients.Add(clientInfo);
                     }
                 }
@@ -78,7 +87,7 @@ namespace server
             for (int i = 0; i < numberOfClients; i++)
             {
                 ClientInfo clientInfo = new ClientInfo();
-                clientInfo.ClientIP = DEFAULT_IP;
+                clientInfo._clientIP = DEFAULT_IP;
                 _clients.Add(clientInfo);
             }
         }
@@ -86,7 +95,7 @@ namespace server
         {
             for (int i = 0; i < _clients.Count; i++)
             {
-                if (_clients[i].ClientIP.Equals(clientInfo.ClientIP))
+                if (_clients[i]._clientIP.Equals(clientInfo._clientIP) && _clients[i]._port.Equals(clientInfo._port))
                 {
                     return i;
                 }
@@ -98,7 +107,7 @@ namespace server
         {
             for (int i = 0; i < _clients.Count; i++)
             {
-                if (_clients[i].ClientIP.Equals(ipAddress))
+                if (_clients[i]._clientIP.Equals(ipAddress))
                 {
                     return i;
                 }
@@ -110,7 +119,7 @@ namespace server
             int i = 0;
             while (true)
             {
-                if (_clients[i].ClientIP.Equals(DEFAULT_IP)) break;
+                if (_clients[i]._clientIP.Equals(client._clientIP) && _clients[i]._port.Equals(client._port)) break;
                 i++;
             }
 
@@ -126,7 +135,7 @@ namespace server
         {
             for (int i = 0; i < _clients.Count; i++)
             {
-                if (_clients[i].ClientIP.Equals(client.ClientIP))
+                if (_clients[i]._clientIP.Equals(client._clientIP) && _clients[i]._port.Equals(client._port))
                     return _clients[i];
             }
 
@@ -137,10 +146,18 @@ namespace server
         {
             for (int i = 0; i < _clients.Count; i++)
             {
-                if (_clients[i].ClientIP.Equals(ipAddress))
+                if (_clients[i]._clientIP.Equals(ipAddress))
                     return _clients[i];
             }
-
+            return null;
+        }
+        public ClientInfo FindByIdAndPort(string ipAddress, string port)
+        {
+            for (int i = 0; i < _clients.Count; i++)
+            {
+                if (_clients[i]._clientIP.Equals(ipAddress) && _clients[i]._port.Equals(port))
+                    return _clients[i];
+            }
             return null;
         }
 
@@ -167,8 +184,8 @@ namespace server
         {
             foreach (ClientInfo item in _clients)
             {
-                if (item.Status != ClientInfoStatus.Undefined)
-                    item.Status = ClientInfoStatus.Disconnected;
+                if (item._status != ClientInfoStatus.Undefined)
+                    item._status = ClientInfoStatus.Disconnected;
             }
         }
 
@@ -177,7 +194,7 @@ namespace server
             List<ClientInfo> result = new List<ClientInfo>();
             foreach (ClientInfo item in _clients)
             {
-                if (item.Status == ClientInfoStatus.Connected)
+                if (item._status == ClientInfoStatus.Connected)
                 {
                     result.Add(item);
                 }

@@ -57,17 +57,17 @@
     <Compile Include="frmCauHinh.Designer.cs">
       <DependentUpon>frmCauHinh.cs</DependentUpon>
     </Compile>
-    <Compile Include="frmChatAll.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="frmChatAll.Designer.cs">
-      <DependentUpon>frmChatAll.cs</DependentUpon>
-    </Compile>
     <Compile Include="frmChatOne.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="frmChatOne.Designer.cs">
       <DependentUpon>frmChatOne.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmChatAll.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmChatAll.Designer.cs">
+      <DependentUpon>frmChatAll.cs</DependentUpon>
     </Compile>
     <Compile Include="frmDieuKhienMayClient.cs">
       <SubType>Form</SubType>
@@ -93,11 +93,11 @@
     <EmbeddedResource Include="frmCauHinh.resx">
       <DependentUpon>frmCauHinh.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="frmChatAll.resx">
-      <DependentUpon>frmChatAll.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="frmChatOne.resx">
       <DependentUpon>frmChatOne.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmChatAll.resx">
+      <DependentUpon>frmChatAll.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frmDieuKhienMayClient.resx">
       <DependentUpon>frmDieuKhienMayClient.cs</DependentUpon>

@@ -21,10 +21,40 @@ D:\Study\Lập trình mạng\ManageComputerRoom_NetworkPrograming2022\client\obj
 D:\Study\Lập trình mạng\ManageComputerRoom_NetworkPrograming2022\client\obj\Debug\client.exe
 D:\Study\Lập trình mạng\ManageComputerRoom_NetworkPrograming2022\client\obj\Debug\client.pdb
 D:\Study\Lập trình mạng\ManageComputerRoom_NetworkPrograming2022\client\obj\Debug\client.frmCauHinhClient.resources
-G:\coder6622\MangeComputerRoom_NetworkPrograming2022\client\bin\Debug\Guna.UI2.dll
 G:\coder6622\MangeComputerRoom_NetworkPrograming2022\client\obj\Debug\client.csproj.CopyComplete
 G:\coder6622\MangeComputerRoom_NetworkPrograming2022\client\obj\Debug\server.frmCauHinh_SV.resources
 G:\coder6622\MangeComputerRoom_NetworkPrograming2022\client\obj\Debug\server.frmClient.resources
-G:\coder6622\MangeComputerRoom_NetworkPrograming2022\client\bin\Debug\common.exe
-G:\coder6622\MangeComputerRoom_NetworkPrograming2022\client\bin\Debug\common.pdb
 G:\coder6622\MangeComputerRoom_NetworkPrograming2022\client\bin\Debug\common.exe.config
+G:\coder6622\MangeComputerRoom_NetworkPrograming2022\client\obj\Debug\client.LockScreen.resources
+G:\coder6622\MangeComputerRoom_NetworkPrograming2022\client\bin\Debug\Microsoft.Win32.Registry.xml
+G:\coder6622\MangeComputerRoom_NetworkPrograming2022\client\bin\Debug\Microsoft.Win32.Registry.AccessControl.xml
+G:\coder6622\MangeComputerRoom_NetworkPrograming2022\client\bin\Debug\Microsoft.Win32.SystemEvents.xml
+G:\coder6622\MangeComputerRoom_NetworkPrograming2022\client\bin\Debug\Newtonsoft.Json.xml
+G:\coder6622\MangeComputerRoom_NetworkPrograming2022\client\bin\Debug\RestSharp.xml
+G:\coder6622\MangeComputerRoom_NetworkPrograming2022\client\bin\Debug\System.Buffers.xml
+G:\coder6622\MangeComputerRoom_NetworkPrograming2022\client\bin\Debug\System.CodeDom.xml
+G:\coder6622\MangeComputerRoom_NetworkPrograming2022\client\bin\Debug\System.Configuration.ConfigurationManager.xml
+G:\coder6622\MangeComputerRoom_NetworkPrograming2022\client\bin\Debug\System.Data.Odbc.xml
+G:\coder6622\MangeComputerRoom_NetworkPrograming2022\client\bin\Debug\System.Data.OleDb.xml
+G:\coder6622\MangeComputerRoom_NetworkPrograming2022\client\bin\Debug\System.Data.SqlClient.xml
+G:\coder6622\MangeComputerRoom_NetworkPrograming2022\client\bin\Debug\System.Diagnostics.EventLog.xml
+G:\coder6622\MangeComputerRoom_NetworkPrograming2022\client\bin\Debug\System.Diagnostics.PerformanceCounter.xml
+G:\coder6622\MangeComputerRoom_NetworkPrograming2022\client\bin\Debug\System.Drawing.Common.xml
+G:\coder6622\MangeComputerRoom_NetworkPrograming2022\client\bin\Debug\System.IO.FileSystem.AccessControl.xml
+G:\coder6622\MangeComputerRoom_NetworkPrograming2022\client\bin\Debug\System.IO.Packaging.xml
+G:\coder6622\MangeComputerRoom_NetworkPrograming2022\client\bin\Debug\System.IO.Ports.xml
+G:\coder6622\MangeComputerRoom_NetworkPrograming2022\client\bin\Debug\System.Memory.xml
+G:\coder6622\MangeComputerRoom_NetworkPrograming2022\client\bin\Debug\System.Numerics.Vectors.xml
+G:\coder6622\MangeComputerRoom_NetworkPrograming2022\client\bin\Debug\System.Runtime.CompilerServices.Unsafe.xml
+G:\coder6622\MangeComputerRoom_NetworkPrograming2022\client\bin\Debug\System.Security.AccessControl.xml
+G:\coder6622\MangeComputerRoom_NetworkPrograming2022\client\bin\Debug\System.Security.Cryptography.Cng.xml
+G:\coder6622\MangeComputerRoom_NetworkPrograming2022\client\bin\Debug\System.Security.Cryptography.Pkcs.xml
+G:\coder6622\MangeComputerRoom_NetworkPrograming2022\client\bin\Debug\System.Security.Cryptography.ProtectedData.xml
+G:\coder6622\MangeComputerRoom_NetworkPrograming2022\client\bin\Debug\System.Security.Cryptography.Xml.xml
+G:\coder6622\MangeComputerRoom_NetworkPrograming2022\client\bin\Debug\System.Security.Permissions.xml
+G:\coder6622\MangeComputerRoom_NetworkPrograming2022\client\bin\Debug\System.Security.Principal.Windows.xml
+G:\coder6622\MangeComputerRoom_NetworkPrograming2022\client\bin\Debug\System.ServiceModel.Syndication.xml
+G:\coder6622\MangeComputerRoom_NetworkPrograming2022\client\bin\Debug\System.ServiceProcess.ServiceController.xml
+G:\coder6622\MangeComputerRoom_NetworkPrograming2022\client\bin\Debug\System.Text.Encoding.CodePages.xml
+G:\coder6622\MangeComputerRoom_NetworkPrograming2022\client\bin\Debug\System.Threading.AccessControl.xml
+G:\coder6622\MangeComputerRoom_NetworkPrograming2022\client\obj\Debug\client.csproj.Fody.CopyLocal.cache

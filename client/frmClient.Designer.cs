@@ -42,23 +42,18 @@
             this.txtMessage = new System.Windows.Forms.TextBox();
             this.btnSend = new Guna.UI2.WinForms.Guna2Button();
             this.panel5 = new System.Windows.Forms.Panel();
+            this.guna2Separator1 = new Guna.UI2.WinForms.Guna2Separator();
             this.panel4 = new System.Windows.Forms.Panel();
             this.panel3 = new System.Windows.Forms.Panel();
             this.panel2 = new System.Windows.Forms.Panel();
-            this.panel6 = new System.Windows.Forms.Panel();
-            this.panel9 = new System.Windows.Forms.Panel();
-            this.guna2ShadowPanel1 = new Guna.UI2.WinForms.Guna2ShadowPanel();
-            this.lsvListMessage = new System.Windows.Forms.ListView();
-            this.panel8 = new System.Windows.Forms.Panel();
-            this.panel7 = new System.Windows.Forms.Panel();
+            this.pnContainer = new System.Windows.Forms.Panel();
             this.menuStrip1.SuspendLayout();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.Panel2.SuspendLayout();
             this.splitContainer1.SuspendLayout();
-            this.panel6.SuspendLayout();
-            this.panel9.SuspendLayout();
+            this.panel5.SuspendLayout();
             this.SuspendLayout();
             // 
             // menuStrip1
@@ -93,35 +88,35 @@
             // 
             this.toolKhoaChuot_SV.Image = ((System.Drawing.Image)(resources.GetObject("toolKhoaChuot_SV.Image")));
             this.toolKhoaChuot_SV.Name = "toolKhoaChuot_SV";
-            this.toolKhoaChuot_SV.Size = new System.Drawing.Size(243, 26);
+            this.toolKhoaChuot_SV.Size = new System.Drawing.Size(239, 24);
             this.toolKhoaChuot_SV.Text = "Khoá chuột và bàn phím";
             // 
             // toolTroChuyen_SV
             // 
             this.toolTroChuyen_SV.Image = ((System.Drawing.Image)(resources.GetObject("toolTroChuyen_SV.Image")));
             this.toolTroChuyen_SV.Name = "toolTroChuyen_SV";
-            this.toolTroChuyen_SV.Size = new System.Drawing.Size(243, 26);
+            this.toolTroChuyen_SV.Size = new System.Drawing.Size(239, 24);
             this.toolTroChuyen_SV.Text = "Trò chuyện";
             // 
             // toolKhoiDong_SV
             // 
             this.toolKhoiDong_SV.Image = ((System.Drawing.Image)(resources.GetObject("toolKhoiDong_SV.Image")));
             this.toolKhoiDong_SV.Name = "toolKhoiDong_SV";
-            this.toolKhoiDong_SV.Size = new System.Drawing.Size(243, 26);
+            this.toolKhoiDong_SV.Size = new System.Drawing.Size(239, 24);
             this.toolKhoiDong_SV.Text = "Khởi động lại";
             // 
             // tool_Tatmay_SV
             // 
             this.tool_Tatmay_SV.Image = ((System.Drawing.Image)(resources.GetObject("tool_Tatmay_SV.Image")));
             this.tool_Tatmay_SV.Name = "tool_Tatmay_SV";
-            this.tool_Tatmay_SV.Size = new System.Drawing.Size(243, 26);
+            this.tool_Tatmay_SV.Size = new System.Drawing.Size(239, 24);
             this.tool_Tatmay_SV.Text = "Tắt máy";
             // 
             // toolThoat_SV
             // 
             this.toolThoat_SV.Image = ((System.Drawing.Image)(resources.GetObject("toolThoat_SV.Image")));
             this.toolThoat_SV.Name = "toolThoat_SV";
-            this.toolThoat_SV.Size = new System.Drawing.Size(243, 26);
+            this.toolThoat_SV.Size = new System.Drawing.Size(239, 24);
             this.toolThoat_SV.Text = "Thoát";
             this.toolThoat_SV.Click += new System.EventHandler(this.toolThoat_SV_Click);
             // 
@@ -149,7 +144,7 @@
             this.splitContainer1.AllowDrop = true;
             this.splitContainer1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.splitContainer1.FixedPanel = System.Windows.Forms.FixedPanel.Panel2;
-            this.splitContainer1.Location = new System.Drawing.Point(46, 38);
+            this.splitContainer1.Location = new System.Drawing.Point(46, 14);
             this.splitContainer1.Name = "splitContainer1";
             // 
             // splitContainer1.Panel1
@@ -159,10 +154,11 @@
             // splitContainer1.Panel2
             // 
             this.splitContainer1.Panel2.Controls.Add(this.btnSend);
-            this.splitContainer1.Size = new System.Drawing.Size(852, 51);
-            this.splitContainer1.SplitterDistance = 703;
+            this.splitContainer1.Size = new System.Drawing.Size(852, 75);
+            this.splitContainer1.SplitterDistance = 654;
             this.splitContainer1.SplitterWidth = 40;
             this.splitContainer1.TabIndex = 4;
+            this.splitContainer1.SplitterMoved += new System.Windows.Forms.SplitterEventHandler(this.splitContainer1_SplitterMoved);
             // 
             // txtMessage
             // 
@@ -172,7 +168,8 @@
             this.txtMessage.Location = new System.Drawing.Point(0, 0);
             this.txtMessage.Multiline = true;
             this.txtMessage.Name = "txtMessage";
-            this.txtMessage.Size = new System.Drawing.Size(703, 51);
+            this.txtMessage.ScrollBars = System.Windows.Forms.ScrollBars.Both;
+            this.txtMessage.Size = new System.Drawing.Size(654, 75);
             this.txtMessage.TabIndex = 0;
             // 
             // btnSend
@@ -187,17 +184,30 @@
             this.btnSend.ForeColor = System.Drawing.Color.White;
             this.btnSend.Location = new System.Drawing.Point(0, 0);
             this.btnSend.Name = "btnSend";
-            this.btnSend.Size = new System.Drawing.Size(109, 51);
+            this.btnSend.Size = new System.Drawing.Size(158, 75);
             this.btnSend.TabIndex = 2;
             this.btnSend.Text = "Gửi";
+            this.btnSend.Click += new System.EventHandler(this.btnSend_Click);
             // 
             // panel5
             // 
+            this.panel5.Controls.Add(this.guna2Separator1);
             this.panel5.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel5.Location = new System.Drawing.Point(46, 0);
             this.panel5.Name = "panel5";
-            this.panel5.Size = new System.Drawing.Size(852, 38);
+            this.panel5.Size = new System.Drawing.Size(852, 14);
             this.panel5.TabIndex = 3;
+            // 
+            // guna2Separator1
+            // 
+            this.guna2Separator1.Dock = System.Windows.Forms.DockStyle.Top;
+            this.guna2Separator1.FillColor = System.Drawing.Color.Black;
+            this.guna2Separator1.FillThickness = 2;
+            this.guna2Separator1.Location = new System.Drawing.Point(0, 0);
+            this.guna2Separator1.Name = "guna2Separator1";
+            this.guna2Separator1.Size = new System.Drawing.Size(852, 10);
+            this.guna2Separator1.TabIndex = 0;
+            this.guna2Separator1.Click += new System.EventHandler(this.guna2Separator1_Click);
             // 
             // panel4
             // 
@@ -223,67 +233,16 @@
             this.panel2.Size = new System.Drawing.Size(46, 121);
             this.panel2.TabIndex = 0;
             // 
-            // panel6
+            // pnContainer
             // 
-            this.panel6.Controls.Add(this.panel9);
-            this.panel6.Controls.Add(this.panel8);
-            this.panel6.Controls.Add(this.panel7);
-            this.panel6.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel6.Location = new System.Drawing.Point(0, 28);
-            this.panel6.Name = "panel6";
-            this.panel6.Size = new System.Drawing.Size(944, 456);
-            this.panel6.TabIndex = 7;
-            // 
-            // panel9
-            // 
-            this.panel9.Controls.Add(this.guna2ShadowPanel1);
-            this.panel9.Controls.Add(this.lsvListMessage);
-            this.panel9.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel9.Location = new System.Drawing.Point(46, 0);
-            this.panel9.Name = "panel9";
-            this.panel9.Size = new System.Drawing.Size(852, 456);
-            this.panel9.TabIndex = 2;
-            // 
-            // guna2ShadowPanel1
-            // 
-            this.guna2ShadowPanel1.BackColor = System.Drawing.Color.Transparent;
-            this.guna2ShadowPanel1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
-            this.guna2ShadowPanel1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.guna2ShadowPanel1.Dock = System.Windows.Forms.DockStyle.Top;
-            this.guna2ShadowPanel1.FillColor = System.Drawing.Color.White;
-            this.guna2ShadowPanel1.Location = new System.Drawing.Point(0, 0);
-            this.guna2ShadowPanel1.Name = "guna2ShadowPanel1";
-            this.guna2ShadowPanel1.ShadowColor = System.Drawing.Color.Black;
-            this.guna2ShadowPanel1.ShadowDepth = 0;
-            this.guna2ShadowPanel1.ShadowShift = 0;
-            this.guna2ShadowPanel1.Size = new System.Drawing.Size(852, 101);
-            this.guna2ShadowPanel1.TabIndex = 1;
-            // 
-            // lsvListMessage
-            // 
-            this.lsvListMessage.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.lsvListMessage.HideSelection = false;
-            this.lsvListMessage.Location = new System.Drawing.Point(0, 0);
-            this.lsvListMessage.Name = "lsvListMessage";
-            this.lsvListMessage.Size = new System.Drawing.Size(852, 456);
-            this.lsvListMessage.TabIndex = 0;
-            this.lsvListMessage.UseCompatibleStateImageBehavior = false;
-            // 
-            // panel8
-            // 
-            this.panel8.Dock = System.Windows.Forms.DockStyle.Right;
-            this.panel8.Location = new System.Drawing.Point(898, 0);
-            this.panel8.Name = "panel8";
-            this.panel8.Size = new System.Drawing.Size(46, 456);
-            this.panel8.TabIndex = 1;
-            // 
-            // panel7
-            // 
-            this.panel7.Dock = System.Windows.Forms.DockStyle.Left;
-            this.panel7.Location = new System.Drawing.Point(0, 0);
-            this.panel7.Name = "panel7";
-            this.panel7.Size = new System.Drawing.Size(46, 456);
-            this.panel7.TabIndex = 0;
+            this.pnContainer.AutoScroll = true;
+            this.pnContainer.AutoSize = true;
+            this.pnContainer.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.pnContainer.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.pnContainer.Location = new System.Drawing.Point(0, 28);
+            this.pnContainer.Name = "pnContainer";
+            this.pnContainer.Size = new System.Drawing.Size(944, 456);
+            this.pnContainer.TabIndex = 7;
             // 
             // frmClient
             // 
@@ -291,7 +250,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(944, 605);
-            this.Controls.Add(this.panel6);
+            this.Controls.Add(this.pnContainer);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.menuStrip1);
             this.MainMenuStrip = this.menuStrip1;
@@ -299,6 +258,7 @@
             this.Name = "frmClient";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Client";
+            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.frmClient_FormClosed);
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
             this.panel1.ResumeLayout(false);
@@ -307,8 +267,7 @@
             this.splitContainer1.Panel2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).EndInit();
             this.splitContainer1.ResumeLayout(false);
-            this.panel6.ResumeLayout(false);
-            this.panel9.ResumeLayout(false);
+            this.panel5.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -325,18 +284,14 @@
         private System.Windows.Forms.ToolStripMenuItem toolThoat_SV;
         private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem1;
         private System.Windows.Forms.Panel panel1;
-        private System.Windows.Forms.SplitContainer splitContainer1;
-        private System.Windows.Forms.TextBox txtMessage;
-        private Guna.UI2.WinForms.Guna2Button btnSend;
         private System.Windows.Forms.Panel panel5;
         private System.Windows.Forms.Panel panel4;
         private System.Windows.Forms.Panel panel3;
         private System.Windows.Forms.Panel panel2;
-        private System.Windows.Forms.Panel panel6;
-        private System.Windows.Forms.Panel panel9;
-        private System.Windows.Forms.ListView lsvListMessage;
-        private System.Windows.Forms.Panel panel8;
-        private System.Windows.Forms.Panel panel7;
-        private Guna.UI2.WinForms.Guna2ShadowPanel guna2ShadowPanel1;
+        private System.Windows.Forms.SplitContainer splitContainer1;
+        private System.Windows.Forms.TextBox txtMessage;
+        private Guna.UI2.WinForms.Guna2Button btnSend;
+        private Guna.UI2.WinForms.Guna2Separator guna2Separator1;
+        private System.Windows.Forms.Panel pnContainer;
     }
 }
