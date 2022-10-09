@@ -12,7 +12,7 @@ namespace common
     public enum DataMethodsType
     {
         Undefined,
-        SendNamePc,
+        SendName,
         SendMessageToOne,
         RemoteDesktop,
     }

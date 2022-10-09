@@ -19,7 +19,7 @@ namespace server
         public UfrmClient(ClientInfo clientInfo)
         {
             InitializeComponent();
-            _clientInfo = new ClientInfo(clientInfo);
+            _clientInfo = clientInfo;
             SetContent(_clientInfo);
         }
 
@@ -36,6 +36,7 @@ namespace server
             {
                 lblName.Text = "N/A";
             }
+            Console.WriteLine("Log: " + clientInfo._clientIP);
 
             if (!string.IsNullOrWhiteSpace(clientInfo._clientIP))
             {
@@ -121,7 +122,7 @@ namespace server
             if (CheckClientConnected())
             {
                 var form_DieuKhien = new frmDieuKhienMayClient(_clientInfo);
-                form_DieuKhien.Show();
+                form_DieuKhien.ShowDialog();
             }
             else
             {

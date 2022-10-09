@@ -17,6 +17,7 @@ namespace server
 
         ClientProgram clientProgram;
         private const int SERVER_PORT = 9998;
+        private const int PORT_REMOTE = 9999;
         private const string ip = "127.0.0.1";
         public frmClient()
         {
@@ -24,11 +25,11 @@ namespace server
 
             CheckForIllegalCrossThreadCalls = false;
 
-            clientProgram = new ClientProgram();
+            clientProgram = new ClientProgram(ip, SERVER_PORT, PORT_REMOTE);
             clientProgram.OnReceiveMessage += ClientProgram_OnReceiveMessage;
             clientProgram.OnRemoteDesktop += ClientProgram_OnRemoteDesktop;
 
-            clientProgram.Connect(ip, SERVER_PORT);
+            clientProgram.Connect();
         }
 
         private void ClientProgram_OnRemoteDesktop(string obj)

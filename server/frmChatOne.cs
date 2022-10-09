@@ -20,7 +20,7 @@ namespace server
             this.clientInfo = clientInfo;
         }
 
-    
+
         private void btnSend_Click(object sender, EventArgs e)
         {
             SendMessage(clientInfo);
@@ -40,7 +40,7 @@ namespace server
             {
                 Console.WriteLine(txtMsg.Text);
                 DataMethods dataMethod = new DataMethods(DataMethodsType.SendMessageToOne, txtMsg.Text);
-                clientInfo._socket.Send(dataMethod.Serialize());
+                //clientInfo._tcpClient.Send(dataMethod.Serialize());
             }
             else
             {

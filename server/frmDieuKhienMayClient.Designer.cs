@@ -83,7 +83,6 @@
             this.toolTroChuyen_SV.Name = "toolTroChuyen_SV";
             this.toolTroChuyen_SV.Size = new System.Drawing.Size(239, 24);
             this.toolTroChuyen_SV.Text = "Trò chuyện";
-            this.toolTroChuyen_SV.Click += new System.EventHandler(this.toolTroChuyen_SV_Click);
             // 
             // toolKhoiDong_SV
             // 
@@ -105,7 +104,6 @@
             this.toolThoat_SV.Name = "toolThoat_SV";
             this.toolThoat_SV.Size = new System.Drawing.Size(239, 24);
             this.toolThoat_SV.Text = "Thoát";
-            this.toolThoat_SV.Click += new System.EventHandler(this.toolThoat_SV_Click);
             // 
             // toolStripMenuItem1
             // 
@@ -139,6 +137,7 @@
             this.Name = "frmDieuKhienMayClient";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Điều khiển client";
+            this.Load += new System.EventHandler(this.frmDieuKhienMayClient_Load);
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxRemote)).EndInit();
