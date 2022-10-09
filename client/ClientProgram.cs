@@ -13,6 +13,7 @@ using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Runtime.InteropServices;
 
 namespace client
 {
@@ -109,12 +110,12 @@ namespace client
                                 break;
                             }
 
-                            //case DataMethodsType.RemoteDesktop:
-                            //    {
-                            //        remoteThread = new Thread(RemoteDesktop);
-                            //        remoteThread.Start();
-                            //        break;
-                            //    }
+                        case DataMethodsType.RemoteDesktop:
+                            {
+                                remoteThread = new Thread(RemoteDesktop);
+                                remoteThread.Start();
+                                break;
+                            }
                     }
 
 
@@ -128,45 +129,42 @@ namespace client
 
         }
 
-        //private void RemoteDesktop()
-        //{
-        //    //IP = new IPEndPoint(IPAddress.Parse(hostname), port);
-        //    remoteSocket = new Socket(AddressFamily.InterNetwork, SocketType.Stream, ProtocolType.IP);
-        //    //try
-        //    //{
-        //    MessageBox.Show("dang ket noi");
-        //    remoteSocket.Connect(IPRemote);
-        //    MessageBox.Show("Ket noi thanh cong");
-        //    //}
-        //    //catch (Exception ex)
-        //    //{
-        //    //    MessageBox.Show(ex.Message, "Loidjkdj", MessageBoxButtons.OK, MessageBoxIcon.Error);
-        //    //    return;
-        //    //}
-        //    NetworkStream netStream = new NetworkStream(tcpClient);
-        //    Bitmap bmpScreenshot = new Bitmap(Screen.PrimaryScreen.Bounds.Width, Screen.PrimaryScreen.Bounds.Height, PixelFormat.Format32bppArgb);
-        //    Graphics gfxScreenshot = Graphics.FromImage(bmpScreenshot);
-        //    gfxScreenshot.CompositingMode = System.Drawing.Drawing2D.CompositingMode.SourceCopy;
-        //    gfxScreenshot.CompositingQuality = System.Drawing.Drawing2D.CompositingQuality.HighSpeed;
-        //    gfxScreenshot.InterpolationMode = System.Drawing.Drawing2D.InterpolationMode.Low;
-        //    gfxScreenshot.SmoothingMode = System.Drawing.Drawing2D.SmoothingMode.None;
-        //    BinaryFormatter format = new BinaryFormatter();
-        //    Image image;
-        //    while (true)
-        //    {
-        //        try
-        //        {
-        //            gfxScreenshot.CopyFromScreen(Screen.PrimaryScreen.Bounds.X, Screen.PrimaryScreen.Bounds.Y, 0, 0, Screen.PrimaryScreen.Bounds.Size, CopyPixelOperation.SourceCopy);
-        //            image = bmpScreenshot;
-        //            format.Serialize(netStream, image);
-        //        }
-        //        catch
-        //        {
-        //            break;
-        //        }
-        //    }
-        //    remoteThread.Abort();
-        //}
+        private void RemoteDesktop()
+        {
+            TcpClient tcpRemote = new TcpClient();
+
+            try
+            {
+                tcpRemote.Connect(svIP, remotePort);
+            }
+            catch
+            {
+                MessageBox.Show("Không thể kết nối đến Server!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
+            NetworkStream netStream = tcpRemote.GetStream();
+            Bitmap bmpScreenshot = new Bitmap(Screen.PrimaryScreen.Bounds.Width, Screen.PrimaryScreen.Bounds.Height, PixelFormat.Format32bppArgb);
+            Graphics gfxScreenshot = Graphics.FromImage(bmpScreenshot);
+            gfxScreenshot.CompositingMode = System.Drawing.Drawing2D.CompositingMode.SourceCopy;
+            gfxScreenshot.CompositingQuality = System.Drawing.Drawing2D.CompositingQuality.HighSpeed;
+            gfxScreenshot.InterpolationMode = System.Drawing.Drawing2D.InterpolationMode.Low;
+            gfxScreenshot.SmoothingMode = System.Drawing.Drawing2D.SmoothingMode.None;
+            BinaryFormatter format = new BinaryFormatter();
+            Image image;
+            while (true)
+            {
+                try
+                {
+                    gfxScreenshot.CopyFromScreen(Screen.PrimaryScreen.Bounds.X, Screen.PrimaryScreen.Bounds.Y, 0, 0, Screen.PrimaryScreen.Bounds.Size, CopyPixelOperation.SourceCopy);
+                    image = bmpScreenshot;
+                    format.Serialize(netStream, image);
+                }
+                catch
+                {
+                    break;
+                }
+            }
+            remoteThread.Abort();
+        }
 
         public void Send(DataMethods data)
         {

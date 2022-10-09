@@ -17,7 +17,7 @@ namespace server
 
         ClientProgram clientProgram;
         private const int SERVER_PORT = 9998;
-        private const int PORT_REMOTE = 9999;
+        private const int PORT_REMOTE = 9992;
         private const string ip = "127.0.0.1";
         public frmClient()
         {

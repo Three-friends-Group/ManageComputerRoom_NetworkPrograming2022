@@ -7,6 +7,7 @@ using System.Drawing;
 using System.Linq;
 using System.Net;
 using System.Net.Sockets;
+using System.Runtime.InteropServices;
 using System.Runtime.Serialization.Formatters.Binary;
 using System.Text;
 using System.Threading;
@@ -17,14 +18,21 @@ namespace server
 {
     public partial class frmDieuKhienMayClient : Form
     {
-        ClientInfo clientInfo;
+        ClientInfo _clientInfo;
         int w_image, h_image;
-        Socket remote;
+        TcpListener tcpListener;
+        TcpClient tcpClient, tcpClientRM;
+        IPAddress svIP;
+        int serverPortRM;
+        Thread _thread;
 
         public frmDieuKhienMayClient(ClientInfo clientInfo)
         {
             InitializeComponent();
-            this.clientInfo = clientInfo;
+            this._clientInfo = clientInfo;
+            svIP = IPAddress.Parse(clientInfo._clientIP);
+            serverPortRM = 9992;
+            tcpClient = clientInfo._tcpClient;
         }
 
         private void listener()
@@ -32,14 +40,14 @@ namespace server
 
             try
             {
-                //var IP = new IPEndPoint(IPAddress.Parse("127.0.0.1"), clientInfo._portRemote);
-                //remote = new Socket(AddressFamily.InterNetwork, SocketType.Stream, ProtocolType.IP);
-                //remote.Bind(IP);
-                //Thread listen = new Thread(DoListener);
-                //listen.IsBackground = true;
-                //listen.Start();
-                //MessageBox.Show("bat server");
-                //SendMessage(clientInfo);
+                tcpListener = new TcpListener(svIP, serverPortRM);
+                tcpListener.Start();
+                Console.WriteLine("Log: start");
+                tcpClientRM = tcpListener.AcceptTcpClient();
+                Console.WriteLine("Log: start");
+                _thread = new Thread(DoListener);
+                Console.WriteLine("Log: start");
+                _thread.Start();
             }
             catch
             {
@@ -50,22 +58,18 @@ namespace server
 
         private void DoListener()
         {
-            Console.WriteLine("Log: doi may con remote ket noi");
-            remote.Listen(100);
-            Socket client = remote.Accept();
-            MessageBox.Show("da ket noi");
 
-            //NetworkStream netStream = new NetworkStream(clientInfo._tcpClient);
+            NetworkStream netStream = tcpClientRM.GetStream();
             BinaryFormatter format = new BinaryFormatter();
             Image image;
             while (true)
             {
                 try
                 {
-                    //image = (Image)format.Deserialize(netStream);
-                    //w_image = image.Width;
-                    //h_image = image.Height;
-                    //pictureBoxRemote.Image = image;
+                    image = (Image)format.Deserialize(netStream);
+                    w_image = image.Width;
+                    h_image = image.Height;
+                    pictureBoxRemote.Image = image;
                     this.Refresh();
                 }
                 catch
@@ -81,9 +85,14 @@ namespace server
             if (clientInfo._status == ClientInfoStatus.Undefined || clientInfo._status == ClientInfoStatus.Disconnected)
             {
                 MessageBox.Show("Chức năng hiện tại không khả dụng");
+                return;
             }
+            NetworkStream netStream = tcpClient.GetStream();
             DataMethods dataMethod = new DataMethods(DataMethodsType.RemoteDesktop, "");
-            //clientInfo._tcpClient.Send(dataMethod.Serialize());
+            Console.WriteLine("Log: gui message");
+            netStream.Write(dataMethod.Serialize(), 0, dataMethod.Serialize().Length);
+            netStream.Flush();
+            Console.WriteLine("Log: gui xong");
         }
 
         private void pictureBoxRemote_MouseClick(object sender, MouseEventArgs e)
@@ -98,6 +107,7 @@ namespace server
 
         private void frmDieuKhienMayClient_Load(object sender, EventArgs e)
         {
+            SendMessage(_clientInfo);
             listener();
         }
 
