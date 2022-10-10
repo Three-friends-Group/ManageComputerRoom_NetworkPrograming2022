@@ -223,6 +223,7 @@
     <Compile Include="frmClient.Designer.cs">
       <DependentUpon>frmClient.cs</DependentUpon>
     </Compile>
+    <Compile Include="globalKeyBoardHook.cs" />
     <Compile Include="LockScreen.cs">
       <SubType>Form</SubType>
     </Compile>

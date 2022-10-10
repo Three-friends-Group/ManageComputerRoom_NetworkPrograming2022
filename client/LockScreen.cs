@@ -29,13 +29,12 @@ namespace client
         private const int SW_HIDE = 0;
         private const int SW_SHOW = 1;
 
-        public ClientProgram clientProgram;
         public bool lockMode;
-        private const int SERVER_PORT = 9998;
 
-        public LockScreen(ClientProgram x)
+        globalKeyboardHook gkh = new globalKeyboardHook();
+
+        public LockScreen()
         {
-            clientProgram = x;
             InitializeComponent();
             lockMode = false;
         }
@@ -46,8 +45,30 @@ namespace client
             this.TopMost = true;
             this.BackgroundImageLayout = ImageLayout.Stretch;
             this.ControlBox = false;
-            this.Cursor = Cursors.No;
+            this.Cursor = Cursors.Default;
             _Hide();
+            gkh.HookedKeys.Add(Keys.Alt);
+            gkh.HookedKeys.Add(Keys.Tab);
+            gkh.HookedKeys.Add(Keys.Space);
+            gkh.HookedKeys.Add(Keys.LWin);
+            gkh.HookedKeys.Add(Keys.LControlKey);
+            gkh.HookedKeys.Add(Keys.Escape);
+            gkh.HookedKeys.Add(Keys.LMenu);
+            gkh.HookedKeys.Add(Keys.RWin);
+            gkh.HookedKeys.Add(Keys.Decimal);
+            gkh.HookedKeys.Add(Keys.Enter);
+            gkh.HookedKeys.Add(Keys.Menu);
+            gkh.HookedKeys.Add(Keys.Modifiers);
+            gkh.HookedKeys.Add(Keys.Multiply);
+            gkh.HookedKeys.Add(Keys.ProcessKey);
+            gkh.HookedKeys.Add(Keys.RControlKey);
+            gkh.HookedKeys.Add(Keys.RMenu);
+            gkh.HookedKeys.Add(Keys.Packet);
+            gkh.HookedKeys.Add(Keys.Delete);
+            gkh.HookedKeys.Add(Keys.RButton);
+            gkh.HookedKeys.Add(Keys.LButton);
+            gkh.KeyDown += new KeyEventHandler(gkh_KeyDown);
+            gkh.KeyUp += new KeyEventHandler(gkh_KeyUp);
             TaskManager(@"/C REG add HKCU\Software\Microsoft\Windows\CurrentVersion\Policies\System /v DisableTaskMgr /t REG_DWORD /d 1 /f");
         }
 

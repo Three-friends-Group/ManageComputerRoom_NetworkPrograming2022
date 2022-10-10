@@ -16,9 +16,6 @@ namespace server
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            //Application.Run(new frmGuiTinNhanTatCaClinet());
-            //Application.Run(new frmTroChuyen());
-            //Application.Run(new frmDieuKhienMayClient());
             Application.Run(new frmMain());
 
 

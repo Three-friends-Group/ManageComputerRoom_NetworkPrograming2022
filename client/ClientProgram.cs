@@ -15,17 +15,16 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Runtime.InteropServices;
 using System.Diagnostics;
+using server;
 
 namespace client
 {
     public class ClientProgram
     {
-        private const int BUFFER_SIZE = 5000 * 1024;
         TcpClient tcpClient;
         IPAddress svIP;
         int svPort, remotePort;
         Thread listenThread, remoteThread;
-
         LockScreen lockScreen;
 
         public ClientProgram(string ip, int server_port, int port_remote)
@@ -50,6 +49,9 @@ namespace client
             remove { _onRemoteDesktop -= value; }
         }
 
+        public Action OnLockScreen;
+        public Action OnUnLockScreen;
+
 
         public void Connect()
         {
@@ -68,15 +70,11 @@ namespace client
             catch (Exception ex)
             {
                 MessageBox.Show(ex.Message, "Không thể kết nối đến server", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                listenThread = new Thread(Receive);
+                listenThread.IsBackground = true;
+                listenThread.Start();
                 return;
             }
-
-
-            //ClientProgram x = this;
-            //lockScreen = new LockScreen(x);
-            //lockScreen.Show();
-
-
         }
 
 
@@ -186,6 +184,23 @@ namespace client
                             {
                                 MessageBox.Show("Lock keyboard and mouse");
                                 break;
+                            }
+                        case DataMethodsType.LockScreen:
+                            {
+                                if (OnLockScreen != null)
+                                {
+                                    OnLockScreen();
+                                }
+                                break;
+                            }
+                        case DataMethodsType.UnlockScreen:
+                            {
+                                if (OnUnLockScreen != null)
+                                {
+                                    OnUnLockScreen();
+                                }
+                                break;
+
                             }
 
 

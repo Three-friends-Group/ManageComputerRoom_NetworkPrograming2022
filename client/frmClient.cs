@@ -19,6 +19,7 @@ namespace server
         private const int SERVER_PORT = 9998;
         private const int PORT_REMOTE = 9992;
         private const string ip = "127.0.0.1";
+        LockScreen lockScreen;
         public frmClient()
         {
             InitializeComponent();
@@ -28,8 +29,43 @@ namespace server
             clientProgram = new ClientProgram(ip, SERVER_PORT, PORT_REMOTE);
             clientProgram.OnReceiveMessage += ClientProgram_OnReceiveMessage;
             clientProgram.OnRemoteDesktop += ClientProgram_OnRemoteDesktop;
+            clientProgram.OnUnLockScreen = OnUnLockScreen;
+            clientProgram.OnLockScreen = OnLockScreen;
 
             clientProgram.Connect();
+        }
+
+        private void OnLockScreen()
+        {
+            if (this.InvokeRequired)
+            {
+                this.BeginInvoke((MethodInvoker)delegate ()
+                {
+                    lockScreen = new LockScreen();
+
+                    lockScreen.ShowDialog();
+                });
+            }
+            else
+            {
+                lockScreen = new LockScreen();
+                lockScreen.Show();
+            }
+        }
+
+        private void OnUnLockScreen()
+        {
+            if (this.InvokeRequired)
+            {
+                this.BeginInvoke((MethodInvoker)delegate ()
+                {
+                    lockScreen.Close();
+                });
+            }
+            else
+            {
+                lockScreen.Close();
+            }
         }
 
         private void ClientProgram_OnRemoteDesktop(string obj)

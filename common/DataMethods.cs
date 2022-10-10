@@ -24,7 +24,8 @@ namespace common
         Shutdown,
         Restart,
         LockMouseAndKeyBoard,
-        LockScreen
+        LockScreen,
+        UnlockScreen
     }
 
 

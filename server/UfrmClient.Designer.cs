@@ -39,6 +39,7 @@
             this.shutDownClient = new System.Windows.Forms.ToolStripMenuItem();
             this.lblName = new System.Windows.Forms.Label();
             this.lblIP = new System.Windows.Forms.Label();
+            this.lockScreen = new System.Windows.Forms.ToolStripMenuItem();
             ((System.ComponentModel.ISupportInitialize)(this.pbStatus)).BeginInit();
             this.ctmenutrip_May_PC_SV.SuspendLayout();
             this.SuspendLayout();
@@ -62,12 +63,13 @@
             this.directClient,
             this.chatClient,
             this.lockMouseAndKeyboardClient,
+            this.lockScreen,
             this.restartClient,
             this.shutDownClient});
             this.ctmenutrip_May_PC_SV.Name = "ctmenutrip_May_PC_SV";
             this.ctmenutrip_May_PC_SV.RenderMode = System.Windows.Forms.ToolStripRenderMode.Professional;
             this.ctmenutrip_May_PC_SV.ShowCheckMargin = true;
-            this.ctmenutrip_May_PC_SV.Size = new System.Drawing.Size(266, 134);
+            this.ctmenutrip_May_PC_SV.Size = new System.Drawing.Size(266, 160);
             // 
             // directClient
             // 
@@ -131,6 +133,13 @@
             this.lblIP.Text = "123.2.32.3.23";
             this.lblIP.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
+            // lockScreen
+            // 
+            this.lockScreen.Name = "lockScreen";
+            this.lockScreen.Size = new System.Drawing.Size(265, 26);
+            this.lockScreen.Text = "Khóa màn hình";
+            this.lockScreen.Click += new System.EventHandler(this.lockScreen_Click);
+            // 
             // UfrmClient
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -161,5 +170,6 @@
         private System.Windows.Forms.ToolStripMenuItem shutDownClient;
         private System.Windows.Forms.Label lblName;
         private System.Windows.Forms.Label lblIP;
+        private System.Windows.Forms.ToolStripMenuItem lockScreen;
     }
 }
