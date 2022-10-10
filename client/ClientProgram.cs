@@ -1,25 +1,38 @@
 ﻿using common;
 using System;
 using System.Collections.Generic;
+using System.Drawing.Imaging;
+using System.Drawing;
 using System.Linq;
 using System.Linq.Expressions;
 using System.Net;
 using System.Net.Http;
 using System.Net.Sockets;
+using System.Runtime.Serialization.Formatters.Binary;
 using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Runtime.InteropServices;
 
 namespace client
 {
     public class ClientProgram
     {
         private const int BUFFER_SIZE = 5000 * 1024;
+        TcpClient tcpClient;
+        IPAddress svIP;
+        int svPort, remotePort;
+        Thread listenThread, remoteThread;
 
-        IPEndPoint IP;
-        Socket client;
         LockScreen lockScreen;
+
+        public ClientProgram(string ip, int server_port, int port_remote)
+        {
+            svIP = IPAddress.Parse(ip);
+            svPort = server_port;
+            remotePort = port_remote;
+        }
 
 
         private event Action<string> _onReceievedMessage;
@@ -37,28 +50,26 @@ namespace client
         }
 
 
-        public void Connect(string hostname, int port)
+        public void Connect()
         {
-            IP = new IPEndPoint(IPAddress.Parse(hostname), port);
-            client = new Socket(AddressFamily.InterNetwork, SocketType.Stream, ProtocolType.IP);
-
-            //string computerName = System.Environment.MachineName;
-
             try
             {
-                client.Connect(IP);
+                tcpClient = new TcpClient();
+                tcpClient.Connect(svIP, svPort);
                 Console.WriteLine("Ket noi thanh cong");
-                SendName();
+                SendInfo();
+
+                //luồng lắng nghe tin nhắn và lệnh
+                listenThread = new Thread(Receive);
+                listenThread.IsBackground = true;
+                listenThread.Start();
             }
             catch (Exception ex)
             {
-                MessageBox.Show(ex.Message, "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show(ex.Message, "Không thể kết nối đến server", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
 
-            Thread listen = new Thread(Receive);
-            listen.IsBackground = true;
-            listen.Start();
 
             //ClientProgram x = this;
             //lockScreen = new LockScreen(x);
@@ -70,19 +81,20 @@ namespace client
 
         public void Close()
         {
-            if (!client.Connected)
+            if (!tcpClient.Connected)
             {
-                client.Close();
+                tcpClient.Close();
             }
         }
         public void Receive()
         {
+            NetworkStream netStream = tcpClient.GetStream();
             try
             {
                 while (true)
                 {
-                    byte[] data = new byte[BUFFER_SIZE];
-                    client.Receive(data);
+                    byte[] data = new byte[tcpClient.ReceiveBufferSize];
+                    netStream.Read(data, 0, tcpClient.ReceiveBufferSize);
                     DataMethods dataMethods = DataMethods.Deserialize(data);
                     Console.WriteLine(dataMethods.Type + (string)dataMethods.Data);
 
@@ -100,6 +112,8 @@ namespace client
 
                         case DataMethodsType.RemoteDesktop:
                             {
+                                remoteThread = new Thread(RemoteDesktop);
+                                remoteThread.Start();
                                 break;
                             }
                     }
@@ -110,22 +124,59 @@ namespace client
             }
             catch
             {
-                Close();
+                listenThread.Abort();
             }
 
         }
 
+        private void RemoteDesktop()
+        {
+            TcpClient tcpRemote = new TcpClient();
+
+            try
+            {
+                tcpRemote.Connect(svIP, remotePort);
+            }
+            catch
+            {
+                MessageBox.Show("Không thể kết nối đến Server!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
+            NetworkStream netStream = tcpRemote.GetStream();
+            Bitmap bmpScreenshot = new Bitmap(Screen.PrimaryScreen.Bounds.Width, Screen.PrimaryScreen.Bounds.Height, PixelFormat.Format32bppArgb);
+            Graphics gfxScreenshot = Graphics.FromImage(bmpScreenshot);
+            gfxScreenshot.CompositingMode = System.Drawing.Drawing2D.CompositingMode.SourceCopy;
+            gfxScreenshot.CompositingQuality = System.Drawing.Drawing2D.CompositingQuality.HighSpeed;
+            gfxScreenshot.InterpolationMode = System.Drawing.Drawing2D.InterpolationMode.Low;
+            gfxScreenshot.SmoothingMode = System.Drawing.Drawing2D.SmoothingMode.None;
+            BinaryFormatter format = new BinaryFormatter();
+            Image image;
+            while (true)
+            {
+                try
+                {
+                    gfxScreenshot.CopyFromScreen(Screen.PrimaryScreen.Bounds.X, Screen.PrimaryScreen.Bounds.Y, 0, 0, Screen.PrimaryScreen.Bounds.Size, CopyPixelOperation.SourceCopy);
+                    image = bmpScreenshot;
+                    format.Serialize(netStream, image);
+                }
+                catch
+                {
+                    break;
+                }
+            }
+            remoteThread.Abort();
+        }
+
         public void Send(DataMethods data)
         {
+            NetworkStream netStream = tcpClient.GetStream();
             try
             {
                 if (data == null)
                 {
                     throw new ArgumentException("Dữ liệu null");
                 }
-
                 Console.WriteLine("Log: chao");
-                client.Send(data.Serialize());
+                netStream.Write(data.Serialize(), 0, data.Serialize().Length);
                 Console.WriteLine("Log: chao2");
             }
             catch (Exception ex)
@@ -133,11 +184,11 @@ namespace client
                 throw ex;
             }
         }
-        public void SendName()
+        public void SendInfo()
         {
             string name = Dns.GetHostName();
             Console.WriteLine("Ten pc la: " + name);
-            DataMethods dataSend = new DataMethods(DataMethodsType.SendNamePc, name);
+            DataMethods dataSend = new DataMethods(DataMethodsType.SendName, name);
             Console.WriteLine("Log: data send tu client: " + dataSend.Type.ToString() + dataSend.Data.ToString());
             //DataMethods dataMethods = new DataMethods(DataMethodsType.SendInfo, name);
 

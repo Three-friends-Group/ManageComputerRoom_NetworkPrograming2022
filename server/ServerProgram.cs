@@ -14,11 +14,15 @@ namespace server
     public class ServerProgram
     {
         private const int PORT = 9998;
-        private const int BUFFER_SIZE = 1024 * 5000;
 
-        IPEndPoint IP;
-        Socket server;
-        List<Socket> clientSockets;
+        IPAddress IP;
+        TcpListener server;
+        TcpClient client;
+        ClientInfo _clientInfo;
+
+
+        List<TcpClient> tcpClients;
+        Thread _thread;
 
         public ClientInfoManager clientInfoManager;
         private event Action<List<ClientInfo>> _onClientListChanged;
@@ -51,7 +55,10 @@ namespace server
 
         public ServerProgram()
         {
-            clientSockets = new List<Socket>();
+            _thread = new Thread(Connect);
+            _thread.Start();
+
+            tcpClients = new List<TcpClient>();
             clientInfoManager = new ClientInfoManager();
         }
 
@@ -63,69 +70,42 @@ namespace server
         /// </summary>
         public void Connect()
         {
-            IP = new IPEndPoint(IPAddress.Parse("127.0.0.1"), PORT);
-            server = new Socket(AddressFamily.InterNetwork, SocketType.Stream, ProtocolType.IP);
-
-            server.Bind(IP);
-            Thread listen = new Thread(StartAceptClient);
-            listen.IsBackground = true;
-            listen.Start();
-
-            //IPEndPoint serverIP = null;
-            //var hostName = Dns.GetHostEntry(Dns.GetHostName());
-            //foreach (var ip in hostName.AddressList)
-            //{
-            //    if (ip.AddressFamily == AddressFamily.InterNetwork)
-            //    {
-            //        serverIP = new IPEndPoint(ip, PORT);
-            //        break;
-            //    }
-            //}
-        }
-
-        /// <summary>
-        /// lắng nghe kết nối từ client
-        /// </summary>
-        public void StartAceptClient()
-        {
             try
             {
+                IP = IPAddress.Parse("127.0.0.1");
+                server = new TcpListener(IP, PORT);
+                server.Start();
                 while (true)
                 {
-                    server.Listen(100);
-                    Socket clientSocket = server.Accept();
-                    clientSockets.Add(clientSocket);
+                    client = server.AcceptTcpClient();
+                    tcpClients.Add(client);
 
 
-                    string[] endpoint = clientSocket.RemoteEndPoint.ToString().Split(':');
+                    string[] endpoint = client.Client.RemoteEndPoint.ToString().Split(':');
+                    MessageBox.Show(endpoint[0].ToString());
                     string clientIP = endpoint[0];
                     string clientPort = endpoint[1];
                     ClientInfo clientInfo = clientInfoManager.FindByIdAndPort(clientIP, clientPort);
                     if (clientInfo == null)
                     {
-                        clientInfo = new ClientInfo();
-                        clientInfoManager.Add(clientInfo);
+                        _clientInfo = new ClientInfo(client);
+                        _clientInfo._port = clientPort;
+                        _clientInfo._endpoint = client.Client.RemoteEndPoint as IPEndPoint;
+                        _clientInfo._clientIP = clientIP;
+                        Console.WriteLine("Log trong server" + _clientInfo._clientIP);
+                        Console.WriteLine("Log trong server" + _clientInfo._port);
+                        _clientInfo._status = ClientInfoStatus.Connected;
+                        clientInfoManager.Add(_clientInfo);
                     }
-
-                    byte[] data = new byte[BUFFER_SIZE];
-                    clientSocket.Receive(data);
-                    DataMethods dataMethods = (DataMethods)DataMethods.Deserialize(data);
-                    if (dataMethods.Type == DataMethodsType.SendNamePc)
+                    else
                     {
-                        clientInfo._name = dataMethods.Data as String;
+                        _clientInfo = clientInfo;
                     }
-                    clientInfo._port = clientPort;
-                    clientInfo._endpoint = clientSocket.RemoteEndPoint as IPEndPoint;
-                    clientInfo._clientIP = clientIP;
-                    clientInfo._status = ClientInfoStatus.Connected;
-                    clientInfo._socket = clientSocket;
 
-
-                    //luồng lắng nghe tin nhắn
-                    clientInfo._thread = new Thread(() => Receive(clientSocket, clientInfo));
-                    clientInfo._thread.IsBackground = true;
-                    clientInfo._thread.Start();
-
+                    //luồng lắng nghe tin nhắn và lệnh
+                    _clientInfo._thread = new Thread(listener);
+                    _clientInfo._thread.IsBackground = true;
+                    _clientInfo._thread.Start();
                     clientInfoManager.xuat();
                     if (_onClientListChanged != null)
                     {
@@ -135,54 +115,47 @@ namespace server
             }
             catch
             {
-                IP = new IPEndPoint(IPAddress.Any, PORT);
-                server = new Socket(AddressFamily.InterNetwork, SocketType.Stream, ProtocolType.IP);
+                int error = System.Runtime.InteropServices.Marshal.GetLastWin32Error();
+                if (error != 10004)
+                {
+                    MessageBox.Show("Lỗi khởi tạo Server!", "Thông báo!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
             }
         }
 
-
         /// <summary>
-        /// ngắt kết nối
+        /// lắng nghe kết nối từ client
         /// </summary>
-        public void Close()
+        public void listener()
         {
-            server.Close();
-        }
-
-        public void Receive(Socket client, ClientInfo clientInfo)
-        {
-            //Socket client = obj as Socket;
-            try
+            TcpClient tcpClient = client;
+            NetworkStream netStream = tcpClient.GetStream();
+            while (true)
             {
-                while (true)
+                try
                 {
-                    byte[] data = new byte[BUFFER_SIZE];
-                    client.Receive(data);
-
-                    DataMethods dataMethods = (DataMethods)DataMethods.Deserialize(data);
+                    byte[] buffer = new byte[client.ReceiveBufferSize];
+                    netStream.Read(buffer, 0, client.ReceiveBufferSize);
+                    DataMethods dataMethods = (DataMethods)DataMethods.Deserialize(buffer);
                     switch (dataMethods.Type)
                     {
+                        case DataMethodsType.SendName:
+                            {
+                                _clientInfo._name = dataMethods.Data as String;
+                                break;
+                            }
                         default:
                             break;
                     }
+
                 }
-            }
-            catch
-            {
-                clientInfo._status = ClientInfoStatus.Undefined;
-                if (_onClientListChanged != null)
+                catch
                 {
-                    _onClientListChanged(clientInfoManager.Clients);
+                    _clientInfo._thread.Abort();
                 }
-                clientSockets.Remove(client);
-                client.Close();
-                MessageBox.Show("Máy " + clientInfo._name + " đã thoát");
-                Console.WriteLine("Đóng client");
+
             }
-
         }
-
-
 
         #endregion
 

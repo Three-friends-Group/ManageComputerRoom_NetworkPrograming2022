@@ -22,9 +22,6 @@ namespace server
             serverProgram = new ServerProgram();
             serverProgram.OnClientListChanged += ServerProgram_OnClientListChanged;
             //serverProgram.OnServerStarted += HandleOnServerStarted;
-
-            serverProgram.Connect();
-
         }
 
         private void ServerProgram_OnClientListChanged(List<ClientInfo> clients)
