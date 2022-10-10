@@ -96,7 +96,7 @@ namespace client
                     byte[] data = new byte[tcpClient.ReceiveBufferSize];
                     netStream.Read(data, 0, tcpClient.ReceiveBufferSize);
                     DataMethods dataMethods = DataMethods.Deserialize(data);
-                    Console.WriteLine(dataMethods.Type + (string)dataMethods.Data);
+                    Console.WriteLine("Log: data gui den la: " + dataMethods.Type + (string)dataMethods.Data);
 
                     switch (dataMethods.Type)
                     {
@@ -116,6 +116,41 @@ namespace client
                                 remoteThread.Start();
                                 break;
                             }
+
+                        case DataMethodsType.MouseLeftRemoteClick:
+                            {
+                                SetCursorPos(int.Parse(dataMethods.Data.ToString().Split('|')[0]), int.Parse(dataMethods.Data.ToString().Split('|')[1]));
+                                mouseLeft(int.Parse(dataMethods.Data.ToString().Split('|')[0]), int.Parse(dataMethods.Data.ToString().Split('|')[1]));
+                                break;
+                            }
+                        case DataMethodsType.MouseRightRemoteClick:
+                            {
+                                SetCursorPos(int.Parse(dataMethods.Data.ToString().Split('|')[0]), int.Parse(dataMethods.Data.ToString().Split('|')[1]));
+                                mouseRight(int.Parse(dataMethods.Data.ToString().Split('|')[0]), int.Parse(dataMethods.Data.ToString().Split('|')[1]));
+                                break;
+                            }
+                        case DataMethodsType.MouseLeftRemoteDoubleClick:
+                            {
+                                SetCursorPos(int.Parse(dataMethods.Data.ToString().Split('|')[0]), int.Parse(dataMethods.Data.ToString().Split('|')[1]));
+                                mouseLeft(int.Parse(dataMethods.Data.ToString().Split('|')[0]), int.Parse(dataMethods.Data.ToString().Split('|')[1]));
+                                mouseLeft(int.Parse(dataMethods.Data.ToString().Split('|')[0]), int.Parse(dataMethods.Data.ToString().Split('|')[1]));
+                                break;
+                            }
+
+                        case DataMethodsType.MouseRightRemoteDoubleClick:
+                            {
+                                SetCursorPos(int.Parse(dataMethods.Data.ToString().Split('|')[0]), int.Parse(dataMethods.Data.ToString().Split('|')[1]));
+                                mouseRight(int.Parse(dataMethods.Data.ToString().Split('|')[0]), int.Parse(dataMethods.Data.ToString().Split('|')[1]));
+                                mouseRight(int.Parse(dataMethods.Data.ToString().Split('|')[0]), int.Parse(dataMethods.Data.ToString().Split('|')[1]));
+                                break;
+                            }
+
+                        case DataMethodsType.MouseRemoteMove:
+                            {
+                                SetCursorPos(int.Parse(dataMethods.Data.ToString().Split('|')[0]), int.Parse(dataMethods.Data.ToString().Split('|')[1]));
+                                break;
+                            }
+
                     }
 
 
@@ -202,6 +237,47 @@ namespace client
             //msg = "IP|" + ipAdd.ToString();
             //sendMsg(msg);
         }
+
+        #region mouse and key handle remote
+        [DllImport("user32.dll", CharSet = CharSet.Auto, CallingConvention = CallingConvention.StdCall)]
+        public static extern void mouse_event(uint dwFlags, uint dx, uint dy, uint cButtons, uint dwExtraInfo);
+        [DllImport("user32.dll", CharSet = CharSet.Auto, CallingConvention = CallingConvention.StdCall)]
+        public static extern uint keybd_event(byte bVk, byte bScan, int dwFlags, int dwExtraInfo);
+        [DllImport("user32.dll", CharSet = CharSet.Auto, CallingConvention = CallingConvention.StdCall)]
+        public static extern bool BlockInput([In, MarshalAs(UnmanagedType.Bool)] bool fBlockIt);
+        [DllImport("user32.dll", EntryPoint = "SetCursorPos")]
+        [return: MarshalAs(UnmanagedType.Bool)]
+        private static extern bool SetCursorPos(int X, int Y);
+
+        private const int MOUSEEVENTF_LEFTDOWN = 0x0002;
+        private const int MOUSEEVENTF_LEFTUP = 0x0004;
+        private const int MOUSEEVENTF_RIGHTDOWN = 0x0008;
+        private const int MOUSEEVENTF_RIGHTUP = 0x0010;
+        private const int KEYEVENTF_EXTENDEDKEY = 0x0001;
+        private const int KEYEVENTF_KEYUP = 0x0002;
+
+        private void mouseLeft(int x, int y)
+        {
+            mouse_event((uint)MOUSEEVENTF_LEFTDOWN, (uint)x, (uint)y, 0, 0);
+            mouse_event((uint)MOUSEEVENTF_LEFTUP, (uint)x, (uint)y, 0, 0);
+        }
+
+        private void mouseRight(int x, int y)
+        {
+            mouse_event((uint)MOUSEEVENTF_RIGHTDOWN, (uint)x, (uint)y, 0, 0);
+            mouse_event((uint)MOUSEEVENTF_RIGHTUP, (uint)x, (uint)y, 0, 0);
+        }
+
+        private void keyUp(Keys key)
+        {
+            keybd_event((byte)key, 0, KEYEVENTF_EXTENDEDKEY, 0);
+        }
+
+        private void keyDown(Keys key)
+        {
+            keybd_event((byte)key, 0, KEYEVENTF_KEYUP, 0);
+        }
+        #endregion
 
     }
 }

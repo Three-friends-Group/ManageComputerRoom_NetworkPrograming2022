@@ -15,6 +15,11 @@ namespace common
         SendName,
         SendMessageToOne,
         RemoteDesktop,
+        MouseLeftRemoteClick,
+        MouseRightRemoteClick,
+        MouseLeftRemoteDoubleClick,
+        MouseRightRemoteDoubleClick,
+        MouseRemoteMove,
     }
 
 

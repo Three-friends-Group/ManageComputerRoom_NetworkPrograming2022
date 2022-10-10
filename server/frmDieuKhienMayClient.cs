@@ -80,15 +80,14 @@ namespace server
             this.Close();
         }
 
-        public void SendMessage(ClientInfo clientInfo)
+        public void SendMessage(DataMethods dataMethod)
         {
-            if (clientInfo._status == ClientInfoStatus.Undefined || clientInfo._status == ClientInfoStatus.Disconnected)
+            if (_clientInfo._status == ClientInfoStatus.Undefined || _clientInfo._status == ClientInfoStatus.Disconnected)
             {
                 MessageBox.Show("Chức năng hiện tại không khả dụng");
                 return;
             }
             NetworkStream netStream = tcpClient.GetStream();
-            DataMethods dataMethod = new DataMethods(DataMethodsType.RemoteDesktop, "");
             Console.WriteLine("Log: gui message");
             netStream.Write(dataMethod.Serialize(), 0, dataMethod.Serialize().Length);
             netStream.Flush();
@@ -98,22 +97,37 @@ namespace server
         private void pictureBoxRemote_MouseClick(object sender, MouseEventArgs e)
         {
 
+            int x = e.X * w_image / pictureBoxRemote.Width;
+            int y = e.Y * h_image / pictureBoxRemote.Height;
+            if (e.Button == MouseButtons.Left)
+                SendMessage(new DataMethods(DataMethodsType.MouseLeftRemoteClick, x.ToString() + "|" + y.ToString()));
+            if (e.Button == MouseButtons.Right)
+                SendMessage(new DataMethods(DataMethodsType.MouseRightRemoteClick, x.ToString() + "|" + y.ToString()));
         }
 
         private void pictureBoxRemote_MouseDoubleClick(object sender, MouseEventArgs e)
         {
+            int x = e.X * w_image / pictureBoxRemote.Width;
+            int y = e.Y * h_image / pictureBoxRemote.Height;
+            if (e.Button == MouseButtons.Left)
+                SendMessage(new DataMethods(DataMethodsType.MouseLeftRemoteDoubleClick, x.ToString() + "|" + y.ToString()));
+            if (e.Button == MouseButtons.Right)
+                SendMessage(new DataMethods(DataMethodsType.MouseRightRemoteDoubleClick, x.ToString() + "|" + y.ToString()));
+        }
 
+
+        private void pictureBoxRemote_MouseMove(object sender, MouseEventArgs e)
+        {
+            int x = e.X * w_image / pictureBoxRemote.Width;
+            int y = e.Y * h_image / pictureBoxRemote.Height;
+            SendMessage(new DataMethods(DataMethodsType.MouseRemoteMove, x.ToString() + "|" + y.ToString()));
         }
 
         private void frmDieuKhienMayClient_Load(object sender, EventArgs e)
         {
-            SendMessage(_clientInfo);
+            SendMessage(new DataMethods(DataMethodsType.RemoteDesktop, ""));
             listener();
         }
 
-        private void pictureBoxRemote_MouseMove(object sender, MouseEventArgs e)
-        {
-
-        }
     }
 }
