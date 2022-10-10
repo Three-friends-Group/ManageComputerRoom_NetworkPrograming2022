@@ -22,6 +22,7 @@ namespace common.ChatItems
         {
             message = msg;
             InitializeComponent();
+            AdjustHeight();
         }
 
         public string Message
