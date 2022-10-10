@@ -20,6 +20,11 @@ namespace common
         MouseLeftRemoteDoubleClick,
         MouseRightRemoteDoubleClick,
         MouseRemoteMove,
+        KeyRemotePress,
+        Shutdown,
+        Restart,
+        LockMouseAndKeyBoard,
+        LockScreen
     }
 
 

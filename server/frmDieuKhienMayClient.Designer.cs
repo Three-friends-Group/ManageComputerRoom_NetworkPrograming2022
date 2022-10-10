@@ -138,6 +138,7 @@
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Điều khiển client";
             this.Load += new System.EventHandler(this.frmDieuKhienMayClient_Load);
+            this.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.frmDieuKhienMayClient_KeyPress);
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxRemote)).EndInit();

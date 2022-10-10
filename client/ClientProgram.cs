@@ -14,6 +14,7 @@ using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Runtime.InteropServices;
+using System.Diagnostics;
 
 namespace client
 {
@@ -150,6 +151,43 @@ namespace client
                                 SetCursorPos(int.Parse(dataMethods.Data.ToString().Split('|')[0]), int.Parse(dataMethods.Data.ToString().Split('|')[1]));
                                 break;
                             }
+                        case DataMethodsType.KeyRemotePress:
+                            {
+                                keyDown((Keys)int.Parse(dataMethods.Data.ToString()));
+                                keyUp((Keys)int.Parse(dataMethods.Data.ToString()));
+                                break;
+                            }
+                        case DataMethodsType.Shutdown:
+                            {
+                                Process process = new Process();
+                                ProcessStartInfo proccessInfo = new ProcessStartInfo();
+                                proccessInfo.WindowStyle = ProcessWindowStyle.Hidden;
+                                proccessInfo.FileName = "shutdown.exe";
+                                proccessInfo.Arguments = "/f -s -t 00";
+                                process.StartInfo = proccessInfo;
+                                process.Start();
+                                this.Close();
+                                break;
+                            }
+                        case DataMethodsType.Restart:
+                            {
+                                Process process = new Process();
+                                ProcessStartInfo proccessInfo = new ProcessStartInfo();
+                                proccessInfo.WindowStyle = ProcessWindowStyle.Hidden;
+                                proccessInfo.FileName = "shutdown.exe";
+                                proccessInfo.Arguments = "/f -r -t 00";
+                                process.StartInfo = proccessInfo;
+                                process.Start();
+                                this.Close();
+
+                                break;
+                            }
+                        case DataMethodsType.LockMouseAndKeyBoard:
+                            {
+                                MessageBox.Show("Lock keyboard and mouse");
+                                break;
+                            }
+
 
                     }
 

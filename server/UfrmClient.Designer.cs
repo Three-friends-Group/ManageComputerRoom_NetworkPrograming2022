@@ -91,6 +91,7 @@
             this.lockMouseAndKeyboardClient.Name = "lockMouseAndKeyboardClient";
             this.lockMouseAndKeyboardClient.Size = new System.Drawing.Size(265, 26);
             this.lockMouseAndKeyboardClient.Text = "Khoá chuột và bàn phím";
+            this.lockMouseAndKeyboardClient.Click += new System.EventHandler(this.lockMouseAndKeyboardClient_Click);
             // 
             // restartClient
             // 
@@ -98,6 +99,7 @@
             this.restartClient.Name = "restartClient";
             this.restartClient.Size = new System.Drawing.Size(265, 26);
             this.restartClient.Text = "Khởi động lại";
+            this.restartClient.Click += new System.EventHandler(this.restartClient_Click);
             // 
             // shutDownClient
             // 
@@ -105,6 +107,7 @@
             this.shutDownClient.Name = "shutDownClient";
             this.shutDownClient.Size = new System.Drawing.Size(265, 26);
             this.shutDownClient.Text = "Tắt máy";
+            this.shutDownClient.Click += new System.EventHandler(this.shutDownClient_Click);
             // 
             // lblName
             // 

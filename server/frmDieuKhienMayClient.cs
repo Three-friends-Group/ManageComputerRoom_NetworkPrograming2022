@@ -115,6 +115,11 @@ namespace server
                 SendMessage(new DataMethods(DataMethodsType.MouseRightRemoteDoubleClick, x.ToString() + "|" + y.ToString()));
         }
 
+        private void frmDieuKhienMayClient_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            SendMessage(new DataMethods(DataMethodsType.KeyRemotePress, (int)e.KeyChar));
+
+        }
 
         private void pictureBoxRemote_MouseMove(object sender, MouseEventArgs e)
         {
