@@ -47,6 +47,8 @@
             this.panel3 = new System.Windows.Forms.Panel();
             this.panel2 = new System.Windows.Forms.Panel();
             this.pnContainer = new System.Windows.Forms.Panel();
+            this.serviceClient1 = new client.ServiceClient();
+            this.projectInstaller1 = new client.ProjectInstaller();
             this.menuStrip1.SuspendLayout();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
@@ -155,7 +157,7 @@
             // 
             this.splitContainer1.Panel2.Controls.Add(this.btnSend);
             this.splitContainer1.Size = new System.Drawing.Size(852, 75);
-            this.splitContainer1.SplitterDistance = 654;
+            this.splitContainer1.SplitterDistance = 618;
             this.splitContainer1.SplitterWidth = 40;
             this.splitContainer1.TabIndex = 4;
             this.splitContainer1.SplitterMoved += new System.Windows.Forms.SplitterEventHandler(this.splitContainer1_SplitterMoved);
@@ -169,7 +171,7 @@
             this.txtMessage.Multiline = true;
             this.txtMessage.Name = "txtMessage";
             this.txtMessage.ScrollBars = System.Windows.Forms.ScrollBars.Both;
-            this.txtMessage.Size = new System.Drawing.Size(654, 75);
+            this.txtMessage.Size = new System.Drawing.Size(618, 75);
             this.txtMessage.TabIndex = 0;
             // 
             // btnSend
@@ -184,7 +186,7 @@
             this.btnSend.ForeColor = System.Drawing.Color.White;
             this.btnSend.Location = new System.Drawing.Point(0, 0);
             this.btnSend.Name = "btnSend";
-            this.btnSend.Size = new System.Drawing.Size(158, 75);
+            this.btnSend.Size = new System.Drawing.Size(194, 75);
             this.btnSend.TabIndex = 2;
             this.btnSend.Text = "Gửi";
             this.btnSend.Click += new System.EventHandler(this.btnSend_Click);
@@ -244,6 +246,11 @@
             this.pnContainer.Size = new System.Drawing.Size(944, 456);
             this.pnContainer.TabIndex = 7;
             // 
+            // serviceClient1
+            // 
+            this.serviceClient1.ExitCode = 0;
+            this.serviceClient1.ServiceName = "ServiceClient";
+            // 
             // frmClient
             // 
             this.AcceptButton = this.btnSend;
@@ -293,5 +300,7 @@
         private Guna.UI2.WinForms.Guna2Button btnSend;
         private Guna.UI2.WinForms.Guna2Separator guna2Separator1;
         private System.Windows.Forms.Panel pnContainer;
+        private client.ServiceClient serviceClient1;
+        private client.ProjectInstaller projectInstaller1;
     }
 }

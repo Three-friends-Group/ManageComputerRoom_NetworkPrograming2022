@@ -1,34 +1,35 @@
-﻿using client;
+﻿using server;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
-using System.Drawing;
+using System.Diagnostics;
+using System.IO;
 using System.Linq;
-using System.Net;
+using System.ServiceProcess;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace server
+namespace client
 {
-    public partial class frmClient : Form
+    partial class ServiceClient : ServiceBase
     {
-
         ClientProgram clientProgram;
         private const int SERVER_PORT = 9998;
         private const int PORT_REMOTE = 9992;
-        private const string ip = "192.168.1.8";
+        private const string ip = "127.0.0.1";
         LockScreen lockScreen;
 
 
-        public frmClient()
+        public ServiceClient()
         {
             InitializeComponent();
-            this.ShowInTaskbar = false;
+        }
 
-            CheckForIllegalCrossThreadCalls = false;
-
+        protected override void OnStart(string[] args)
+        {
+            // TODO: Add code here to start your service.
             clientProgram = new ClientProgram(ip, SERVER_PORT, PORT_REMOTE);
             clientProgram.OnReceiveMessage += ClientProgram_OnReceiveMessage;
             clientProgram.OnRemoteDesktop += ClientProgram_OnRemoteDesktop;
@@ -37,72 +38,39 @@ namespace server
 
             clientProgram.Connect();
         }
+
         private void OnLockScreen()
         {
-            if (this.InvokeRequired)
-            {
-                this.BeginInvoke((MethodInvoker)delegate ()
-                {
-                    lockScreen = new LockScreen();
+            lockScreen = new LockScreen();
 
-                    lockScreen.ShowDialog();
-                });
-            }
-            else
-            {
-                lockScreen = new LockScreen();
-                lockScreen.Show();
-            }
+            lockScreen.ShowDialog();
         }
 
         private void OnUnLockScreen()
         {
-            if (this.InvokeRequired)
-            {
-                this.BeginInvoke((MethodInvoker)delegate ()
-                {
-                    lockScreen.close();
-                });
-            }
-            else
-            {
-                lockScreen.close();
-            }
+            lockScreen.close();
         }
 
         private void ClientProgram_OnRemoteDesktop(string obj)
         {
-            if (this.InvokeRequired)
-            {
-                this.BeginInvoke((MethodInvoker)delegate ()
-                {
-                });
-            }
-            else
-            {
-            }
         }
 
         private void ClientProgram_OnReceiveMessage(string obj)
         {
-            if (this.InvokeRequired)
-            {
-                this.BeginInvoke((MethodInvoker)delegate ()
-                {
-                    common.Uitls.AddIncomming(obj, pnContainer);
-                });
-            }
-            else
-            {
-                common.Uitls.AddIncomming(obj, pnContainer);
-            }
+            //        common.Uitls.AddIncomming(obj, pnContainer);
+            //    });
+            //}
+            //else
+            //{
+            //    common.Uitls.AddIncomming(obj, pnContainer);
+            //}
         }
 
 
         // close
         private void toolThoat_SV_Click(object sender, EventArgs e)
         {
-            this.Close();
+            //this.Close();
         }
 
         private void frmClient_FormClosed(object sender, FormClosedEventArgs e)
@@ -123,13 +91,18 @@ namespace server
         private void btnSend_Click(object sender, EventArgs e)
         {
 
-            common.Uitls.AddOutGoing(txtMessage.Text, pnContainer);
-            txtMessage.Text = String.Empty;
+            //common.Uitls.AddOutGoing(txtMessage.Text, pnContainer);
+            //txtMessage.Text = String.Empty;
         }
 
         private void pnlContainer_Paint(object sender, PaintEventArgs e)
         {
 
+        }
+
+        protected override void OnStop()
+        {
+            // TODO: Add code here to perform any tear-down necessary to stop your service.
         }
     }
 }

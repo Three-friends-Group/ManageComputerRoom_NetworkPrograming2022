@@ -128,8 +128,28 @@ namespace client
 
         public void close()
         {
-            TaskManager(@"/C REG add HKCU\Software\Microsoft\Windows\CurrentVersion\Policies\System /v DisableTaskMgr /t REG_DWORD /d 0 /f");
             _Show();
+            gkh.HookedKeys.Remove(Keys.Alt);
+            gkh.HookedKeys.Remove(Keys.Tab);
+            gkh.HookedKeys.Remove(Keys.Space);
+            gkh.HookedKeys.Remove(Keys.LWin);
+            gkh.HookedKeys.Remove(Keys.LControlKey);
+            gkh.HookedKeys.Remove(Keys.Escape);
+            gkh.HookedKeys.Remove(Keys.LMenu);
+            gkh.HookedKeys.Remove(Keys.RWin);
+            gkh.HookedKeys.Remove(Keys.Decimal);
+            gkh.HookedKeys.Remove(Keys.Enter);
+            gkh.HookedKeys.Remove(Keys.Menu);
+            gkh.HookedKeys.Remove(Keys.Modifiers);
+            gkh.HookedKeys.Remove(Keys.Multiply);
+            gkh.HookedKeys.Remove(Keys.ProcessKey);
+            gkh.HookedKeys.Remove(Keys.RControlKey);
+            gkh.HookedKeys.Remove(Keys.RMenu);
+            gkh.HookedKeys.Remove(Keys.Packet);
+            gkh.HookedKeys.Remove(Keys.Delete);
+            gkh.HookedKeys.Remove(Keys.RButton);
+            gkh.HookedKeys.Remove(Keys.LButton);
+            TaskManager(@"/C REG add HKCU\Software\Microsoft\Windows\CurrentVersion\Policies\System /v DisableTaskMgr /t REG_DWORD /d 0 /f");
             Close();
         }
     }

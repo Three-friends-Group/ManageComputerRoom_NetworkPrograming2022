@@ -72,7 +72,7 @@ namespace server
         {
             try
             {
-                IP = IPAddress.Parse("127.0.0.1");
+                IP = IPAddress.Parse("192.168.1.8");
                 server = new TcpListener(IP, PORT);
                 server.Start();
                 while (true)

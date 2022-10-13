@@ -16,16 +16,17 @@ using System.Windows.Forms;
 using System.Runtime.InteropServices;
 using System.Diagnostics;
 using server;
+using System.IO;
 
 namespace client
 {
     public class ClientProgram
     {
-        TcpClient tcpClient;
+        TcpClient tcpClient, tcpRemote;
+        NetworkStream netStreamRemote;
         IPAddress svIP;
         int svPort, remotePort;
-        Thread listenThread, remoteThread;
-        LockScreen lockScreen;
+        Thread listenThread, remoteThread, rmEventsThread;
 
         public ClientProgram(string ip, int server_port, int port_remote)
         {
@@ -87,13 +88,13 @@ namespace client
         }
         public void Receive()
         {
-            NetworkStream netStream = tcpClient.GetStream();
+            NetworkStream netStreamRm = tcpClient.GetStream();
             try
             {
                 while (true)
                 {
                     byte[] data = new byte[tcpClient.ReceiveBufferSize];
-                    netStream.Read(data, 0, tcpClient.ReceiveBufferSize);
+                    netStreamRm.Read(data, 0, tcpClient.ReceiveBufferSize);
                     DataMethods dataMethods = DataMethods.Deserialize(data);
                     Console.WriteLine("Log: data gui den la: " + dataMethods.Type + (string)dataMethods.Data);
 
@@ -111,50 +112,29 @@ namespace client
 
                         case DataMethodsType.RemoteDesktop:
                             {
-                                remoteThread = new Thread(RemoteDesktop);
-                                remoteThread.Start();
+
+                                try
+                                {
+                                    tcpRemote = new TcpClient();
+                                    tcpRemote.Connect(svIP, remotePort);
+                                    netStreamRemote = tcpRemote.GetStream();
+                                    rmEventsThread = new Thread(WaitForCommands);
+                                    rmEventsThread.IsBackground = true;
+                                    rmEventsThread.Start();
+                                    Thread.Sleep(3000);
+                                    remoteThread = new Thread(RemoteDesktop);
+                                    remoteThread.IsBackground = true;
+                                    remoteThread.Start();
+                                }
+                                catch
+                                {
+                                    MessageBox.Show("Không thể kết nối đến Server!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+
+                                }
+
                                 break;
                             }
 
-                        case DataMethodsType.MouseLeftRemoteClick:
-                            {
-                                SetCursorPos(int.Parse(dataMethods.Data.ToString().Split('|')[0]), int.Parse(dataMethods.Data.ToString().Split('|')[1]));
-                                mouseLeft(int.Parse(dataMethods.Data.ToString().Split('|')[0]), int.Parse(dataMethods.Data.ToString().Split('|')[1]));
-                                break;
-                            }
-                        case DataMethodsType.MouseRightRemoteClick:
-                            {
-                                SetCursorPos(int.Parse(dataMethods.Data.ToString().Split('|')[0]), int.Parse(dataMethods.Data.ToString().Split('|')[1]));
-                                mouseRight(int.Parse(dataMethods.Data.ToString().Split('|')[0]), int.Parse(dataMethods.Data.ToString().Split('|')[1]));
-                                break;
-                            }
-                        case DataMethodsType.MouseLeftRemoteDoubleClick:
-                            {
-                                SetCursorPos(int.Parse(dataMethods.Data.ToString().Split('|')[0]), int.Parse(dataMethods.Data.ToString().Split('|')[1]));
-                                mouseLeft(int.Parse(dataMethods.Data.ToString().Split('|')[0]), int.Parse(dataMethods.Data.ToString().Split('|')[1]));
-                                mouseLeft(int.Parse(dataMethods.Data.ToString().Split('|')[0]), int.Parse(dataMethods.Data.ToString().Split('|')[1]));
-                                break;
-                            }
-
-                        case DataMethodsType.MouseRightRemoteDoubleClick:
-                            {
-                                SetCursorPos(int.Parse(dataMethods.Data.ToString().Split('|')[0]), int.Parse(dataMethods.Data.ToString().Split('|')[1]));
-                                mouseRight(int.Parse(dataMethods.Data.ToString().Split('|')[0]), int.Parse(dataMethods.Data.ToString().Split('|')[1]));
-                                mouseRight(int.Parse(dataMethods.Data.ToString().Split('|')[0]), int.Parse(dataMethods.Data.ToString().Split('|')[1]));
-                                break;
-                            }
-
-                        case DataMethodsType.MouseRemoteMove:
-                            {
-                                SetCursorPos(int.Parse(dataMethods.Data.ToString().Split('|')[0]), int.Parse(dataMethods.Data.ToString().Split('|')[1]));
-                                break;
-                            }
-                        case DataMethodsType.KeyRemotePress:
-                            {
-                                keyDown((Keys)int.Parse(dataMethods.Data.ToString()));
-                                keyUp((Keys)int.Parse(dataMethods.Data.ToString()));
-                                break;
-                            }
                         case DataMethodsType.Shutdown:
                             {
                                 Process process = new Process();
@@ -217,19 +197,130 @@ namespace client
 
         }
 
+        private void WaitForCommands()
+        {
+
+            while (true)
+            {
+                try
+                {
+                    byte[] data = new byte[tcpClient.ReceiveBufferSize];
+                    netStreamRemote.Read(data, 0, tcpClient.ReceiveBufferSize);
+                    DataMethods dataMethods = DataMethods.Deserialize(data);
+                    switch (dataMethods.Type)
+                    {
+                        case DataMethodsType.LCLICK:
+                            {
+                                //SetCursorPos(int.Parse(dataMethods.Data.ToString().Split('|')[0]), int.Parse(dataMethods.Data.ToString().Split('|')[1]));
+                                //mouseLeft(int.Parse(dataMethods.Data.ToString().Split('|')[0]), int.Parse(dataMethods.Data.ToString().Split('|')[1]));
+                                break;
+                            }
+                        case DataMethodsType.RCLICK:
+                            {
+                                RemoteEvent.mouse_event(RemoteEvent.MOUSEEVENTF_RIGHTDOWN | RemoteEvent.MOUSEEVENTF_LEFTUP, Cursor.Position.X, Cursor.Position.Y, 0, 0);
+
+                                //SetCursorPos(int.Parse(dataMethods.Data.ToString().Split('|')[0]), int.Parse(dataMethods.Data.ToString().Split('|')[1]));
+                                //mouseRight(int.Parse(dataMethods.Data.ToString().Split('|')[0]), int.Parse(dataMethods.Data.ToString().Split('|')[1]));
+                                break;
+                            }
+                        case DataMethodsType.LDCLICK:
+                            {
+                                //SetCursorPos(int.Parse(dataMethods.Data.ToString().Split('|')[0]), int.Parse(dataMethods.Data.ToString().Split('|')[1]));
+                                //mouseLeft(int.Parse(dataMethods.Data.ToString().Split('|')[0]), int.Parse(dataMethods.Data.ToString().Split('|')[1]));
+                                //mouseLeft(int.Parse(dataMethods.Data.ToString().Split('|')[0]), int.Parse(dataMethods.Data.ToString().Split('|')[1]));
+                                break;
+                            }
+
+                        case DataMethodsType.RDCLICK:
+                            {
+                                //SetCursorPos(int.Parse(dataMethods.Data.ToString().Split('|')[0]), int.Parse(dataMethods.Data.ToString().Split('|')[1]));
+                                //mouseRight(int.Parse(dataMethods.Data.ToString().Split('|')[0]), int.Parse(dataMethods.Data.ToString().Split('|')[1]));
+                                //mouseRight(int.Parse(dataMethods.Data.ToString().Split('|')[0]), int.Parse(dataMethods.Data.ToString().Split('|')[1]));
+                                break;
+                            }
+
+                        case DataMethodsType.LDOWN:
+                            {
+                                RemoteEvent.mouse_event(RemoteEvent.MOUSEEVENTF_LEFTDOWN, Cursor.Position.X, Cursor.Position.Y, 0, 0);
+
+                                break;
+                            }
+                        case DataMethodsType.LUP:
+                            {
+                                RemoteEvent.mouse_event(RemoteEvent.MOUSEEVENTF_LEFTUP, Cursor.Position.X, Cursor.Position.Y, 0, 0);
+                                break;
+                            }
+                        case DataMethodsType.RDOWN:
+                            {
+                                RemoteEvent.mouse_event(RemoteEvent.MOUSEEVENTF_RIGHTDOWN, Cursor.Position.X, Cursor.Position.Y, 0, 0);
+                                break;
+                            }
+                        case DataMethodsType.RUP:
+                            {
+                                RemoteEvent.mouse_event(RemoteEvent.MOUSEEVENTF_RIGHTUP, Cursor.Position.X, Cursor.Position.Y, 0, 0);
+
+                                break;
+                            }
+
+                        case DataMethodsType.MOVE:
+                            {
+                                //RemoteEvent.(, );
+                                int xPos = 0, yPos = 0;
+                                try
+                                {
+                                    xPos = int.Parse(dataMethods.Data.ToString().Split('|')[0]);
+                                    yPos = int.Parse(dataMethods.Data.ToString().Split('|')[1]);
+                                    Cursor.Position = new Point(xPos, yPos);
+                                }
+                                catch
+                                {
+
+                                }
+                                break;
+                            }
+                        case DataMethodsType.KEYPRESS:
+                            {
+
+                                Console.WriteLine("Log: data gui den la: " + dataMethods.Type + dataMethods.Data.ToString().GetType());
+                                Console.WriteLine(Convert.ToChar(dataMethods.Data.ToString()));
+                                Console.WriteLine(Convert.ToChar(dataMethods.Data.ToString()).GetType());
+                                RemoteEvent.keyDown((Keys)Convert.ToChar(dataMethods.Data.ToString()));
+                                //RemoteEvent.keyDown((Keys)dataMethods.Data);
+                                break;
+                            }
+                        case DataMethodsType.KEYUP:
+                            {
+                                String dataReceive = dataMethods.Data.ToString();
+                                if (dataReceive.StartsWith("{CAPSLOCK}"))
+                                {
+                                    RemoteEvent.CapsLock();
+                                    break;
+                                }
+                                else if (dataReceive.StartsWith("{NUMLOCK}"))
+                                {
+                                    RemoteEvent.NumLock();
+                                    break;
+                                }
+                                else if (dataReceive.StartsWith("CTRLALTDELETE"))
+                                {
+                                    RemoteEvent.ShowTaskmanager();
+                                    break;
+                                }
+                                break;
+                            }
+
+
+                    }
+                }
+                catch (Exception e)
+                {
+                    MessageBox.Show(e.Message);
+                }
+            }
+        }
+
         private void RemoteDesktop()
         {
-            TcpClient tcpRemote = new TcpClient();
-
-            try
-            {
-                tcpRemote.Connect(svIP, remotePort);
-            }
-            catch
-            {
-                MessageBox.Show("Không thể kết nối đến Server!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-            }
-            NetworkStream netStream = tcpRemote.GetStream();
             Bitmap bmpScreenshot = new Bitmap(Screen.PrimaryScreen.Bounds.Width, Screen.PrimaryScreen.Bounds.Height, PixelFormat.Format32bppArgb);
             Graphics gfxScreenshot = Graphics.FromImage(bmpScreenshot);
             gfxScreenshot.CompositingMode = System.Drawing.Drawing2D.CompositingMode.SourceCopy;
@@ -244,7 +335,7 @@ namespace client
                 {
                     gfxScreenshot.CopyFromScreen(Screen.PrimaryScreen.Bounds.X, Screen.PrimaryScreen.Bounds.Y, 0, 0, Screen.PrimaryScreen.Bounds.Size, CopyPixelOperation.SourceCopy);
                     image = bmpScreenshot;
-                    format.Serialize(netStream, image);
+                    format.Serialize(netStreamRemote, image);
                 }
                 catch
                 {
@@ -291,46 +382,6 @@ namespace client
             //sendMsg(msg);
         }
 
-        #region mouse and key handle remote
-        [DllImport("user32.dll", CharSet = CharSet.Auto, CallingConvention = CallingConvention.StdCall)]
-        public static extern void mouse_event(uint dwFlags, uint dx, uint dy, uint cButtons, uint dwExtraInfo);
-        [DllImport("user32.dll", CharSet = CharSet.Auto, CallingConvention = CallingConvention.StdCall)]
-        public static extern uint keybd_event(byte bVk, byte bScan, int dwFlags, int dwExtraInfo);
-        [DllImport("user32.dll", CharSet = CharSet.Auto, CallingConvention = CallingConvention.StdCall)]
-        public static extern bool BlockInput([In, MarshalAs(UnmanagedType.Bool)] bool fBlockIt);
-        [DllImport("user32.dll", EntryPoint = "SetCursorPos")]
-        [return: MarshalAs(UnmanagedType.Bool)]
-        private static extern bool SetCursorPos(int X, int Y);
-
-        private const int MOUSEEVENTF_LEFTDOWN = 0x0002;
-        private const int MOUSEEVENTF_LEFTUP = 0x0004;
-        private const int MOUSEEVENTF_RIGHTDOWN = 0x0008;
-        private const int MOUSEEVENTF_RIGHTUP = 0x0010;
-        private const int KEYEVENTF_EXTENDEDKEY = 0x0001;
-        private const int KEYEVENTF_KEYUP = 0x0002;
-
-        private void mouseLeft(int x, int y)
-        {
-            mouse_event((uint)MOUSEEVENTF_LEFTDOWN, (uint)x, (uint)y, 0, 0);
-            mouse_event((uint)MOUSEEVENTF_LEFTUP, (uint)x, (uint)y, 0, 0);
-        }
-
-        private void mouseRight(int x, int y)
-        {
-            mouse_event((uint)MOUSEEVENTF_RIGHTDOWN, (uint)x, (uint)y, 0, 0);
-            mouse_event((uint)MOUSEEVENTF_RIGHTUP, (uint)x, (uint)y, 0, 0);
-        }
-
-        private void keyUp(Keys key)
-        {
-            keybd_event((byte)key, 0, KEYEVENTF_EXTENDEDKEY, 0);
-        }
-
-        private void keyDown(Keys key)
-        {
-            keybd_event((byte)key, 0, KEYEVENTF_KEYUP, 0);
-        }
-        #endregion
 
     }
 }
