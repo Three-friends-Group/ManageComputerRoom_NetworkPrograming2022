@@ -6,6 +6,7 @@ using System.Net.Sockets;
 using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
+using System.Windows.Forms;
 
 namespace server
 {
@@ -25,6 +26,7 @@ namespace server
         public string _port { get; set; }
         //public int _portRemote { get; set; }
         public bool _mouse = false;
+        public bool _isLockScreen = false;
 
         public ClientInfoStatus _status { get; set; }
         public TcpClient _tcpClient { get; set; }
@@ -65,6 +67,7 @@ namespace server
             this._port = client._port;
             this._tcpClient = client._tcpClient;
             this._thread = client._thread;
+            this._isLockScreen = false;
         }
 
         public override bool Equals(object obj)

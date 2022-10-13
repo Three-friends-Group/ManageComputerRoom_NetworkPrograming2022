@@ -1,9 +1,11 @@
-﻿using System;
+﻿using common;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.Linq;
+using System.Net.Sockets;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -21,7 +23,23 @@ namespace server
             CheckForIllegalCrossThreadCalls = false;
             serverProgram = new ServerProgram();
             serverProgram.OnClientListChanged += ServerProgram_OnClientListChanged;
+            serverProgram.OnClientOnlineListChanged += ServerProgram_OnClientOnlineListChanged;
             //serverProgram.OnServerStarted += HandleOnServerStarted;
+        }
+
+        private void ServerProgram_OnClientOnlineListChanged(List<ClientInfo> clientsOnline)
+        {
+            if (this.InvokeRequired)
+            {
+                this.BeginInvoke((MethodInvoker)delegate ()
+                {
+                    RenderAmountOfClientsOnline(clientsOnline);
+                });
+            }
+            else
+            {
+                RenderAmountOfClientsOnline(clientsOnline);
+            }
         }
 
         private void ServerProgram_OnClientListChanged(List<ClientInfo> clients)
@@ -30,11 +48,13 @@ namespace server
             {
                 this.BeginInvoke((MethodInvoker)delegate ()
                 {
+                    RenderAmountOfClients(clients);
                     RenderClientList(clients);
                 });
             }
             else
             {
+                RenderAmountOfClients(clients);
                 RenderClientList(clients);
             }
         }
@@ -43,6 +63,14 @@ namespace server
 
         #region methods
 
+        void RenderAmountOfClients(List<ClientInfo> clients)
+        {
+            lblSLMay.Text = clients.Count.ToString();
+        }
+        void RenderAmountOfClientsOnline(List<ClientInfo> clients)
+        {
+            lblSLOnline.Text = clients.Count.ToString();
+        }
 
         void RenderClientList(List<ClientInfo> clients)
         {
@@ -85,11 +113,6 @@ namespace server
 
         #region events
         // mở form cấu hình
-        private void btnCauHinh_SV_Click(object sender, EventArgs e)
-        {
-            var form_CauHinh = new frmCauHinh_SV();
-            form_CauHinh.Show();
-        }
 
         // mở form gửi tin nhắn gửi tất cả qua nút click button
         private void btnGuiTinNhanAll_SV_Click(object sender, EventArgs e)
@@ -104,10 +127,6 @@ namespace server
             Application.Exit();
         }
 
-        private void pictureBox4_Click(object sender, EventArgs e)
-        {
-
-        }
 
         private void btnKhoiDongLai_SV_Click(object sender, EventArgs e)
         {
@@ -115,5 +134,39 @@ namespace server
         }
 
         #endregion
+
+        private void tool_RestartAll_Click(object sender, EventArgs e)
+        {
+            serverProgram.SendMessageAll(new DataMethods(DataMethodsType.Restart, ""));
+
+        }
+
+        private void tool_shutDown_All_Click(object sender, EventArgs e)
+        {
+            serverProgram.SendMessageAll(new DataMethods(DataMethodsType.Shutdown, ""));
+        }
+
+        private void tool_lockAll_Click(object sender, EventArgs e)
+        {
+
+            serverProgram.lockScreenAll();
+
+        }
+
+        private void toolThoat_SV_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void tool_cauHinhSV_Click(object sender, EventArgs e)
+        {
+            var form_CauHinh = new frmCauHinh_SV();
+            DialogResult result = form_CauHinh.ShowDialog();
+            if (result != DialogResult.OK) return;
+            string FirstIP = form_CauHinh.IPBegin;
+            string LastIP = form_CauHinh.IPEnd;
+            string SubnetMask = form_CauHinh.SubnetMask;
+            serverProgram.SetClientInfoList(FirstIP, LastIP, SubnetMask);
+        }
     }
 }

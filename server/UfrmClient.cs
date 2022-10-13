@@ -16,13 +16,12 @@ namespace server
     public partial class UfrmClient : UserControl
     {
 
-        private bool isLockScreeen;
         public ClientInfo _clientInfo { get; private set; }
         public UfrmClient(ClientInfo clientInfo)
         {
             InitializeComponent();
             _clientInfo = clientInfo;
-            isLockScreeen = false;
+            _clientInfo._isLockScreen = false;
             SetContent(_clientInfo);
         }
 
@@ -178,17 +177,17 @@ namespace server
 
         private void lockScreen_Click(object sender, EventArgs e)
         {
-            if (isLockScreeen)
+            if (_clientInfo._isLockScreen)
             {
                 lockScreen.Text = "Khóa màn hình";
                 SendMessage(new DataMethods(DataMethodsType.UnlockScreen, ""));
-                isLockScreeen = false;
+                _clientInfo._isLockScreen = false;
             }
             else
             {
                 lockScreen.Text = "Mở khóa màn hình";
                 SendMessage(new DataMethods(DataMethodsType.LockScreen, ""));
-                isLockScreeen = true;
+                _clientInfo._isLockScreen = true;
             }
 
         }

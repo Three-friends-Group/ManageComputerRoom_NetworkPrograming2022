@@ -233,9 +233,7 @@ namespace client
 
                         case DataMethodsType.RDCLICK:
                             {
-                                //SetCursorPos(int.Parse(dataMethods.Data.ToString().Split('|')[0]), int.Parse(dataMethods.Data.ToString().Split('|')[1]));
-                                //mouseRight(int.Parse(dataMethods.Data.ToString().Split('|')[0]), int.Parse(dataMethods.Data.ToString().Split('|')[1]));
-                                //mouseRight(int.Parse(dataMethods.Data.ToString().Split('|')[0]), int.Parse(dataMethods.Data.ToString().Split('|')[1]));
+                                RemoteEvent.mouse_event(RemoteEvent.MOUSEEVENTF_LEFTDOWN, Cursor.Position.X, Cursor.Position.Y, 0, 0);
                                 break;
                             }
 
@@ -281,11 +279,11 @@ namespace client
                         case DataMethodsType.KEYPRESS:
                             {
 
-                                Console.WriteLine("Log: data gui den la: " + dataMethods.Type + dataMethods.Data.ToString().GetType());
-                                Console.WriteLine(Convert.ToChar(dataMethods.Data.ToString()));
-                                Console.WriteLine(Convert.ToChar(dataMethods.Data.ToString()).GetType());
-                                RemoteEvent.keyDown((Keys)Convert.ToChar(dataMethods.Data.ToString()));
-                                //RemoteEvent.keyDown((Keys)dataMethods.Data);
+                                //Console.WriteLine("Log: data gui den la: " + dataMethods.Type + dataMethods.Data.ToString().GetType());
+                                //Console.WriteLine(Convert.ToChar(dataMethods.Data.ToString()));
+                                //Console.WriteLine(Convert.ToChar(dataMethods.Data.ToString()).GetType());
+                                //RemoteEvent.keyDown((Keys)Convert.ToChar(dataMethods.Data.ToString()));
+                                ////RemoteEvent.keyDown((Keys)dataMethods.Data);
                                 break;
                             }
                         case DataMethodsType.KEYUP:

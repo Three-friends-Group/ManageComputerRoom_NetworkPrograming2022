@@ -169,9 +169,9 @@ namespace server
 
         private void frmDieuKhienMayClient_KeyPress_1(object sender, KeyPressEventArgs e)
         {
-            Console.WriteLine("Log: key la: " + e.KeyChar);
-            //Console.WriteLine("Log: ma key la: " + (int)e.KeyChar);
-            SafeSendValue(new DataMethods(DataMethodsType.KEYPRESS, e.KeyChar.GetType()));
+            //Console.WriteLine("Log: key la: " + e.KeyChar);
+            ////Console.WriteLine("Log: ma key la: " + (int)e.KeyChar);
+            //SafeSendValue(new DataMethods(DataMethodsType.KEYPRESS, (int)e.KeyChar));
         }
 
 

@@ -131,5 +131,10 @@ namespace server
         {
 
         }
+
+        private void frmClient_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            clientProgram.Close();
+        }
     }
 }
