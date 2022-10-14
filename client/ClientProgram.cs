@@ -50,6 +50,13 @@ namespace client
             remove { _onRemoteDesktop -= value; }
         }
 
+        private event Action<string> _onServerOff;
+        public event Action<string> OnServerOff
+        {
+            add { _onServerOff += value; }
+            remove { _onServerOff -= value; }
+        }
+
         public Action OnLockScreen;
         public Action OnUnLockScreen;
 
@@ -121,7 +128,7 @@ namespace client
                                     rmEventsThread = new Thread(WaitForCommands);
                                     rmEventsThread.IsBackground = true;
                                     rmEventsThread.Start();
-                                    Thread.Sleep(3000);
+                                    Thread.Sleep(500);
                                     remoteThread = new Thread(RemoteDesktop);
                                     remoteThread.IsBackground = true;
                                     remoteThread.Start();
@@ -134,6 +141,14 @@ namespace client
 
                                 break;
                             }
+                        case DataMethodsType.ExitRemote:
+                            {
+                                tcpRemote.Close();
+                                rmEventsThread.Abort();
+                                remoteThread.Abort();
+                                break;
+                            }
+
 
                         case DataMethodsType.Shutdown:
                             {
@@ -182,6 +197,17 @@ namespace client
                                 break;
 
                             }
+                        case DataMethodsType.Exit:
+                            {
+                                Close();
+                                if (_onServerOff != null)
+                                {
+                                    _onServerOff("");
+                                }
+
+                                break;
+                            }
+
 
 
                     }
@@ -284,26 +310,6 @@ namespace client
                                 //Console.WriteLine(Convert.ToChar(dataMethods.Data.ToString()).GetType());
                                 //RemoteEvent.keyDown((Keys)Convert.ToChar(dataMethods.Data.ToString()));
                                 ////RemoteEvent.keyDown((Keys)dataMethods.Data);
-                                break;
-                            }
-                        case DataMethodsType.KEYUP:
-                            {
-                                String dataReceive = dataMethods.Data.ToString();
-                                if (dataReceive.StartsWith("{CAPSLOCK}"))
-                                {
-                                    RemoteEvent.CapsLock();
-                                    break;
-                                }
-                                else if (dataReceive.StartsWith("{NUMLOCK}"))
-                                {
-                                    RemoteEvent.NumLock();
-                                    break;
-                                }
-                                else if (dataReceive.StartsWith("CTRLALTDELETE"))
-                                {
-                                    RemoteEvent.ShowTaskmanager();
-                                    break;
-                                }
                                 break;
                             }
 

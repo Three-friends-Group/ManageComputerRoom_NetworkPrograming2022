@@ -31,7 +31,9 @@ namespace common
         Restart,
         LockMouseAndKeyBoard,
         LockScreen,
-        UnlockScreen
+        UnlockScreen,
+        Exit,
+        ExitRemote
     }
 
 

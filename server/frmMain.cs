@@ -168,5 +168,10 @@ namespace server
             string SubnetMask = form_CauHinh.SubnetMask;
             serverProgram.SetClientInfoList(FirstIP, LastIP, SubnetMask);
         }
+
+        private void frmMain_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            serverProgram.Disconnect();
+        }
     }
 }

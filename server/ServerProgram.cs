@@ -18,7 +18,7 @@ namespace server
         IPAddress IP;
         TcpListener server;
         TcpClient clientTcp;
-        ClientInfo _clientInfo;
+        ClientInfo clientInfo;
 
 
         List<TcpClient> tcpClients;
@@ -86,37 +86,33 @@ namespace server
                 {
                     clientTcp = server.AcceptTcpClient();
                     tcpClients.Add(clientTcp);
-
-
                     string[] endpoint = clientTcp.Client.RemoteEndPoint.ToString().Split(':');
-                    MessageBox.Show(endpoint[0].ToString());
                     string clientIP = endpoint[0];
                     string clientPort = endpoint[1];
-                    ClientInfo clientInfo = clientInfoManager.FindByIdAndPort(clientIP, clientPort);
+                    clientInfo = clientInfoManager.Find(clientIP);
                     if (clientInfo == null)
                     {
-                        _clientInfo = new ClientInfo(clientTcp);
-                        _clientInfo._port = clientPort;
-                        _clientInfo._endpoint = clientTcp.Client.RemoteEndPoint as IPEndPoint;
-                        _clientInfo._clientIP = clientIP;
-                        Console.WriteLine("Log trong server" + _clientInfo._clientIP);
-                        Console.WriteLine("Log trong server" + _clientInfo._port);
-                        _clientInfo._status = ClientInfoStatus.Connected;
-                        clientInfoManager.AddTail(_clientInfo);
-                        clientInfoManager.AddTailOnline(_clientInfo);
+                        clientInfo = new ClientInfo(clientTcp);
+                        clientInfo._port = clientPort;
+                        clientInfo._endpoint = clientTcp.Client.RemoteEndPoint as IPEndPoint;
+                        clientInfo._clientIP = clientIP;
+                        clientInfo._status = ClientInfoStatus.Connected;
+                        clientInfoManager.AddTail(clientInfo);
+                        clientInfoManager.AddTailOnline(clientInfo);
                         clientInfoManager.xuat();
                     }
                     else
                     {
+                        clientInfo._tcpClient = clientTcp;
                         clientInfo._status = ClientInfoStatus.Connected;
-                        _clientInfo = clientInfo;
-                        clientInfoManager.AddOnline(_clientInfo);
+                        //clientInfoManager.AddOnline(clientInfo);
+                        clientInfoManager.AddTailOnline(clientInfo);
                     }
 
                     //luồng lắng nghe tin nhắn và lệnh
-                    _clientInfo._thread = new Thread(listener);
-                    _clientInfo._thread.IsBackground = true;
-                    _clientInfo._thread.Start();
+                    clientInfo._thread = new Thread(listener);
+                    clientInfo._thread.IsBackground = true;
+                    clientInfo._thread.Start();
                     clientInfoManager.xuat();
                     if (_onClientListChanged != null)
                     {
@@ -136,6 +132,8 @@ namespace server
                 {
                     MessageBox.Show("Lỗi khởi tạo Server!", "Thông báo!", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
+                clientTcp.Close();
+                server.Stop();
             }
         }
 
@@ -157,7 +155,11 @@ namespace server
                     {
                         case DataMethodsType.SendName:
                             {
-                                _clientInfo._name = dataMethods.Data as String;
+                                clientInfo._name = dataMethods.Data as String;
+                                if (_onClientListChanged != null)
+                                {
+                                    _onClientListChanged(clientInfoManager.Clients);
+                                }
                                 break;
                             }
                         default:
@@ -168,9 +170,8 @@ namespace server
                 catch
                 {
 
-                    _clientInfo._status = ClientInfoStatus.Undefined;
-                    clientInfoManager.RemoveClientsOnline(_clientInfo);
-                    clientInfoManager.xuat();
+                    clientInfo._status = ClientInfoStatus.Undefined;
+                    clientInfoManager.RemoveClientsOnline(clientInfo);
                     if (_onClientListChanged != null)
                     {
                         _onClientListChanged(clientInfoManager.Clients);
@@ -181,12 +182,13 @@ namespace server
                         _onClientOnlineListChanged(clientInfoManager.ClientsOnline);
                     }
                     clientTcp.Close();
-                    MessageBox.Show("Máy " + _clientInfo._name + " đã thoát");
                     Console.WriteLine("Đóng client");
-                    _clientInfo._thread.Abort();
+                    clientInfo._thread.Abort();
                 }
 
             }
+            clientTcp.Close();
+
         }
         public void SetClientInfoList(string FirstIP, string LastIP, string SubnetMask)
         {
@@ -196,6 +198,13 @@ namespace server
                 _onClientListChanged(clientInfoManager.Clients);
             if (_onClientOnlineListChanged != null)
                 _onClientOnlineListChanged(clientInfoManager.ClientsOnline);
+        }
+
+        public void Disconnect()
+        {
+            SendMessage(new DataMethods(DataMethodsType.Exit, ""), clientInfo);
+            clientTcp.Close();
+            server.Stop();
         }
 
 

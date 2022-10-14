@@ -49,6 +49,7 @@ namespace server
                 tcpClientRM = tcpListener.AcceptTcpClient();
                 Console.WriteLine("Log: start3");
                 _thread = new Thread(DoListener);
+                _thread.IsBackground = true;
                 Console.WriteLine("Log: start4");
                 _thread.Start();
             }
@@ -182,6 +183,9 @@ namespace server
 
         private void frmDieuKhienMayClient_FormClosing(object sender, FormClosingEventArgs e)
         {
+            SendMessage(new DataMethods(DataMethodsType.ExitRemote, ""));
+            tcpClientRM.Close();
+            tcpListener.Stop();
 
         }
 

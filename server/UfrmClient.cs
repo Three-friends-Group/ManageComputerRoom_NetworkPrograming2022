@@ -101,7 +101,6 @@ namespace server
         private void chatClient_on_click(object sender, EventArgs e)
         {
 
-            MessageBox.Show(_clientInfo._name + _clientInfo._clientIP + _clientInfo._port + _clientInfo._status);
             if (CheckClientConnected())
             {
                 var form_TroChuyen = new frmChatOne(_clientInfo);
@@ -120,7 +119,6 @@ namespace server
         /// <param name="e"></param>
         private void directClient_on_click(object sender, EventArgs e)
         {
-            MessageBox.Show(_clientInfo._name + _clientInfo._clientIP + _clientInfo._port + _clientInfo._status);
             if (CheckClientConnected())
             {
                 var form_DieuKhien = new frmDieuKhienMayClient(_clientInfo);
@@ -134,14 +132,10 @@ namespace server
 
         private void UfrmClient_Click(object sender, EventArgs e)
         {
-            MessageBox.Show(sender.ToString());
-            MessageBox.Show(_clientInfo._name + _clientInfo._clientIP + _clientInfo._port);
         }
 
         private void UfrmClient_DoubleClick(object sender, EventArgs e)
         {
-            MessageBox.Show(sender.ToString());
-            MessageBox.Show(_clientInfo._name + _clientInfo._clientIP + _clientInfo._port);
         }
 
         #endregion

@@ -34,9 +34,16 @@ namespace server
             clientProgram.OnRemoteDesktop += ClientProgram_OnRemoteDesktop;
             clientProgram.OnUnLockScreen = OnUnLockScreen;
             clientProgram.OnLockScreen = OnLockScreen;
+            clientProgram.OnServerOff += ClientProgram_OnServerOff;
 
             clientProgram.Connect();
         }
+
+        private void ClientProgram_OnServerOff(string obj)
+        {
+            Application.Exit();
+        }
+
         private void OnLockScreen()
         {
             if (this.InvokeRequired)
