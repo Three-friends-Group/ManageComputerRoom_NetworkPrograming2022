@@ -31,7 +31,6 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmClient));
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.menuToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.toolKhoaChuot_SV = new System.Windows.Forms.ToolStripMenuItem();
             this.toolTroChuyen_SV = new System.Windows.Forms.ToolStripMenuItem();
             this.toolKhoiDong_SV = new System.Windows.Forms.ToolStripMenuItem();
             this.tool_Tatmay_SV = new System.Windows.Forms.ToolStripMenuItem();
@@ -74,7 +73,6 @@
             // 
             this.menuToolStripMenuItem.BackColor = System.Drawing.SystemColors.ActiveCaption;
             this.menuToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.toolKhoaChuot_SV,
             this.toolTroChuyen_SV,
             this.toolKhoiDong_SV,
             this.tool_Tatmay_SV,
@@ -84,39 +82,34 @@
             this.menuToolStripMenuItem.Size = new System.Drawing.Size(58, 24);
             this.menuToolStripMenuItem.Text = "Menu";
             // 
-            // toolKhoaChuot_SV
-            // 
-            this.toolKhoaChuot_SV.Image = ((System.Drawing.Image)(resources.GetObject("toolKhoaChuot_SV.Image")));
-            this.toolKhoaChuot_SV.Name = "toolKhoaChuot_SV";
-            this.toolKhoaChuot_SV.Size = new System.Drawing.Size(243, 26);
-            this.toolKhoaChuot_SV.Text = "Khoá chuột và bàn phím";
-            // 
             // toolTroChuyen_SV
             // 
             this.toolTroChuyen_SV.Image = ((System.Drawing.Image)(resources.GetObject("toolTroChuyen_SV.Image")));
             this.toolTroChuyen_SV.Name = "toolTroChuyen_SV";
-            this.toolTroChuyen_SV.Size = new System.Drawing.Size(243, 26);
+            this.toolTroChuyen_SV.Size = new System.Drawing.Size(184, 26);
             this.toolTroChuyen_SV.Text = "Trò chuyện";
             // 
             // toolKhoiDong_SV
             // 
             this.toolKhoiDong_SV.Image = ((System.Drawing.Image)(resources.GetObject("toolKhoiDong_SV.Image")));
             this.toolKhoiDong_SV.Name = "toolKhoiDong_SV";
-            this.toolKhoiDong_SV.Size = new System.Drawing.Size(243, 26);
+            this.toolKhoiDong_SV.Size = new System.Drawing.Size(184, 26);
             this.toolKhoiDong_SV.Text = "Khởi động lại";
+            this.toolKhoiDong_SV.Click += new System.EventHandler(this.toolKhoiDong_SV_Click);
             // 
             // tool_Tatmay_SV
             // 
             this.tool_Tatmay_SV.Image = ((System.Drawing.Image)(resources.GetObject("tool_Tatmay_SV.Image")));
             this.tool_Tatmay_SV.Name = "tool_Tatmay_SV";
-            this.tool_Tatmay_SV.Size = new System.Drawing.Size(243, 26);
+            this.tool_Tatmay_SV.Size = new System.Drawing.Size(184, 26);
             this.tool_Tatmay_SV.Text = "Tắt máy";
+            this.tool_Tatmay_SV.Click += new System.EventHandler(this.tool_Tatmay_SV_Click);
             // 
             // toolThoat_SV
             // 
             this.toolThoat_SV.Image = ((System.Drawing.Image)(resources.GetObject("toolThoat_SV.Image")));
             this.toolThoat_SV.Name = "toolThoat_SV";
-            this.toolThoat_SV.Size = new System.Drawing.Size(243, 26);
+            this.toolThoat_SV.Size = new System.Drawing.Size(184, 26);
             this.toolThoat_SV.Text = "Thoát";
             this.toolThoat_SV.Click += new System.EventHandler(this.toolThoat_SV_Click);
             // 
@@ -155,7 +148,7 @@
             // 
             this.splitContainer1.Panel2.Controls.Add(this.btnSend);
             this.splitContainer1.Size = new System.Drawing.Size(852, 75);
-            this.splitContainer1.SplitterDistance = 582;
+            this.splitContainer1.SplitterDistance = 510;
             this.splitContainer1.SplitterWidth = 40;
             this.splitContainer1.TabIndex = 4;
             this.splitContainer1.SplitterMoved += new System.Windows.Forms.SplitterEventHandler(this.splitContainer1_SplitterMoved);
@@ -169,7 +162,7 @@
             this.txtMessage.Multiline = true;
             this.txtMessage.Name = "txtMessage";
             this.txtMessage.ScrollBars = System.Windows.Forms.ScrollBars.Both;
-            this.txtMessage.Size = new System.Drawing.Size(582, 75);
+            this.txtMessage.Size = new System.Drawing.Size(510, 75);
             this.txtMessage.TabIndex = 0;
             // 
             // btnSend
@@ -184,7 +177,7 @@
             this.btnSend.ForeColor = System.Drawing.Color.White;
             this.btnSend.Location = new System.Drawing.Point(0, 0);
             this.btnSend.Name = "btnSend";
-            this.btnSend.Size = new System.Drawing.Size(230, 75);
+            this.btnSend.Size = new System.Drawing.Size(302, 75);
             this.btnSend.TabIndex = 2;
             this.btnSend.Text = "Gửi";
             this.btnSend.Click += new System.EventHandler(this.btnSend_Click);
@@ -278,7 +271,6 @@
 
         private System.Windows.Forms.MenuStrip menuStrip1;
         private System.Windows.Forms.ToolStripMenuItem menuToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem toolKhoaChuot_SV;
         private System.Windows.Forms.ToolStripMenuItem toolTroChuyen_SV;
         private System.Windows.Forms.ToolStripMenuItem toolKhoiDong_SV;
         private System.Windows.Forms.ToolStripMenuItem tool_Tatmay_SV;

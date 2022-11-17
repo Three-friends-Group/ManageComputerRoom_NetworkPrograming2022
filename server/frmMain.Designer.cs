@@ -123,7 +123,7 @@
             // 
             this.tool_cauHinhSV.Image = ((System.Drawing.Image)(resources.GetObject("tool_cauHinhSV.Image")));
             this.tool_cauHinhSV.Name = "tool_cauHinhSV";
-            this.tool_cauHinhSV.Size = new System.Drawing.Size(228, 24);
+            this.tool_cauHinhSV.Size = new System.Drawing.Size(232, 26);
             this.tool_cauHinhSV.Text = "Cấu hình";
             this.tool_cauHinhSV.Click += new System.EventHandler(this.tool_cauHinhSV_Click);
             // 
@@ -131,14 +131,15 @@
             // 
             this.tool_chatAll.Image = ((System.Drawing.Image)(resources.GetObject("tool_chatAll.Image")));
             this.tool_chatAll.Name = "tool_chatAll";
-            this.tool_chatAll.Size = new System.Drawing.Size(228, 24);
+            this.tool_chatAll.Size = new System.Drawing.Size(232, 26);
             this.tool_chatAll.Text = "Gửi tin nhắn đến tất cả";
+            this.tool_chatAll.Click += new System.EventHandler(this.tool_chatAll_Click);
             // 
             // tool_RestartAll
             // 
             this.tool_RestartAll.Image = ((System.Drawing.Image)(resources.GetObject("tool_RestartAll.Image")));
             this.tool_RestartAll.Name = "tool_RestartAll";
-            this.tool_RestartAll.Size = new System.Drawing.Size(228, 24);
+            this.tool_RestartAll.Size = new System.Drawing.Size(232, 26);
             this.tool_RestartAll.Text = "Khởi động lại tất cả";
             this.tool_RestartAll.Click += new System.EventHandler(this.tool_RestartAll_Click);
             // 
@@ -146,14 +147,14 @@
             // 
             this.tool_shutDown_All.Image = ((System.Drawing.Image)(resources.GetObject("tool_shutDown_All.Image")));
             this.tool_shutDown_All.Name = "tool_shutDown_All";
-            this.tool_shutDown_All.Size = new System.Drawing.Size(228, 24);
+            this.tool_shutDown_All.Size = new System.Drawing.Size(232, 26);
             this.tool_shutDown_All.Text = "Tắt máy tất cả";
             this.tool_shutDown_All.Click += new System.EventHandler(this.tool_shutDown_All_Click);
             // 
             // tool_lockAll
             // 
             this.tool_lockAll.Name = "tool_lockAll";
-            this.tool_lockAll.Size = new System.Drawing.Size(228, 24);
+            this.tool_lockAll.Size = new System.Drawing.Size(232, 26);
             this.tool_lockAll.Text = "Khóa tất cả";
             this.tool_lockAll.Click += new System.EventHandler(this.tool_lockAll_Click);
             // 
@@ -161,7 +162,7 @@
             // 
             this.toolThoat_SV.Image = ((System.Drawing.Image)(resources.GetObject("toolThoat_SV.Image")));
             this.toolThoat_SV.Name = "toolThoat_SV";
-            this.toolThoat_SV.Size = new System.Drawing.Size(228, 24);
+            this.toolThoat_SV.Size = new System.Drawing.Size(232, 26);
             this.toolThoat_SV.Text = "Thoát";
             this.toolThoat_SV.Click += new System.EventHandler(this.toolThoat_SV_Click);
             // 

@@ -31,19 +31,20 @@ namespace server
             add { _onClientListChanged += value; }
             remove { _onClientListChanged -= value; }
         }
+
+
+        private event Action<String> _onRecieveMessageFromClient;
+        public event Action<String> OnRecieveMessageFromClient
+        {
+            add { _onRecieveMessageFromClient += value; }
+            remove { _onRecieveMessageFromClient -= value; }
+        }
         private event Action<List<ClientInfo>> _onClientOnlineListChanged;
         public event Action<List<ClientInfo>> OnClientOnlineListChanged
         {
             add { _onClientOnlineListChanged += value; }
             remove { _onClientOnlineListChanged -= value; }
         }
-
-        //event Action<IPEndPoint> _onServerStarted;
-        //public event Action<IPEndPoint> OnServerStarted
-        //{
-        //    add { _onServerStarted += value; }
-        //    remove { _onServerStarted -= value; }
-        //}
 
         static private ServerProgram _instance;
         static public ServerProgram Instance
@@ -79,7 +80,7 @@ namespace server
         {
             try
             {
-                IP = IPAddress.Parse("192.168.1.8");
+                IP = IPAddress.Parse("10.0.247.201");
                 server = new TcpListener(IP, PORT);
                 server.Start();
                 while (true)
@@ -162,6 +163,14 @@ namespace server
                                 }
                                 break;
                             }
+                        case DataMethodsType.SendMessageToServer:
+                            {
+                                if (_onRecieveMessageFromClient != null)
+                                {
+                                    _onRecieveMessageFromClient(dataMethods.Data as String);
+                                }
+                                break;
+                            }
                         default:
                             break;
                     }
@@ -184,10 +193,10 @@ namespace server
                     clientTcp.Close();
                     Console.WriteLine("Đóng client");
                     clientInfo._thread.Abort();
+                    clientTcp.Close();
                 }
 
             }
-            clientTcp.Close();
 
         }
         public void SetClientInfoList(string FirstIP, string LastIP, string SubnetMask)
@@ -211,11 +220,17 @@ namespace server
 
         public void SendMessage(DataMethods dataMethod, ClientInfo clientInfo)
         {
-            NetworkStream netStream = clientInfo._tcpClient.GetStream();
-            Console.WriteLine("Log: gui message");
-            netStream.Write(dataMethod.Serialize(), 0, dataMethod.Serialize().Length);
-            netStream.Flush();
-            Console.WriteLine("Log: gui xong");
+            try
+            {
+                NetworkStream netStream = clientInfo._tcpClient.GetStream(); Console.WriteLine("Log: gui message");
+                netStream.Write(dataMethod.Serialize(), 0, dataMethod.Serialize().Length);
+                netStream.Flush();
+                Console.WriteLine("Log: gui xong");
+            }
+            catch
+            {
+
+            }
         }
         public void SendMessageAll(DataMethods dataMethod)
         {
@@ -223,6 +238,11 @@ namespace server
             {
                 SendMessage(dataMethod, clientInfo);
             }
+        }
+
+        public void chatAll(string message)
+        {
+            SendMessageAll(new DataMethods(DataMethodsType.SendMessageToAll, message));
         }
 
         public void lockScreenAll()

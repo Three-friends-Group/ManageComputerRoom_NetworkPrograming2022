@@ -13,7 +13,8 @@ namespace common
     {
         Undefined,
         SendName,
-        SendMessageToOne,
+        SendMessageToServer,
+        SendMessageToAll,
         RemoteDesktop,
         LCLICK,
         RCLICK,
