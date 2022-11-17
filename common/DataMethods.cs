@@ -15,6 +15,23 @@ namespace common
         SendName,
         SendMessageToOne,
         RemoteDesktop,
+        LCLICK,
+        RCLICK,
+        LDCLICK,
+        RDCLICK,
+        LDOWN,
+        RDOWN,
+        LUP,
+        RUP,
+        MOVE,
+        KEYPRESS,
+        KEYUP,
+        KEYDOWN,
+        Shutdown,
+        Restart,
+        LockMouseAndKeyBoard,
+        LockScreen,
+        UnlockScreen
     }
 
 

@@ -1,4 +1,5 @@
 ﻿using common;
+using server.Properties;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -40,18 +41,19 @@ namespace server
 
             try
             {
-                tcpListener = new TcpListener(svIP, serverPortRM);
+                Console.WriteLine("Log: start0");
+                tcpListener = new TcpListener(IPAddress.Any, serverPortRM);
+                Console.WriteLine("Log: start1");
                 tcpListener.Start();
-                Console.WriteLine("Log: start");
+                Console.WriteLine("Log: start2");
                 tcpClientRM = tcpListener.AcceptTcpClient();
-                Console.WriteLine("Log: start");
+                Console.WriteLine("Log: start3");
                 _thread = new Thread(DoListener);
-                Console.WriteLine("Log: start");
+                Console.WriteLine("Log: start4");
                 _thread.Start();
             }
             catch
             {
-
                 MessageBox.Show("loi");
             }
         }
@@ -80,40 +82,115 @@ namespace server
             this.Close();
         }
 
-        public void SendMessage(ClientInfo clientInfo)
+        public void SendMessage(DataMethods dataMethod)
         {
-            if (clientInfo._status == ClientInfoStatus.Undefined || clientInfo._status == ClientInfoStatus.Disconnected)
+            if (_clientInfo._status == ClientInfoStatus.Undefined || _clientInfo._status == ClientInfoStatus.Disconnected)
             {
                 MessageBox.Show("Chức năng hiện tại không khả dụng");
                 return;
             }
             NetworkStream netStream = tcpClient.GetStream();
-            DataMethods dataMethod = new DataMethods(DataMethodsType.RemoteDesktop, "");
             Console.WriteLine("Log: gui message");
             netStream.Write(dataMethod.Serialize(), 0, dataMethod.Serialize().Length);
             netStream.Flush();
             Console.WriteLine("Log: gui xong");
         }
 
+        public void SafeSendValue(DataMethods dataMethod)
+        {
+            if (_clientInfo._status == ClientInfoStatus.Undefined || _clientInfo._status == ClientInfoStatus.Disconnected)
+            {
+                MessageBox.Show("Chức năng hiện tại không khả dụng");
+                return;
+            }
+            NetworkStream netStream = tcpClientRM.GetStream();
+            netStream.Write(dataMethod.Serialize(), 0, dataMethod.Serialize().Length);
+            netStream.Flush();
+        }
+
+
+
+
+        /// <summary>
+        /// xu ly chuot
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void pictureBoxRemote_MouseClick(object sender, MouseEventArgs e)
         {
 
+            int x = e.X * w_image / pictureBoxRemote.Width;
+            int y = e.Y * h_image / pictureBoxRemote.Height;
+            if (e.Button == MouseButtons.Left)
+                //SafeSendValue(new DataMethods(DataMethodsType.MouseLeftRemoteClick, x.ToString() + "|" + y.ToString()));
+                SafeSendValue(new DataMethods(DataMethodsType.LCLICK, ""));
+            else if (e.Button == MouseButtons.Right)
+                //SafeSendValue(new DataMethods(DataMethodsType.MouseRightRemoteClick, x.ToString() + "|" + y.ToString()));
+                SafeSendValue(new DataMethods(DataMethodsType.RCLICK, ""));
+        }
+        private void pictureBoxRemote_MouseDown(object sender, MouseEventArgs e)
+        {
+            if (e.Button == MouseButtons.Left)
+                //SafeSendValue(new DataMethods(DataMethodsType.MouseLeftRemoteClick, x.ToString() + "|" + y.ToString()));
+                SafeSendValue(new DataMethods(DataMethodsType.LDOWN, ""));
+            else if (e.Button == MouseButtons.Right)
+                //SafeSendValue(new DataMethods(DataMethodsType.MouseRightRemoteClick, x.ToString() + "|" + y.ToString()));
+                SafeSendValue(new DataMethods(DataMethodsType.RDOWN, ""));
+
+        }
+
+        private void pictureBoxRemote_MouseUp(object sender, MouseEventArgs e)
+        {
+            if (e.Button == MouseButtons.Left)
+                //SafeSendValue(new DataMethods(DataMethodsType.MouseLeftRemoteClick, x.ToString() + "|" + y.ToString()));
+                SafeSendValue(new DataMethods(DataMethodsType.LUP, ""));
+            else if (e.Button == MouseButtons.Right)
+                //SafeSendValue(new DataMethods(DataMethodsType.MouseRightRemoteClick, x.ToString() + "|" + y.ToString()));
+                SafeSendValue(new DataMethods(DataMethodsType.RUP, ""));
+        }
+        private void pictureBoxRemote_MouseMove(object sender, MouseEventArgs e)
+        {
+            int x = e.X * w_image / pictureBoxRemote.Width;
+            int y = e.Y * h_image / pictureBoxRemote.Height;
+            SafeSendValue(new DataMethods(DataMethodsType.MOVE, x.ToString() + "|" + y.ToString()));
         }
 
         private void pictureBoxRemote_MouseDoubleClick(object sender, MouseEventArgs e)
         {
+            int x = e.X * w_image / pictureBoxRemote.Width;
+            int y = e.Y * h_image / pictureBoxRemote.Height;
+            if (e.Button == MouseButtons.Left)
+                SafeSendValue(new DataMethods(DataMethodsType.LDCLICK, x.ToString() + "|" + y.ToString()));
+            if (e.Button == MouseButtons.Right)
+                SafeSendValue(new DataMethods(DataMethodsType.RDCLICK, x.ToString() + "|" + y.ToString()));
+            //SafeSendValue(new DataMethods(DataMethodsType.MouseRightRemoteClick, ""));
+        }
+
+
+        private void frmDieuKhienMayClient_KeyPress_1(object sender, KeyPressEventArgs e)
+        {
+            //Console.WriteLine("Log: key la: " + e.KeyChar);
+            ////Console.WriteLine("Log: ma key la: " + (int)e.KeyChar);
+            //SafeSendValue(new DataMethods(DataMethodsType.KEYPRESS, (int)e.KeyChar));
+        }
+
+
+        //private void frmDieuKhienMayClient_KeyUp(object sender, KeyEventArgs e)
+        //{
+        //    SafeSendValue(new DataMethods(DataMethodsType.KEYUP, (int)e.KeyCode));
+        //}
+
+        private void frmDieuKhienMayClient_FormClosing(object sender, FormClosingEventArgs e)
+        {
 
         }
+
 
         private void frmDieuKhienMayClient_Load(object sender, EventArgs e)
         {
-            SendMessage(_clientInfo);
+            SendMessage(new DataMethods(DataMethodsType.RemoteDesktop, ""));
             listener();
         }
 
-        private void pictureBoxRemote_MouseMove(object sender, MouseEventArgs e)
-        {
-
-        }
     }
 }

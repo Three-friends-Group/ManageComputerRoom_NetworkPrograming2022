@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Runtime.Remoting;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -8,10 +9,9 @@ namespace server
 {
     public class ClientInfoManager
     {
-        private const string DEFAULT_IP = "0.0.0.0";
 
         private readonly List<ClientInfo> _clients;
-        private bool _generateByNumberOfClients;
+        private readonly List<ClientInfo> _clientsOnline;
 
 
         public List<ClientInfo> Clients
@@ -21,10 +21,17 @@ namespace server
                 return new List<ClientInfo>(_clients);
             }
         }
+        public List<ClientInfo> ClientsOnline
+        {
+            get
+            {
+                return new List<ClientInfo>(_clientsOnline);
+            }
+        }
         public ClientInfoManager()
         {
-            _generateByNumberOfClients = false;
             _clients = new List<ClientInfo>();
+            _clientsOnline = new List<ClientInfo>();
         }
 
         public void xuat()
@@ -33,11 +40,13 @@ namespace server
             {
                 Console.WriteLine("Log: tung client la" + client);
             }
+            foreach (ClientInfo client in _clientsOnline)
+            {
+                Console.WriteLine("Log: tung client la" + client);
+            }
         }
-        public ClientInfoManager(string firstIP, string lastIP, string subnetMask)
+        public void AddRange(string firstIP, string lastIP, string subnetMask)
         {
-            _generateByNumberOfClients = false;
-            _clients = new List<ClientInfo>();
             try
             {
                 string s1 = "", s2 = "";
@@ -80,53 +89,40 @@ namespace server
             }
         }
 
-        public ClientInfoManager(int numberOfClients)
-        {
-            _generateByNumberOfClients = true;
-            _clients = new List<ClientInfo>();
-            for (int i = 0; i < numberOfClients; i++)
-            {
-                ClientInfo clientInfo = new ClientInfo();
-                clientInfo._clientIP = DEFAULT_IP;
-                _clients.Add(clientInfo);
-            }
-        }
-        public int? IndexOf(ClientInfo clientInfo)
+        public int? IndexOf(ClientInfo clientInfo, List<ClientInfo> clients)
         {
             for (int i = 0; i < _clients.Count; i++)
             {
-                if (_clients[i]._clientIP.Equals(clientInfo._clientIP) && _clients[i]._port.Equals(clientInfo._port))
+                if (clients[i]._clientIP.Equals(clientInfo._clientIP) && clients[i]._port.Equals(clientInfo._port))
                 {
                     return i;
                 }
             }
             return null;
         }
-
-        public int? IndexOf(string ipAddress)
+        public int? RemoveClientsOnline(ClientInfo clientInfo)
         {
-            for (int i = 0; i < _clients.Count; i++)
+            int? index = IndexOf(clientInfo, _clientsOnline);
+            if (index != null)
             {
-                if (_clients[i]._clientIP.Equals(ipAddress))
+                _clientsOnline.RemoveAt((int)index);
+                return 1;
+            }
+            return 0;
+        }
+
+        public int? IndexOf(string ipAddress, List<ClientInfo> clients)
+        {
+            for (int i = 0; i < clients.Count; i++)
+            {
+                if (clients[i]._clientIP.Equals(ipAddress))
                 {
                     return i;
                 }
             }
             return null;
         }
-        void AddNewClient_GenerateByNumberOfClients(ClientInfo client)
-        {
-            int i = 0;
-            while (true)
-            {
-                if (_clients[i]._clientIP.Equals(client._clientIP) && _clients[i]._port.Equals(client._port)) break;
-                i++;
-            }
-
-            _clients[i] = client;
-        }
-
-        void AddTail(ClientInfo client)
+        public void AddTail(ClientInfo client)
         {
             _clients.Add(client);
         }
@@ -163,20 +159,24 @@ namespace server
 
         public void Add(ClientInfo clientInfo)
         {
-            int? index = IndexOf(clientInfo);
+            int? index = IndexOf(clientInfo, _clients);
             if (index != null)
             {
+                Console.WriteLine("Log: add");
                 _clients[(int)index] = clientInfo;
             }
-
-            if (_generateByNumberOfClients)
+        }
+        public void AddTailOnline(ClientInfo clientInfo)
+        {
+            _clientsOnline.Add(clientInfo);
+        }
+        public void AddOnline(ClientInfo clientInfo)
+        {
+            int? index = IndexOf(clientInfo, _clientsOnline);
+            if (index != null && clientInfo._status == ClientInfoStatus.Connected)
             {
-                AddNewClient_GenerateByNumberOfClients(clientInfo);
-
-            }
-            else
-            {
-                AddTail(clientInfo);
+                Console.WriteLine("Log: add");
+                _clientsOnline[(int)index] = clientInfo;
             }
         }
 

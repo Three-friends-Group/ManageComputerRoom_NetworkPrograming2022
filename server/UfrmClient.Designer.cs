@@ -39,6 +39,7 @@
             this.shutDownClient = new System.Windows.Forms.ToolStripMenuItem();
             this.lblName = new System.Windows.Forms.Label();
             this.lblIP = new System.Windows.Forms.Label();
+            this.lockScreen = new System.Windows.Forms.ToolStripMenuItem();
             ((System.ComponentModel.ISupportInitialize)(this.pbStatus)).BeginInit();
             this.ctmenutrip_May_PC_SV.SuspendLayout();
             this.SuspendLayout();
@@ -62,12 +63,13 @@
             this.directClient,
             this.chatClient,
             this.lockMouseAndKeyboardClient,
+            this.lockScreen,
             this.restartClient,
             this.shutDownClient});
             this.ctmenutrip_May_PC_SV.Name = "ctmenutrip_May_PC_SV";
             this.ctmenutrip_May_PC_SV.RenderMode = System.Windows.Forms.ToolStripRenderMode.Professional;
             this.ctmenutrip_May_PC_SV.ShowCheckMargin = true;
-            this.ctmenutrip_May_PC_SV.Size = new System.Drawing.Size(266, 134);
+            this.ctmenutrip_May_PC_SV.Size = new System.Drawing.Size(266, 160);
             // 
             // directClient
             // 
@@ -91,6 +93,7 @@
             this.lockMouseAndKeyboardClient.Name = "lockMouseAndKeyboardClient";
             this.lockMouseAndKeyboardClient.Size = new System.Drawing.Size(265, 26);
             this.lockMouseAndKeyboardClient.Text = "Khoá chuột và bàn phím";
+            this.lockMouseAndKeyboardClient.Click += new System.EventHandler(this.lockMouseAndKeyboardClient_Click);
             // 
             // restartClient
             // 
@@ -98,6 +101,7 @@
             this.restartClient.Name = "restartClient";
             this.restartClient.Size = new System.Drawing.Size(265, 26);
             this.restartClient.Text = "Khởi động lại";
+            this.restartClient.Click += new System.EventHandler(this.restartClient_Click);
             // 
             // shutDownClient
             // 
@@ -105,6 +109,7 @@
             this.shutDownClient.Name = "shutDownClient";
             this.shutDownClient.Size = new System.Drawing.Size(265, 26);
             this.shutDownClient.Text = "Tắt máy";
+            this.shutDownClient.Click += new System.EventHandler(this.shutDownClient_Click);
             // 
             // lblName
             // 
@@ -127,6 +132,13 @@
             this.lblIP.TabIndex = 11;
             this.lblIP.Text = "123.2.32.3.23";
             this.lblIP.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // lockScreen
+            // 
+            this.lockScreen.Name = "lockScreen";
+            this.lockScreen.Size = new System.Drawing.Size(265, 26);
+            this.lockScreen.Text = "Khóa màn hình";
+            this.lockScreen.Click += new System.EventHandler(this.lockScreen_Click);
             // 
             // UfrmClient
             // 
@@ -158,5 +170,6 @@
         private System.Windows.Forms.ToolStripMenuItem shutDownClient;
         private System.Windows.Forms.Label lblName;
         private System.Windows.Forms.Label lblIP;
+        private System.Windows.Forms.ToolStripMenuItem lockScreen;
     }
 }

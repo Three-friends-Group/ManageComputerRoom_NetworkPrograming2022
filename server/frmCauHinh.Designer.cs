@@ -28,152 +28,127 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.pnCauHinh_SV = new System.Windows.Forms.Panel();
-            this.bnButton_Thoat_SV = new Guna.UI2.WinForms.Guna2Button();
-            this.btnTaoLaiFile_SV = new Guna.UI2.WinForms.Guna2Button();
-            this.txtCongRemote_SV = new System.Windows.Forms.TextBox();
-            this.txtCongKetNoi_SV = new System.Windows.Forms.TextBox();
-            this.txtDiaChiIP_SV = new System.Windows.Forms.TextBox();
-            this.lb_CongRemoveSV = new System.Windows.Forms.Label();
-            this.lb_CongKetNoi_SV = new System.Windows.Forms.Label();
-            this.lbDiaChiIP_SV = new System.Windows.Forms.Label();
-            this.pnCauHinh_SV.SuspendLayout();
+            this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.txtSubnetMask = new System.Windows.Forms.TextBox();
+            this.txtIpEnd = new System.Windows.Forms.TextBox();
+            this.btnSubmit = new System.Windows.Forms.Button();
+            this.label3 = new System.Windows.Forms.Label();
+            this.label2 = new System.Windows.Forms.Label();
+            this.label1 = new System.Windows.Forms.Label();
+            this.txtIPBegin = new System.Windows.Forms.TextBox();
+            this.groupBox1.SuspendLayout();
             this.SuspendLayout();
             // 
-            // pnCauHinh_SV
+            // groupBox1
             // 
-            this.pnCauHinh_SV.Controls.Add(this.bnButton_Thoat_SV);
-            this.pnCauHinh_SV.Controls.Add(this.btnTaoLaiFile_SV);
-            this.pnCauHinh_SV.Controls.Add(this.txtCongRemote_SV);
-            this.pnCauHinh_SV.Controls.Add(this.txtCongKetNoi_SV);
-            this.pnCauHinh_SV.Controls.Add(this.txtDiaChiIP_SV);
-            this.pnCauHinh_SV.Controls.Add(this.lb_CongRemoveSV);
-            this.pnCauHinh_SV.Controls.Add(this.lb_CongKetNoi_SV);
-            this.pnCauHinh_SV.Controls.Add(this.lbDiaChiIP_SV);
-            this.pnCauHinh_SV.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.pnCauHinh_SV.Location = new System.Drawing.Point(0, 0);
-            this.pnCauHinh_SV.Name = "pnCauHinh_SV";
-            this.pnCauHinh_SV.Size = new System.Drawing.Size(665, 289);
-            this.pnCauHinh_SV.TabIndex = 0;
+            this.groupBox1.Controls.Add(this.txtSubnetMask);
+            this.groupBox1.Controls.Add(this.txtIpEnd);
+            this.groupBox1.Controls.Add(this.btnSubmit);
+            this.groupBox1.Controls.Add(this.label3);
+            this.groupBox1.Controls.Add(this.label2);
+            this.groupBox1.Controls.Add(this.label1);
+            this.groupBox1.Controls.Add(this.txtIPBegin);
+            this.groupBox1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.groupBox1.Location = new System.Drawing.Point(0, 0);
+            this.groupBox1.Name = "groupBox1";
+            this.groupBox1.Size = new System.Drawing.Size(309, 162);
+            this.groupBox1.TabIndex = 5;
+            this.groupBox1.TabStop = false;
+            this.groupBox1.Text = "Nhập thông tin các máy con";
             // 
-            // bnButton_Thoat_SV
+            // txtSubnetMask
             // 
-            this.bnButton_Thoat_SV.BorderRadius = 5;
-            this.bnButton_Thoat_SV.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
-            this.bnButton_Thoat_SV.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
-            this.bnButton_Thoat_SV.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
-            this.bnButton_Thoat_SV.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
-            this.bnButton_Thoat_SV.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.bnButton_Thoat_SV.Font = new System.Drawing.Font("Segoe UI Semibold", 10.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.bnButton_Thoat_SV.ForeColor = System.Drawing.Color.White;
-            this.bnButton_Thoat_SV.Location = new System.Drawing.Point(463, 205);
-            this.bnButton_Thoat_SV.Name = "bnButton_Thoat_SV";
-            this.bnButton_Thoat_SV.Size = new System.Drawing.Size(99, 60);
-            this.bnButton_Thoat_SV.TabIndex = 7;
-            this.bnButton_Thoat_SV.Text = "Thoát";
-            this.bnButton_Thoat_SV.Click += new System.EventHandler(this.bnButton_Thoat_SV_Click);
+            this.txtSubnetMask.Location = new System.Drawing.Point(93, 90);
+            this.txtSubnetMask.Name = "txtSubnetMask";
+            this.txtSubnetMask.Size = new System.Drawing.Size(207, 20);
+            this.txtSubnetMask.TabIndex = 9;
+            this.txtSubnetMask.Text = "255.255.255.0";
+            this.txtSubnetMask.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
-            // btnTaoLaiFile_SV
+            // txtIpEnd
             // 
-            this.btnTaoLaiFile_SV.BorderRadius = 5;
-            this.btnTaoLaiFile_SV.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
-            this.btnTaoLaiFile_SV.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
-            this.btnTaoLaiFile_SV.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
-            this.btnTaoLaiFile_SV.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
-            this.btnTaoLaiFile_SV.Font = new System.Drawing.Font("Segoe UI Semibold", 10.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnTaoLaiFile_SV.ForeColor = System.Drawing.Color.White;
-            this.btnTaoLaiFile_SV.Location = new System.Drawing.Point(247, 205);
-            this.btnTaoLaiFile_SV.Name = "btnTaoLaiFile_SV";
-            this.btnTaoLaiFile_SV.Size = new System.Drawing.Size(148, 60);
-            this.btnTaoLaiFile_SV.TabIndex = 6;
-            this.btnTaoLaiFile_SV.Text = "Tạo lại file";
+            this.txtIpEnd.Location = new System.Drawing.Point(93, 58);
+            this.txtIpEnd.Name = "txtIpEnd";
+            this.txtIpEnd.Size = new System.Drawing.Size(207, 20);
+            this.txtIpEnd.TabIndex = 8;
+            this.txtIpEnd.Text = "192.168.255.60";
+            this.txtIpEnd.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
-            // txtCongRemote_SV
+            // btnSubmit
             // 
-            this.txtCongRemote_SV.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.txtCongRemote_SV.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtCongRemote_SV.Location = new System.Drawing.Point(193, 145);
-            this.txtCongRemote_SV.Name = "txtCongRemote_SV";
-            this.txtCongRemote_SV.Size = new System.Drawing.Size(438, 28);
-            this.txtCongRemote_SV.TabIndex = 5;
+            this.btnSubmit.Location = new System.Drawing.Point(9, 123);
+            this.btnSubmit.Name = "btnSubmit";
+            this.btnSubmit.Size = new System.Drawing.Size(291, 23);
+            this.btnSubmit.TabIndex = 7;
+            this.btnSubmit.Text = "Xác nhận";
+            this.btnSubmit.UseVisualStyleBackColor = true;
+            this.btnSubmit.Click += new System.EventHandler(this.btnSubmit_Click);
             // 
-            // txtCongKetNoi_SV
+            // label3
             // 
-            this.txtCongKetNoi_SV.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.txtCongKetNoi_SV.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtCongKetNoi_SV.Location = new System.Drawing.Point(193, 93);
-            this.txtCongKetNoi_SV.Name = "txtCongKetNoi_SV";
-            this.txtCongKetNoi_SV.Size = new System.Drawing.Size(438, 28);
-            this.txtCongKetNoi_SV.TabIndex = 4;
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(6, 93);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(73, 13);
+            this.label3.TabIndex = 6;
+            this.label3.Text = "Subnet Mask:";
             // 
-            // txtDiaChiIP_SV
+            // label2
             // 
-            this.txtDiaChiIP_SV.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.txtDiaChiIP_SV.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtDiaChiIP_SV.Location = new System.Drawing.Point(193, 40);
-            this.txtDiaChiIP_SV.Name = "txtDiaChiIP_SV";
-            this.txtDiaChiIP_SV.Size = new System.Drawing.Size(438, 28);
-            this.txtDiaChiIP_SV.TabIndex = 3;
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(6, 61);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(67, 13);
+            this.label2.TabIndex = 4;
+            this.label2.Text = "IP cuối cùng";
             // 
-            // lb_CongRemoveSV
+            // label1
             // 
-            this.lb_CongRemoveSV.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.lb_CongRemoveSV.AutoSize = true;
-            this.lb_CongRemoveSV.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lb_CongRemoveSV.Location = new System.Drawing.Point(34, 148);
-            this.lb_CongRemoveSV.Name = "lb_CongRemoveSV";
-            this.lb_CongRemoveSV.Size = new System.Drawing.Size(125, 25);
-            this.lb_CongRemoveSV.TabIndex = 2;
-            this.lb_CongRemoveSV.Text = "Cổng remote";
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(6, 30);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(62, 13);
+            this.label1.TabIndex = 3;
+            this.label1.Text = "IP đầu tiên:";
             // 
-            // lb_CongKetNoi_SV
+            // txtIPBegin
             // 
-            this.lb_CongKetNoi_SV.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.lb_CongKetNoi_SV.AutoSize = true;
-            this.lb_CongKetNoi_SV.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lb_CongKetNoi_SV.Location = new System.Drawing.Point(34, 96);
-            this.lb_CongKetNoi_SV.Name = "lb_CongKetNoi_SV";
-            this.lb_CongKetNoi_SV.Size = new System.Drawing.Size(122, 25);
-            this.lb_CongKetNoi_SV.TabIndex = 1;
-            this.lb_CongKetNoi_SV.Text = "Cổng kết nối";
-            // 
-            // lbDiaChiIP_SV
-            // 
-            this.lbDiaChiIP_SV.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.lbDiaChiIP_SV.AutoSize = true;
-            this.lbDiaChiIP_SV.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbDiaChiIP_SV.Location = new System.Drawing.Point(34, 43);
-            this.lbDiaChiIP_SV.Name = "lbDiaChiIP_SV";
-            this.lbDiaChiIP_SV.Size = new System.Drawing.Size(94, 25);
-            this.lbDiaChiIP_SV.TabIndex = 0;
-            this.lbDiaChiIP_SV.Text = "Địa chỉ IP";
+            this.txtIPBegin.Location = new System.Drawing.Point(93, 27);
+            this.txtIPBegin.Name = "txtIPBegin";
+            this.txtIPBegin.Size = new System.Drawing.Size(207, 20);
+            this.txtIPBegin.TabIndex = 2;
+            this.txtIPBegin.Text = "192.168.255.1";
+            this.txtIPBegin.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // frmCauHinh_SV
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
+            this.AcceptButton = this.btnSubmit;
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(665, 289);
-            this.Controls.Add(this.pnCauHinh_SV);
+            this.ClientSize = new System.Drawing.Size(309, 162);
+            this.Controls.Add(this.groupBox1);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.Fixed3D;
+            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.MaximizeBox = false;
             this.Name = "frmCauHinh_SV";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Cấu hình";
-            this.pnCauHinh_SV.ResumeLayout(false);
-            this.pnCauHinh_SV.PerformLayout();
+            this.TopMost = true;
+            this.groupBox1.ResumeLayout(false);
+            this.groupBox1.PerformLayout();
             this.ResumeLayout(false);
 
         }
 
         #endregion
 
-        private System.Windows.Forms.Panel pnCauHinh_SV;
-        private System.Windows.Forms.Label lbDiaChiIP_SV;
-        private System.Windows.Forms.Label lb_CongRemoveSV;
-        private System.Windows.Forms.Label lb_CongKetNoi_SV;
-        private System.Windows.Forms.TextBox txtCongRemote_SV;
-        private System.Windows.Forms.TextBox txtCongKetNoi_SV;
-        private System.Windows.Forms.TextBox txtDiaChiIP_SV;
-        private Guna.UI2.WinForms.Guna2Button bnButton_Thoat_SV;
-        private Guna.UI2.WinForms.Guna2Button btnTaoLaiFile_SV;
+        private System.Windows.Forms.GroupBox groupBox1;
+        private System.Windows.Forms.TextBox txtSubnetMask;
+        private System.Windows.Forms.TextBox txtIpEnd;
+        private System.Windows.Forms.Button btnSubmit;
+        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.TextBox txtIPBegin;
     }
 }

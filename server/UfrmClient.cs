@@ -6,6 +6,7 @@ using System.Data;
 using System.Drawing;
 using System.Linq;
 using System.Net;
+using System.Net.Sockets;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -20,6 +21,7 @@ namespace server
         {
             InitializeComponent();
             _clientInfo = clientInfo;
+            _clientInfo._isLockScreen = false;
             SetContent(_clientInfo);
         }
 
@@ -143,5 +145,51 @@ namespace server
         }
 
         #endregion
+
+        private void lockMouseAndKeyboardClient_Click(object sender, EventArgs e)
+        {
+            SendMessage(new DataMethods(DataMethodsType.LockMouseAndKeyBoard, ""));
+        }
+
+        private void restartClient_Click(object sender, EventArgs e)
+        {
+            SendMessage(new DataMethods(DataMethodsType.Restart, ""));
+        }
+
+        private void shutDownClient_Click(object sender, EventArgs e)
+        {
+            SendMessage(new DataMethods(DataMethodsType.Shutdown, ""));
+        }
+
+        private void SendMessage(DataMethods dataMethod)
+        {
+            if (_clientInfo._status == ClientInfoStatus.Undefined || _clientInfo._status == ClientInfoStatus.Disconnected)
+            {
+                MessageBox.Show("Chức năng hiện tại không khả dụng");
+                return;
+            }
+            NetworkStream netStream = _clientInfo._tcpClient.GetStream();
+            Console.WriteLine("Log: gui message");
+            netStream.Write(dataMethod.Serialize(), 0, dataMethod.Serialize().Length);
+            netStream.Flush();
+            Console.WriteLine("Log: gui xong");
+        }
+
+        private void lockScreen_Click(object sender, EventArgs e)
+        {
+            if (_clientInfo._isLockScreen)
+            {
+                lockScreen.Text = "Khóa màn hình";
+                SendMessage(new DataMethods(DataMethodsType.UnlockScreen, ""));
+                _clientInfo._isLockScreen = false;
+            }
+            else
+            {
+                lockScreen.Text = "Mở khóa màn hình";
+                SendMessage(new DataMethods(DataMethodsType.LockScreen, ""));
+                _clientInfo._isLockScreen = true;
+            }
+
+        }
     }
 }
