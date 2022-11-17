@@ -1,4 +1,5 @@
 ﻿using common;
+using Guna.UI2.WinForms;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -94,33 +95,12 @@ namespace server
         #region handleEvent
 
         /// <summary>
-        /// chat với client
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
-        private void chatClient_on_click(object sender, EventArgs e)
-        {
-
-            MessageBox.Show(_clientInfo._name + _clientInfo._clientIP + _clientInfo._port + _clientInfo._status);
-            if (CheckClientConnected())
-            {
-                var form_TroChuyen = new frmChatOne(_clientInfo);
-                form_TroChuyen.Show();
-            }
-            else
-            {
-                return;
-            }
-        }
-
-        /// <summary>
         /// điều khiển
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
         private void directClient_on_click(object sender, EventArgs e)
         {
-            MessageBox.Show(_clientInfo._name + _clientInfo._clientIP + _clientInfo._port + _clientInfo._status);
             if (CheckClientConnected())
             {
                 var form_DieuKhien = new frmDieuKhienMayClient(_clientInfo);
@@ -134,14 +114,10 @@ namespace server
 
         private void UfrmClient_Click(object sender, EventArgs e)
         {
-            MessageBox.Show(sender.ToString());
-            MessageBox.Show(_clientInfo._name + _clientInfo._clientIP + _clientInfo._port);
         }
 
         private void UfrmClient_DoubleClick(object sender, EventArgs e)
         {
-            MessageBox.Show(sender.ToString());
-            MessageBox.Show(_clientInfo._name + _clientInfo._clientIP + _clientInfo._port);
         }
 
         #endregion
@@ -153,12 +129,24 @@ namespace server
 
         private void restartClient_Click(object sender, EventArgs e)
         {
-            SendMessage(new DataMethods(DataMethodsType.Restart, ""));
+
+            //MessageBox.Show();
+            var frm_set_time = new frmSetTime();
+
+            DialogResult result = frm_set_time.ShowDialog();
+            if (result != DialogResult.OK) return;
+            int timeDelay = common.Uitls.SetTimeDelay(frm_set_time.timeDelay);
+            SendMessage(new DataMethods(DataMethodsType.Restart, timeDelay.ToString()));
         }
 
         private void shutDownClient_Click(object sender, EventArgs e)
         {
-            SendMessage(new DataMethods(DataMethodsType.Shutdown, ""));
+            var frm_set_time = new frmSetTime();
+
+            DialogResult result = frm_set_time.ShowDialog();
+            if (result != DialogResult.OK) return;
+            int timeDelay = common.Uitls.SetTimeDelay(frm_set_time.timeDelay);
+            SendMessage(new DataMethods(DataMethodsType.Shutdown, timeDelay.ToString()));
         }
 
         private void SendMessage(DataMethods dataMethod)

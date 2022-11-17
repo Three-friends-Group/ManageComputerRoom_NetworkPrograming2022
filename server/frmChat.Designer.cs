@@ -1,6 +1,6 @@
 ﻿namespace server
 {
-    partial class frmChatAll
+    partial class FormChat
     {
         /// <summary>
         /// Required designer variable.
@@ -75,7 +75,7 @@
             // 
             this.splitContainer1.Panel2.Controls.Add(this.btnSend);
             this.splitContainer1.Size = new System.Drawing.Size(852, 75);
-            this.splitContainer1.SplitterDistance = 618;
+            this.splitContainer1.SplitterDistance = 546;
             this.splitContainer1.SplitterWidth = 40;
             this.splitContainer1.TabIndex = 4;
             // 
@@ -88,7 +88,7 @@
             this.txtMessage.Multiline = true;
             this.txtMessage.Name = "txtMessage";
             this.txtMessage.ScrollBars = System.Windows.Forms.ScrollBars.Both;
-            this.txtMessage.Size = new System.Drawing.Size(618, 75);
+            this.txtMessage.Size = new System.Drawing.Size(546, 75);
             this.txtMessage.TabIndex = 0;
             // 
             // btnSend
@@ -103,9 +103,10 @@
             this.btnSend.ForeColor = System.Drawing.Color.White;
             this.btnSend.Location = new System.Drawing.Point(0, 0);
             this.btnSend.Name = "btnSend";
-            this.btnSend.Size = new System.Drawing.Size(194, 75);
+            this.btnSend.Size = new System.Drawing.Size(266, 75);
             this.btnSend.TabIndex = 2;
             this.btnSend.Text = "Gửi";
+            this.btnSend.Click += new System.EventHandler(this.btnSend_Click);
             // 
             // panel5
             // 
@@ -161,7 +162,7 @@
             this.pnContainer.Size = new System.Drawing.Size(944, 484);
             this.pnContainer.TabIndex = 7;
             // 
-            // frmChatAll
+            // FormChat
             // 
             this.AcceptButton = this.btnSend;
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -170,7 +171,7 @@
             this.Controls.Add(this.pnContainer);
             this.Controls.Add(this.panel1);
             this.Margin = new System.Windows.Forms.Padding(2);
-            this.Name = "frmChatAll";
+            this.Name = "FormChat";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Chat all client";
             this.panel1.ResumeLayout(false);

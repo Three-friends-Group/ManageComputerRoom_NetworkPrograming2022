@@ -13,7 +13,8 @@ namespace common
     {
         Undefined,
         SendName,
-        SendMessageToOne,
+        SendMessageToServer,
+        SendMessageToAll,
         RemoteDesktop,
         LCLICK,
         RCLICK,
@@ -31,7 +32,9 @@ namespace common
         Restart,
         LockMouseAndKeyBoard,
         LockScreen,
-        UnlockScreen
+        UnlockScreen,
+        Exit,
+        ExitRemote
     }
 
 

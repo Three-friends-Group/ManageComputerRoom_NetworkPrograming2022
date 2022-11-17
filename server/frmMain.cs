@@ -114,12 +114,6 @@ namespace server
         #region events
         // mở form cấu hình
 
-        // mở form gửi tin nhắn gửi tất cả qua nút click button
-        private void btnGuiTinNhanAll_SV_Click(object sender, EventArgs e)
-        {
-            //var form_GuiTinNhanAll = new frmGuiTinNhanTatCaClinet();
-            //form_GuiTinNhanAll.Show();
-        }
 
         // thoát chương trình
         private void btnThoat_SV_Click(object sender, EventArgs e)
@@ -137,25 +131,34 @@ namespace server
 
         private void tool_RestartAll_Click(object sender, EventArgs e)
         {
-            serverProgram.SendMessageAll(new DataMethods(DataMethodsType.Restart, ""));
+            var frm_set_time = new frmSetTime();
 
+            DialogResult result = frm_set_time.ShowDialog();
+            if (result != DialogResult.OK) return;
+            int timeDelay = common.Uitls.SetTimeDelay(frm_set_time.timeDelay);
+            serverProgram.SendMessageAll(new DataMethods(DataMethodsType.Restart, timeDelay.ToString()));
         }
 
         private void tool_shutDown_All_Click(object sender, EventArgs e)
         {
-            serverProgram.SendMessageAll(new DataMethods(DataMethodsType.Shutdown, ""));
+            //MessageBox.Show();
+            var frm_set_time = new frmSetTime();
+
+            DialogResult result = frm_set_time.ShowDialog();
+            if (result != DialogResult.OK) return;
+            int timeDelay = common.Uitls.SetTimeDelay(frm_set_time.timeDelay);
+            serverProgram.SendMessageAll(new DataMethods(DataMethodsType.Shutdown, timeDelay.ToString()));
         }
 
         private void tool_lockAll_Click(object sender, EventArgs e)
         {
-
             serverProgram.lockScreenAll();
-
         }
 
         private void toolThoat_SV_Click(object sender, EventArgs e)
         {
-
+            serverProgram.Disconnect();
+            Application.Exit();
         }
 
         private void tool_cauHinhSV_Click(object sender, EventArgs e)
@@ -168,5 +171,17 @@ namespace server
             string SubnetMask = form_CauHinh.SubnetMask;
             serverProgram.SetClientInfoList(FirstIP, LastIP, SubnetMask);
         }
+
+        private void frmMain_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            serverProgram.Disconnect();
+        }
+
+        private void tool_chatAll_Click(object sender, EventArgs e)
+        {
+            FormChat frmChatAll = new FormChat(serverProgram);
+            frmChatAll.Show();
+        }
+
     }
 }

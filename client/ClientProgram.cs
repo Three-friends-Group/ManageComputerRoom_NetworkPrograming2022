@@ -50,6 +50,13 @@ namespace client
             remove { _onRemoteDesktop -= value; }
         }
 
+        private event Action<string> _onServerOff;
+        public event Action<string> OnServerOff
+        {
+            add { _onServerOff += value; }
+            remove { _onServerOff -= value; }
+        }
+
         public Action OnLockScreen;
         public Action OnUnLockScreen;
 
@@ -100,9 +107,10 @@ namespace client
 
                     switch (dataMethods.Type)
                     {
-                        case DataMethodsType.SendMessageToOne:
+                        case DataMethodsType.SendMessageToAll:
                             {
                                 Console.WriteLine("Log: " + dataMethods.Data.ToString());
+
                                 if (_onReceievedMessage != null)
                                 {
                                     _onReceievedMessage(dataMethods.Data.ToString());
@@ -121,7 +129,7 @@ namespace client
                                     rmEventsThread = new Thread(WaitForCommands);
                                     rmEventsThread.IsBackground = true;
                                     rmEventsThread.Start();
-                                    Thread.Sleep(3000);
+                                    Thread.Sleep(500);
                                     remoteThread = new Thread(RemoteDesktop);
                                     remoteThread.IsBackground = true;
                                     remoteThread.Start();
@@ -134,14 +142,23 @@ namespace client
 
                                 break;
                             }
+                        case DataMethodsType.ExitRemote:
+                            {
+                                tcpRemote.Close();
+                                rmEventsThread.Abort();
+                                remoteThread.Abort();
+                                break;
+                            }
+
 
                         case DataMethodsType.Shutdown:
                             {
+                                MessageBox.Show("Máy sẽ tắt lại sau " + dataMethods.Data.ToString() + " phút");
                                 Process process = new Process();
                                 ProcessStartInfo proccessInfo = new ProcessStartInfo();
                                 proccessInfo.WindowStyle = ProcessWindowStyle.Hidden;
                                 proccessInfo.FileName = "shutdown.exe";
-                                proccessInfo.Arguments = "/f -s -t 00";
+                                proccessInfo.Arguments = "/f -s -t " + dataMethods.Data.ToString();
                                 process.StartInfo = proccessInfo;
                                 process.Start();
                                 this.Close();
@@ -149,11 +166,12 @@ namespace client
                             }
                         case DataMethodsType.Restart:
                             {
+                                MessageBox.Show("Máy sẽ khởi động lại sau " + dataMethods.Data.ToString() + " phút");
                                 Process process = new Process();
                                 ProcessStartInfo proccessInfo = new ProcessStartInfo();
                                 proccessInfo.WindowStyle = ProcessWindowStyle.Hidden;
                                 proccessInfo.FileName = "shutdown.exe";
-                                proccessInfo.Arguments = "/f -r -t 00";
+                                proccessInfo.Arguments = "/f -s -t " + dataMethods.Data.ToString();
                                 process.StartInfo = proccessInfo;
                                 process.Start();
                                 this.Close();
@@ -182,6 +200,17 @@ namespace client
                                 break;
 
                             }
+                        case DataMethodsType.Exit:
+                            {
+                                Close();
+                                if (_onServerOff != null)
+                                {
+                                    _onServerOff("");
+                                }
+
+                                break;
+                            }
+
 
 
                     }
@@ -278,32 +307,6 @@ namespace client
                             }
                         case DataMethodsType.KEYPRESS:
                             {
-
-                                //Console.WriteLine("Log: data gui den la: " + dataMethods.Type + dataMethods.Data.ToString().GetType());
-                                //Console.WriteLine(Convert.ToChar(dataMethods.Data.ToString()));
-                                //Console.WriteLine(Convert.ToChar(dataMethods.Data.ToString()).GetType());
-                                //RemoteEvent.keyDown((Keys)Convert.ToChar(dataMethods.Data.ToString()));
-                                ////RemoteEvent.keyDown((Keys)dataMethods.Data);
-                                break;
-                            }
-                        case DataMethodsType.KEYUP:
-                            {
-                                String dataReceive = dataMethods.Data.ToString();
-                                if (dataReceive.StartsWith("{CAPSLOCK}"))
-                                {
-                                    RemoteEvent.CapsLock();
-                                    break;
-                                }
-                                else if (dataReceive.StartsWith("{NUMLOCK}"))
-                                {
-                                    RemoteEvent.NumLock();
-                                    break;
-                                }
-                                else if (dataReceive.StartsWith("CTRLALTDELETE"))
-                                {
-                                    RemoteEvent.ShowTaskmanager();
-                                    break;
-                                }
                                 break;
                             }
 
@@ -312,6 +315,8 @@ namespace client
                 }
                 catch (Exception e)
                 {
+                    rmEventsThread.Abort();
+                    remoteThread.Abort();
                     MessageBox.Show(e.Message);
                 }
             }
@@ -367,19 +372,8 @@ namespace client
             Console.WriteLine("Ten pc la: " + name);
             DataMethods dataSend = new DataMethods(DataMethodsType.SendName, name);
             Console.WriteLine("Log: data send tu client: " + dataSend.Type.ToString() + dataSend.Data.ToString());
-            //DataMethods dataMethods = new DataMethods(DataMethodsType.SendInfo, name);
 
             Send(dataSend);
-            //string msg;
-            //msg = "NAME|" + Dns.GetHostName();
-            //sendMsg(msg);
-            //Thread.Sleep(1000);
-            //IPEndPoint ipEP = (IPEndPoint)_tcpClient.Client.RemoteEndPoint;
-            //IPAddress ipAdd = ipEP.Address;
-            //msg = "IP|" + ipAdd.ToString();
-            //sendMsg(msg);
         }
-
-
     }
 }

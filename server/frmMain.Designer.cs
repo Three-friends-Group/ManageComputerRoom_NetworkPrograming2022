@@ -32,19 +32,19 @@
             this.pnMain_SV = new System.Windows.Forms.Panel();
             this.flpMain = new System.Windows.Forms.FlowLayoutPanel();
             this.pnTop = new System.Windows.Forms.Panel();
-            this.lblSLOnline = new System.Windows.Forms.Label();
-            this.lblSLMay = new System.Windows.Forms.Label();
-            this.lbTongSoMay_SV = new System.Windows.Forms.Label();
-            this.lbTongSoOnline_SV = new System.Windows.Forms.Label();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.menuToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.tool_cauHinhSV = new System.Windows.Forms.ToolStripMenuItem();
             this.tool_chatAll = new System.Windows.Forms.ToolStripMenuItem();
             this.tool_RestartAll = new System.Windows.Forms.ToolStripMenuItem();
             this.tool_shutDown_All = new System.Windows.Forms.ToolStripMenuItem();
+            this.tool_lockAll = new System.Windows.Forms.ToolStripMenuItem();
             this.toolThoat_SV = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
-            this.tool_lockAll = new System.Windows.Forms.ToolStripMenuItem();
+            this.lblSLOnline = new System.Windows.Forms.Label();
+            this.lblSLMay = new System.Windows.Forms.Label();
+            this.lbTongSoMay_SV = new System.Windows.Forms.Label();
+            this.lbTongSoOnline_SV = new System.Windows.Forms.Label();
             this.pnMain_SV.SuspendLayout();
             this.pnTop.SuspendLayout();
             this.menuStrip1.SuspendLayout();
@@ -89,6 +89,88 @@
             this.pnTop.Name = "pnTop";
             this.pnTop.Size = new System.Drawing.Size(942, 71);
             this.pnTop.TabIndex = 2;
+            // 
+            // menuStrip1
+            // 
+            this.menuStrip1.BackColor = System.Drawing.SystemColors.ButtonFace;
+            this.menuStrip1.ImageScalingSize = new System.Drawing.Size(20, 20);
+            this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.menuToolStripMenuItem,
+            this.toolStripMenuItem1});
+            this.menuStrip1.Location = new System.Drawing.Point(0, 0);
+            this.menuStrip1.Name = "menuStrip1";
+            this.menuStrip1.Padding = new System.Windows.Forms.Padding(4, 2, 0, 2);
+            this.menuStrip1.Size = new System.Drawing.Size(942, 28);
+            this.menuStrip1.TabIndex = 4;
+            this.menuStrip1.Text = "menuStrip1";
+            // 
+            // menuToolStripMenuItem
+            // 
+            this.menuToolStripMenuItem.BackColor = System.Drawing.SystemColors.ActiveCaption;
+            this.menuToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.tool_cauHinhSV,
+            this.tool_chatAll,
+            this.tool_RestartAll,
+            this.tool_shutDown_All,
+            this.tool_lockAll,
+            this.toolThoat_SV});
+            this.menuToolStripMenuItem.Font = new System.Drawing.Font("Segoe UI", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.menuToolStripMenuItem.Name = "menuToolStripMenuItem";
+            this.menuToolStripMenuItem.Size = new System.Drawing.Size(58, 24);
+            this.menuToolStripMenuItem.Text = "Menu";
+            // 
+            // tool_cauHinhSV
+            // 
+            this.tool_cauHinhSV.Image = ((System.Drawing.Image)(resources.GetObject("tool_cauHinhSV.Image")));
+            this.tool_cauHinhSV.Name = "tool_cauHinhSV";
+            this.tool_cauHinhSV.Size = new System.Drawing.Size(232, 26);
+            this.tool_cauHinhSV.Text = "Cấu hình";
+            this.tool_cauHinhSV.Click += new System.EventHandler(this.tool_cauHinhSV_Click);
+            // 
+            // tool_chatAll
+            // 
+            this.tool_chatAll.Image = ((System.Drawing.Image)(resources.GetObject("tool_chatAll.Image")));
+            this.tool_chatAll.Name = "tool_chatAll";
+            this.tool_chatAll.Size = new System.Drawing.Size(232, 26);
+            this.tool_chatAll.Text = "Gửi tin nhắn đến tất cả";
+            this.tool_chatAll.Click += new System.EventHandler(this.tool_chatAll_Click);
+            // 
+            // tool_RestartAll
+            // 
+            this.tool_RestartAll.Image = ((System.Drawing.Image)(resources.GetObject("tool_RestartAll.Image")));
+            this.tool_RestartAll.Name = "tool_RestartAll";
+            this.tool_RestartAll.Size = new System.Drawing.Size(232, 26);
+            this.tool_RestartAll.Text = "Khởi động lại tất cả";
+            this.tool_RestartAll.Click += new System.EventHandler(this.tool_RestartAll_Click);
+            // 
+            // tool_shutDown_All
+            // 
+            this.tool_shutDown_All.Image = ((System.Drawing.Image)(resources.GetObject("tool_shutDown_All.Image")));
+            this.tool_shutDown_All.Name = "tool_shutDown_All";
+            this.tool_shutDown_All.Size = new System.Drawing.Size(232, 26);
+            this.tool_shutDown_All.Text = "Tắt máy tất cả";
+            this.tool_shutDown_All.Click += new System.EventHandler(this.tool_shutDown_All_Click);
+            // 
+            // tool_lockAll
+            // 
+            this.tool_lockAll.Name = "tool_lockAll";
+            this.tool_lockAll.Size = new System.Drawing.Size(232, 26);
+            this.tool_lockAll.Text = "Khóa tất cả";
+            this.tool_lockAll.Click += new System.EventHandler(this.tool_lockAll_Click);
+            // 
+            // toolThoat_SV
+            // 
+            this.toolThoat_SV.Image = ((System.Drawing.Image)(resources.GetObject("toolThoat_SV.Image")));
+            this.toolThoat_SV.Name = "toolThoat_SV";
+            this.toolThoat_SV.Size = new System.Drawing.Size(232, 26);
+            this.toolThoat_SV.Text = "Thoát";
+            this.toolThoat_SV.Click += new System.EventHandler(this.toolThoat_SV_Click);
+            // 
+            // toolStripMenuItem1
+            // 
+            this.toolStripMenuItem1.Name = "toolStripMenuItem1";
+            this.toolStripMenuItem1.Size = new System.Drawing.Size(22, 24);
+            this.toolStripMenuItem1.Text = " ";
             // 
             // lblSLOnline
             // 
@@ -140,87 +222,6 @@
             this.lbTongSoOnline_SV.TabIndex = 1;
             this.lbTongSoOnline_SV.Text = "Số máy online";
             // 
-            // menuStrip1
-            // 
-            this.menuStrip1.BackColor = System.Drawing.SystemColors.ButtonFace;
-            this.menuStrip1.ImageScalingSize = new System.Drawing.Size(20, 20);
-            this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.menuToolStripMenuItem,
-            this.toolStripMenuItem1});
-            this.menuStrip1.Location = new System.Drawing.Point(0, 0);
-            this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Padding = new System.Windows.Forms.Padding(4, 2, 0, 2);
-            this.menuStrip1.Size = new System.Drawing.Size(942, 28);
-            this.menuStrip1.TabIndex = 4;
-            this.menuStrip1.Text = "menuStrip1";
-            // 
-            // menuToolStripMenuItem
-            // 
-            this.menuToolStripMenuItem.BackColor = System.Drawing.SystemColors.ActiveCaption;
-            this.menuToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.tool_cauHinhSV,
-            this.tool_chatAll,
-            this.tool_RestartAll,
-            this.tool_shutDown_All,
-            this.tool_lockAll,
-            this.toolThoat_SV});
-            this.menuToolStripMenuItem.Font = new System.Drawing.Font("Segoe UI", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.menuToolStripMenuItem.Name = "menuToolStripMenuItem";
-            this.menuToolStripMenuItem.Size = new System.Drawing.Size(58, 24);
-            this.menuToolStripMenuItem.Text = "Menu";
-            // 
-            // tool_cauHinhSV
-            // 
-            this.tool_cauHinhSV.Image = ((System.Drawing.Image)(resources.GetObject("tool_cauHinhSV.Image")));
-            this.tool_cauHinhSV.Name = "tool_cauHinhSV";
-            this.tool_cauHinhSV.Size = new System.Drawing.Size(232, 26);
-            this.tool_cauHinhSV.Text = "Cấu hình";
-            this.tool_cauHinhSV.Click += new System.EventHandler(this.tool_cauHinhSV_Click);
-            // 
-            // tool_chatAll
-            // 
-            this.tool_chatAll.Image = ((System.Drawing.Image)(resources.GetObject("tool_chatAll.Image")));
-            this.tool_chatAll.Name = "tool_chatAll";
-            this.tool_chatAll.Size = new System.Drawing.Size(232, 26);
-            this.tool_chatAll.Text = "Gửi tin nhắn đến tất cả";
-            // 
-            // tool_RestartAll
-            // 
-            this.tool_RestartAll.Image = ((System.Drawing.Image)(resources.GetObject("tool_RestartAll.Image")));
-            this.tool_RestartAll.Name = "tool_RestartAll";
-            this.tool_RestartAll.Size = new System.Drawing.Size(232, 26);
-            this.tool_RestartAll.Text = "Khởi động lại tất cả";
-            this.tool_RestartAll.Click += new System.EventHandler(this.tool_RestartAll_Click);
-            // 
-            // tool_shutDown_All
-            // 
-            this.tool_shutDown_All.Image = ((System.Drawing.Image)(resources.GetObject("tool_shutDown_All.Image")));
-            this.tool_shutDown_All.Name = "tool_shutDown_All";
-            this.tool_shutDown_All.Size = new System.Drawing.Size(232, 26);
-            this.tool_shutDown_All.Text = "Tắt máy tất cả";
-            this.tool_shutDown_All.Click += new System.EventHandler(this.tool_shutDown_All_Click);
-            // 
-            // toolThoat_SV
-            // 
-            this.toolThoat_SV.Image = ((System.Drawing.Image)(resources.GetObject("toolThoat_SV.Image")));
-            this.toolThoat_SV.Name = "toolThoat_SV";
-            this.toolThoat_SV.Size = new System.Drawing.Size(232, 26);
-            this.toolThoat_SV.Text = "Thoát";
-            this.toolThoat_SV.Click += new System.EventHandler(this.toolThoat_SV_Click);
-            // 
-            // toolStripMenuItem1
-            // 
-            this.toolStripMenuItem1.Name = "toolStripMenuItem1";
-            this.toolStripMenuItem1.Size = new System.Drawing.Size(22, 24);
-            this.toolStripMenuItem1.Text = " ";
-            // 
-            // tool_lockAll
-            // 
-            this.tool_lockAll.Name = "tool_lockAll";
-            this.tool_lockAll.Size = new System.Drawing.Size(232, 26);
-            this.tool_lockAll.Text = "Khóa tất cả";
-            this.tool_lockAll.Click += new System.EventHandler(this.tool_lockAll_Click);
-            // 
             // frmMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -232,6 +233,7 @@
             this.Name = "frmMain";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Server Dashboard";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.frmMain_FormClosing);
             this.pnMain_SV.ResumeLayout(false);
             this.pnMain_SV.PerformLayout();
             this.pnTop.ResumeLayout(false);

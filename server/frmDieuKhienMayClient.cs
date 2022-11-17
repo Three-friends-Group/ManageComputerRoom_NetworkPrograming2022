@@ -49,6 +49,7 @@ namespace server
                 tcpClientRM = tcpListener.AcceptTcpClient();
                 Console.WriteLine("Log: start3");
                 _thread = new Thread(DoListener);
+                _thread.IsBackground = true;
                 Console.WriteLine("Log: start4");
                 _thread.Start();
             }
@@ -169,8 +170,7 @@ namespace server
 
         private void frmDieuKhienMayClient_KeyPress_1(object sender, KeyPressEventArgs e)
         {
-            //Console.WriteLine("Log: key la: " + e.KeyChar);
-            ////Console.WriteLine("Log: ma key la: " + (int)e.KeyChar);
+            //Console.WriteLine("Log: key la: " + e.KeyChar); ////Console.WriteLine("Log: ma key la: " + (int)e.KeyChar);
             //SafeSendValue(new DataMethods(DataMethodsType.KEYPRESS, (int)e.KeyChar));
         }
 
@@ -182,6 +182,9 @@ namespace server
 
         private void frmDieuKhienMayClient_FormClosing(object sender, FormClosingEventArgs e)
         {
+            SendMessage(new DataMethods(DataMethodsType.ExitRemote, ""));
+            tcpClientRM.Close();
+            tcpListener.Stop();
 
         }
 

@@ -36,7 +36,7 @@ namespace common
             pnContainer.AutoScrollPosition = new Point(0, change);
         }
 
-        public static void  AddOutGoing(string message, Panel pnContainer)
+        public static void AddOutGoing(string message, Panel pnContainer)
         {
             var bubble = new ChatItems.Outgoing(message);
             pnContainer.Controls.Add(bubble);
@@ -46,5 +46,30 @@ namespace common
             pnContainer.AutoScrollPosition = new Point(0, change);
         }
 
+
+
+        public static int SetTimeDelay(string timeStr)
+        {
+            Console.WriteLine(timeStr);
+
+            switch (timeStr)
+            {
+                case "Now":
+                    return 0;
+                case "1 minutes later":
+                    return 60;
+
+                case "3 minutes later":
+                    return 3*60;
+
+                case "5 minutes later":
+                    return 5*60;
+                case "10 minutes later":
+                    return 10 * 60;
+                default:
+                    return 0 * 60;
+            }
+
+        }
     }
 }

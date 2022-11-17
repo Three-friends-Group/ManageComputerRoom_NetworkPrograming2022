@@ -91,9 +91,9 @@ namespace server
 
         public int? IndexOf(ClientInfo clientInfo, List<ClientInfo> clients)
         {
-            for (int i = 0; i < _clients.Count; i++)
+            for (int i = 0; i < clients.Count; i++)
             {
-                if (clients[i]._clientIP.Equals(clientInfo._clientIP) && clients[i]._port.Equals(clientInfo._port))
+                if (clients[i]._clientIP.Equals(clientInfo._clientIP))
                 {
                     return i;
                 }

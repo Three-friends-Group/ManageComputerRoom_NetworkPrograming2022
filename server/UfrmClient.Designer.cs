@@ -33,13 +33,12 @@
             this.pbStatus = new System.Windows.Forms.PictureBox();
             this.ctmenutrip_May_PC_SV = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.directClient = new System.Windows.Forms.ToolStripMenuItem();
-            this.chatClient = new System.Windows.Forms.ToolStripMenuItem();
             this.lockMouseAndKeyboardClient = new System.Windows.Forms.ToolStripMenuItem();
+            this.lockScreen = new System.Windows.Forms.ToolStripMenuItem();
             this.restartClient = new System.Windows.Forms.ToolStripMenuItem();
             this.shutDownClient = new System.Windows.Forms.ToolStripMenuItem();
             this.lblName = new System.Windows.Forms.Label();
             this.lblIP = new System.Windows.Forms.Label();
-            this.lockScreen = new System.Windows.Forms.ToolStripMenuItem();
             ((System.ComponentModel.ISupportInitialize)(this.pbStatus)).BeginInit();
             this.ctmenutrip_May_PC_SV.SuspendLayout();
             this.SuspendLayout();
@@ -61,7 +60,6 @@
             this.ctmenutrip_May_PC_SV.ImageScalingSize = new System.Drawing.Size(20, 20);
             this.ctmenutrip_May_PC_SV.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.directClient,
-            this.chatClient,
             this.lockMouseAndKeyboardClient,
             this.lockScreen,
             this.restartClient,
@@ -69,7 +67,7 @@
             this.ctmenutrip_May_PC_SV.Name = "ctmenutrip_May_PC_SV";
             this.ctmenutrip_May_PC_SV.RenderMode = System.Windows.Forms.ToolStripRenderMode.Professional;
             this.ctmenutrip_May_PC_SV.ShowCheckMargin = true;
-            this.ctmenutrip_May_PC_SV.Size = new System.Drawing.Size(266, 160);
+            this.ctmenutrip_May_PC_SV.Size = new System.Drawing.Size(266, 156);
             // 
             // directClient
             // 
@@ -79,14 +77,6 @@
             this.directClient.Text = "Điều khiển";
             this.directClient.Click += new System.EventHandler(this.directClient_on_click);
             // 
-            // chatClient
-            // 
-            this.chatClient.Image = ((System.Drawing.Image)(resources.GetObject("chatClient.Image")));
-            this.chatClient.Name = "chatClient";
-            this.chatClient.Size = new System.Drawing.Size(265, 26);
-            this.chatClient.Text = "Trò chuyện";
-            this.chatClient.Click += new System.EventHandler(this.chatClient_on_click);
-            // 
             // lockMouseAndKeyboardClient
             // 
             this.lockMouseAndKeyboardClient.Image = ((System.Drawing.Image)(resources.GetObject("lockMouseAndKeyboardClient.Image")));
@@ -94,6 +84,13 @@
             this.lockMouseAndKeyboardClient.Size = new System.Drawing.Size(265, 26);
             this.lockMouseAndKeyboardClient.Text = "Khoá chuột và bàn phím";
             this.lockMouseAndKeyboardClient.Click += new System.EventHandler(this.lockMouseAndKeyboardClient_Click);
+            // 
+            // lockScreen
+            // 
+            this.lockScreen.Name = "lockScreen";
+            this.lockScreen.Size = new System.Drawing.Size(265, 26);
+            this.lockScreen.Text = "Khóa màn hình";
+            this.lockScreen.Click += new System.EventHandler(this.lockScreen_Click);
             // 
             // restartClient
             // 
@@ -133,13 +130,6 @@
             this.lblIP.Text = "123.2.32.3.23";
             this.lblIP.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
-            // lockScreen
-            // 
-            this.lockScreen.Name = "lockScreen";
-            this.lockScreen.Size = new System.Drawing.Size(265, 26);
-            this.lockScreen.Text = "Khóa màn hình";
-            this.lockScreen.Click += new System.EventHandler(this.lockScreen_Click);
-            // 
             // UfrmClient
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -164,7 +154,6 @@
         private System.Windows.Forms.PictureBox pbStatus;
         private System.Windows.Forms.ContextMenuStrip ctmenutrip_May_PC_SV;
         private System.Windows.Forms.ToolStripMenuItem directClient;
-        private System.Windows.Forms.ToolStripMenuItem chatClient;
         private System.Windows.Forms.ToolStripMenuItem lockMouseAndKeyboardClient;
         private System.Windows.Forms.ToolStripMenuItem restartClient;
         private System.Windows.Forms.ToolStripMenuItem shutDownClient;
