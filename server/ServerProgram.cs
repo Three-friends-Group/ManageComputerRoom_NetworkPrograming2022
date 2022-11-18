@@ -80,7 +80,7 @@ namespace server
         {
             try
             {
-                IP = IPAddress.Parse("10.0.247.201");
+                IP = IPAddress.Parse("127.0.0.1");
                 server = new TcpListener(IP, PORT);
                 server.Start();
                 while (true)
@@ -90,7 +90,7 @@ namespace server
                     string[] endpoint = clientTcp.Client.RemoteEndPoint.ToString().Split(':');
                     string clientIP = endpoint[0];
                     string clientPort = endpoint[1];
-                    clientInfo = clientInfoManager.Find(clientIP);
+                    clientInfo = clientInfoManager.FindByIdAndPort(clientIP, clientPort);
                     if (clientInfo == null)
                     {
                         clientInfo = new ClientInfo(clientTcp);

@@ -153,7 +153,6 @@ namespace client
 
                         case DataMethodsType.Shutdown:
                             {
-                                MessageBox.Show("Máy sẽ tắt lại sau " + dataMethods.Data.ToString() + " phút");
                                 Process process = new Process();
                                 ProcessStartInfo proccessInfo = new ProcessStartInfo();
                                 proccessInfo.WindowStyle = ProcessWindowStyle.Hidden;
@@ -161,12 +160,14 @@ namespace client
                                 proccessInfo.Arguments = "/f -s -t " + dataMethods.Data.ToString();
                                 process.StartInfo = proccessInfo;
                                 process.Start();
+                                tcpRemote.Close();
+                                rmEventsThread.Abort();
+                                remoteThread.Abort();
                                 this.Close();
                                 break;
                             }
                         case DataMethodsType.Restart:
                             {
-                                MessageBox.Show("Máy sẽ khởi động lại sau " + dataMethods.Data.ToString() + " phút");
                                 Process process = new Process();
                                 ProcessStartInfo proccessInfo = new ProcessStartInfo();
                                 proccessInfo.WindowStyle = ProcessWindowStyle.Hidden;
@@ -174,8 +175,11 @@ namespace client
                                 proccessInfo.Arguments = "/f -s -t " + dataMethods.Data.ToString();
                                 process.StartInfo = proccessInfo;
                                 process.Start();
+                                tcpRemote.Close();
+                                rmEventsThread.Abort();
+                                remoteThread.Abort();
                                 this.Close();
-
+                                
                                 break;
                             }
                         case DataMethodsType.LockMouseAndKeyBoard:
